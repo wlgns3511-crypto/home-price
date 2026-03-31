@@ -151,3 +151,70 @@ export function getCountryBySlug(slug: string) {
 export function getCitiesByCountry(countryName: string, limit = 50) {
   return getDb().prepare('SELECT * FROM cities WHERE country = ? ORDER BY population DESC LIMIT ?').all(countryName, limit) as Record<string, unknown>[];
 }
+
+// ── Country Comparisons ─────────────────────────────────────
+
+export function getAllCountryComparisonSlugs() {
+  return getDb().prepare('SELECT slug FROM country_comparisons').all() as { slug: string }[];
+}
+
+export function getCountryComparisonBySlug(slug: string) {
+  const comp = getDb().prepare('SELECT * FROM country_comparisons WHERE slug = ?').get(slug) as { slug: string; country_a_slug: string; country_b_slug: string } | undefined;
+  if (!comp) return null;
+  const a = getCountryBySlug(comp.country_a_slug);
+  const b = getCountryBySlug(comp.country_b_slug);
+  if (!a || !b) return null;
+  return { slug: comp.slug, a, b };
+}
+
+export function getTopCountryComparisons(limit = 50) {
+  return getDb().prepare('SELECT slug FROM country_comparisons LIMIT ?').all(limit) as { slug: string }[];
+}
+
+// ── Rankings ────────────────────────────────────────────────
+
+export function getAllRankings() {
+  return getDb().prepare('SELECT * FROM rankings').all() as Record<string, unknown>[];
+}
+
+export function getRankingBySlug(slug: string) {
+  return getDb().prepare('SELECT * FROM rankings WHERE slug = ?').get(slug) as Record<string, unknown> | undefined;
+}
+
+export function getCitiesForRanking(column: string, direction: string, region?: string, limit = 50) {
+  const regionFilter = region ? ` AND region = '${region}'` : '';
+  return getDb().prepare(
+    `SELECT * FROM cities WHERE ${column} IS NOT NULL${regionFilter} ORDER BY ${column} ${direction} LIMIT ?`
+  ).all(limit) as Record<string, unknown>[];
+}
+
+// ── Budgets ─────────────────────────────────────────────────
+
+export function getAllBudgets() {
+  return getDb().prepare('SELECT * FROM budgets').all() as Record<string, unknown>[];
+}
+
+export function getBudgetBySlug(slug: string) {
+  return getDb().prepare('SELECT * FROM budgets WHERE slug = ?').get(slug) as Record<string, unknown> | undefined;
+}
+
+export function getCitiesInBudget(minPrice: number, maxPrice: number, isRent = false) {
+  const col = isRent ? 'avg_rent_1br_usd' : 'avg_home_price_usd';
+  return getDb().prepare(
+    `SELECT * FROM cities WHERE ${col} >= ? AND ${col} < ? ORDER BY ${col} ASC`
+  ).all(minPrice, maxPrice) as Record<string, unknown>[];
+}
+
+// ── Regions ─────────────────────────────────────────────────
+
+export function getAllRegions() {
+  return getDb().prepare('SELECT * FROM regions').all() as Record<string, unknown>[];
+}
+
+export function getRegionBySlug(slug: string) {
+  return getDb().prepare('SELECT * FROM regions WHERE slug = ?').get(slug) as Record<string, unknown> | undefined;
+}
+
+export function getCitiesByRegion(regionName: string) {
+  return getDb().prepare('SELECT * FROM cities WHERE region = ? ORDER BY avg_home_price_usd DESC').all(regionName) as Record<string, unknown>[];
+}
