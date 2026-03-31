@@ -67,17 +67,17 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <footer className="border-t border-slate-200 mt-16">
           <div className="max-w-5xl mx-auto px-4 py-6 text-sm text-slate-500">
             <p className="mb-2">
-              <a href="/about" className={`hover:text-${c.colors.primary}-600`}>About</a>
+              <a href="/about/" className={`hover:text-${c.colors.primary}-600`}>About</a>
               {' | '}
-              <a href="/privacy" className={`hover:text-${c.colors.primary}-600`}>Privacy</a>
+              <a href="/privacy/" className={`hover:text-${c.colors.primary}-600`}>Privacy</a>
               {' | '}
-              <a href="/terms" className={`hover:text-${c.colors.primary}-600`}>Terms</a>
+              <a href="/terms/" className={`hover:text-${c.colors.primary}-600`}>Terms</a>
               {' | '}
-              <a href="/disclaimer" className={`hover:text-${c.colors.primary}-600`}>Disclaimer</a>
+              <a href="/disclaimer/" className={`hover:text-${c.colors.primary}-600`}>Disclaimer</a>
               {' | '}
-              <a href="/methodology" className={`hover:text-${c.colors.primary}-600`}>Methodology</a>
+              <a href="/methodology/" className={`hover:text-${c.colors.primary}-600`}>Methodology</a>
               {' | '}
-              <a href="/contact" className={`hover:text-${c.colors.primary}-600`}>Contact</a>
+              <a href="/contact/" className={`hover:text-${c.colors.primary}-600`}>Contact</a>
             </p>
             <div className="mt-4 pt-4 border-t border-slate-100">
               <p className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Related Resources</p>
