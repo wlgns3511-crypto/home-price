@@ -27,10 +27,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!comp) return {};
   const nameA = String(comp.a.name);
   const nameB = String(comp.b.name);
+  const title = `${nameA} vs ${nameB} — Home Prices & Rent Comparison (${new Date().getFullYear()})`;
+  const description = `Compare home prices in ${nameA} (${formatCurrency(comp.a.avg_home_price_usd as number)}) vs ${nameB} (${formatCurrency(comp.b.avg_home_price_usd as number)}). Rent, affordability, mortgage rates side by side.`;
   return {
-    title: `${nameA} vs ${nameB} — Home Prices & Rent Comparison (${new Date().getFullYear()})`,
-    description: `Compare home prices in ${nameA} (${formatCurrency(comp.a.avg_home_price_usd as number)}) vs ${nameB} (${formatCurrency(comp.b.avg_home_price_usd as number)}). Rent, affordability, mortgage rates side by side.`,
+    title,
+    description,
     alternates: { canonical: `/compare/${slugs}` },
+    openGraph: { title, description, url: `/compare/${slugs}` },
   };
 }
 

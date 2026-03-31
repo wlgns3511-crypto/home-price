@@ -28,10 +28,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const comp = getComparisonBySlug(slugs);
   if (!comp) return {};
   const t = getDictionarySync(lang as Locale);
+  const hreflangs: Record<string, string> = { 'x-default': `https://${siteConfig.domain}/compare/${slugs}` };
+  for (const l of LOCALES) {
+    if (l === 'en') hreflangs[l] = `https://${siteConfig.domain}/compare/${slugs}`;
+    else hreflangs[l] = `https://${siteConfig.domain}/${l}/compare/${slugs}`;
+  }
+  const title = `${comp.a.name} ${t.vs} ${comp.b.name} — ${t.home_prices}`;
+  const description = `${t.compare}: ${comp.a.name} (${formatCurrency(comp.a.avg_home_price_usd as number)}) ${t.vs} ${comp.b.name} (${formatCurrency(comp.b.avg_home_price_usd as number)}).`;
   return {
-    title: `${comp.a.name} ${t.vs} ${comp.b.name} — ${t.home_prices}`,
-    description: `${t.compare}: ${comp.a.name} (${formatCurrency(comp.a.avg_home_price_usd as number)}) ${t.vs} ${comp.b.name} (${formatCurrency(comp.b.avg_home_price_usd as number)}).`,
-    alternates: { canonical: `/${lang}/compare/${slugs}` },
+    title,
+    description,
+    alternates: { canonical: `/${lang}/compare/${slugs}`, languages: hreflangs },
+    openGraph: { title, description, url: `/${lang}/compare/${slugs}` },
   };
 }
 

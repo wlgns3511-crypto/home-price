@@ -1,7 +1,17 @@
+import type { Metadata } from 'next';
 import { siteConfig } from '@/site.config';
 import { getTopItems, getCategories, getCount } from '@/lib/db';
+import { datasetSchema } from '@/lib/schema';
+import { CrossSiteLinks } from '@/components/CrossSiteLinks';
 
 const c = siteConfig;
+
+export const metadata: Metadata = {
+  title: `${c.name} — Compare Home Prices & Rent in 500+ Cities Worldwide`,
+  description: c.description,
+  alternates: { canonical: '/' },
+  openGraph: { title: `${c.name} — Compare Home Prices & Rent Worldwide`, description: c.description, url: '/' },
+};
 
 export default function HomePage() {
   const items = getTopItems(50);
@@ -10,6 +20,7 @@ export default function HomePage() {
 
   return (
     <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetSchema(c.name, c.description, '/')) }} />
       <h1 className="text-3xl font-bold mb-2">{c.name}</h1>
       <p className="text-lg text-slate-600 mb-8">{c.description}</p>
 
@@ -53,6 +64,7 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+      <CrossSiteLinks current={c.name} />
     </div>
   );
 }

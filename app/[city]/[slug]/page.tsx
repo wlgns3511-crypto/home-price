@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/site.config';
 import { getBySlug, getRelated, getAllSlugs, getSimilarPriceCities } from '@/lib/db';
-import { breadcrumbSchema, faqSchema } from '@/lib/schema';
+import { breadcrumbSchema, faqSchema, placeSchema } from '@/lib/schema';
 import { formatCurrency, formatPercent, formatNumber } from '@/lib/format';
 import { AdSlot } from '@/components/AdSlot';
 import { AuthorBox } from '@/components/AuthorBox';
@@ -29,10 +29,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!city) return {};
   const name = String(city.name);
   const country = String(city.country);
+  const title = `${name} Home Prices & Rent (${new Date().getFullYear()}) — Buy vs Rent`;
+  const description = `${name}, ${country}: Average home price ${formatCurrency(city.avg_home_price_usd as number)}, rent $${city.avg_rent_1br_usd}/mo. Price per sqm, affordability, mortgage rates, and comparison with other cities.`;
   return {
-    title: `${name} Home Prices & Rent (${new Date().getFullYear()}) — Buy vs Rent`,
-    description: `${name}, ${country}: Average home price ${formatCurrency(city.avg_home_price_usd as number)}, rent $${city.avg_rent_1br_usd}/mo. Price per sqm, affordability, mortgage rates, and comparison with other cities.`,
+    title,
+    description,
     alternates: { canonical: `/city/${slug}` },
+    openGraph: { title, description, url: `/city/${slug}`, type: 'article' },
   };
 }
 
@@ -120,6 +123,7 @@ export default async function CityPage({ params }: Props) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema(crumbs)) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(faqs)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema({ name, country, slug, population: city.population as number, avg_home_price_usd: price })) }} />
 
       <Breadcrumb items={crumbs.map(c => ({ label: c.name, href: c.url }))} />
 
