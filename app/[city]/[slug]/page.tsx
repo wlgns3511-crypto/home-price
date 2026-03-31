@@ -207,6 +207,12 @@ export default async function CityPage({ params }: Props) {
         insight={`With a price-to-income ratio of ${ratio.toFixed(1)}x, ${name} ${ratio > 12 ? 'is one of the most expensive cities for homebuyers. Consider renting or exploring nearby cities for better value.' : ratio > 8 ? 'requires significant savings to purchase property. At a mortgage rate of ' + formatPercent(city.mortgage_rate_pct as number) + ', monthly payments could consume a large share of income.' : 'offers reasonable opportunities for homebuyers compared to global averages.'} Home prices have ${priceChangeDir} ${priceChangeAbs.toFixed(1)}% in the past year.`}
       />
 
+      <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 my-6 text-sm">
+        <p className="text-slate-600">
+          <strong>Related:</strong> Also check <a href="https://costbycity.com" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">cost of living</a> and <a href="https://fairrentwize.com" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">rent prices</a> for this area.
+        </p>
+      </div>
+
       {/* ── Internal Mesh: Same Country ───────────────────── */}
       {related.length > 0 && (
         <section className="mt-8">

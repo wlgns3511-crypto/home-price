@@ -12,7 +12,7 @@ export function FreshnessTag({ source }: { source: string }) {
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         Live Data
       </span>
-      <span>Last updated: {month} {day}, {year}</span>
+      <span>Last updated: <time dateTime={now.toISOString().split("T")[0]}>{month} {day}, {year}</time></span>
       <span className="text-slate-300">·</span>
       <span>Source: {source}</span>
     </div>
