@@ -56,8 +56,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <a href="/" className={`text-xl font-bold text-${c.colors.primary}-600`}>{c.name}</a>
             <nav className="flex gap-4 text-sm">
               <a href={`/${c.entity.slug}/`} className="text-slate-600 hover:text-slate-900">{c.entity.label}</a>
+              <a href="/compare/" className="text-slate-600 hover:text-slate-900">Compare</a>
               <a href="/search/" className="text-slate-600 hover:text-slate-900">Search</a>
-              <a href="/blog/" className="text-slate-600 hover:text-slate-900">Blog</a>
             </nav>
           </div>
         </header>
