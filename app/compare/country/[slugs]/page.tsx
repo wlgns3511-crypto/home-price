@@ -1,6 +1,6 @@
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getCountryComparisonBySlug, getTopCountryComparisons, getCitiesByCountry } from '@/lib/db';
+import { parseCountryComparisonSlug, getTopCountryComparisons, getCitiesByCountry } from '@/lib/db';
 import { formatCurrency, formatPercent } from '@/lib/format';
 import { breadcrumbSchema, faqSchema } from '@/lib/schema';
 import { AdSlot } from '@/components/AdSlot';
@@ -22,7 +22,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slugs } = await params;
-  const comp = getCountryComparisonBySlug(slugs);
+  const comp = parseCountryComparisonSlug(slugs);
   if (!comp) return {};
   return {
     title: `${comp.a.name} vs ${comp.b.name} — Housing Market Comparison`,
@@ -33,8 +33,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CountryComparePage({ params }: Props) {
   const { slugs } = await params;
-  const comp = getCountryComparisonBySlug(slugs);
+  const comp = parseCountryComparisonSlug(slugs);
   if (!comp) notFound();
+
+  const canonicalSlug = [String(comp.a.slug), String(comp.b.slug)].sort().join('-vs-');
+  if (canonicalSlug !== slugs) redirect(`/compare/country/${canonicalSlug}/`);
+
   const { a, b } = comp;
   const nameA = String(a.name), nameB = String(b.name);
   const priceA = a.avg_home_price_usd as number, priceB = b.avg_home_price_usd as number;

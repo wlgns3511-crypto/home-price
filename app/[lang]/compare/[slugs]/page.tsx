@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getComparisonBySlug, getTopComparisons } from '@/lib/db';
+import { parseCityComparisonSlug, getTopComparisons, getAllSlugs } from '@/lib/db';
 import { formatCurrency, formatPercent, formatNumber } from '@/lib/format';
 import { LOCALES, getDictionarySync, LOCALE_NAMES, type Locale } from '@/lib/i18n';
 import { faqSchema } from '@/lib/schema';
@@ -25,7 +25,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang, slugs } = await params;
   if (!LOCALES.includes(lang as Locale)) return {};
-  const comp = getComparisonBySlug(slugs);
+  const comp = parseCityComparisonSlug(slugs);
   if (!comp) return {};
   const t = getDictionarySync(lang as Locale);
   const hreflangs: Record<string, string> = { 'x-default': `https://${siteConfig.domain}/compare/${slugs}` };
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function LangComparePage({ params }: Props) {
   const { lang, slugs } = await params;
   if (!LOCALES.includes(lang as Locale) || lang === 'en') notFound();
-  const comp = getComparisonBySlug(slugs);
+  const comp = parseCityComparisonSlug(slugs);
   if (!comp) notFound();
   const t = getDictionarySync(lang as Locale);
   const { a, b } = comp;

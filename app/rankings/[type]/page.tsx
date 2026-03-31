@@ -1,8 +1,9 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getRankingBySlug, getAllRankings, getCitiesForRanking } from '@/lib/db';
+import { getRankingBySlug, getAllRankings, getCitiesForRanking, getCitiesForFilteredRanking } from '@/lib/db';
 import { formatCurrency, formatPercent, formatNumber } from '@/lib/format';
 import { itemListSchema } from '@/lib/schema';
+import { FILTER_RANKINGS, getFilterRankingBySlug } from '@/lib/filter-rankings';
 import { AdSlot } from '@/components/AdSlot';
 import { AuthorBox } from '@/components/AuthorBox';
 import { FreshnessTag } from '@/components/FreshnessTag';
@@ -14,15 +15,55 @@ interface Props { params: Promise<{ type: string }> }
 export const dynamicParams = true;
 export const revalidate = false;
 
+function resolveRanking(type: string) {
+  // 1. Direct DB match
+  const dbRanking = getRankingBySlug(type);
+  if (dbRanking) {
+    const region = type.includes('-in-') ? type.split('-in-')[1].replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) : undefined;
+    return {
+      title: String(dbRanking.title),
+      description: String(dbRanking.description),
+      col: String(dbRanking.value_column),
+      dir: String(dbRanking.order_dir),
+      label: String(dbRanking.value_label),
+      region,
+      filters: undefined as undefined,
+    };
+  }
+
+  // 2. Filter ranking match
+  const fr = getFilterRankingBySlug(type);
+  if (fr) {
+    return {
+      title: fr.title,
+      description: fr.description,
+      col: fr.valueColumn,
+      dir: fr.orderDir,
+      label: fr.valueLabel,
+      region: fr.filters.region,
+      filters: fr.filters,
+    };
+  }
+
+  return null;
+}
+
 export async function generateStaticParams() {
-  return getAllRankings().map(r => ({ type: String(r.slug) }));
+  const dbRankings = getAllRankings().map(r => ({ type: String(r.slug) }));
+  const filterRankings = FILTER_RANKINGS.map(fr => ({ type: fr.slug }));
+  return [...dbRankings, ...filterRankings];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { type } = await params;
-  const ranking = getRankingBySlug(type);
-  if (!ranking) return {};
-  return { title: String(ranking.title), description: String(ranking.description), alternates: { canonical: `/rankings/${type}` } };
+  const resolved = resolveRanking(type);
+  if (!resolved) return {};
+  return {
+    title: resolved.title,
+    description: resolved.description,
+    alternates: { canonical: `/rankings/${type}` },
+    openGraph: { title: resolved.title, description: resolved.description, url: `/rankings/${type}` },
+  };
 }
 
 function fmtValue(col: string, val: number): string {
@@ -33,14 +74,13 @@ function fmtValue(col: string, val: number): string {
 
 export default async function RankingPage({ params }: Props) {
   const { type } = await params;
-  const ranking = getRankingBySlug(type);
-  if (!ranking) notFound();
-  const title = String(ranking.title);
-  const col = String(ranking.value_column);
-  const dir = String(ranking.order_dir);
-  const label = String(ranking.value_label);
-  const region = type.includes('-in-') ? type.split('-in-')[1].replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) : undefined;
-  const cities = getCitiesForRanking(col, dir, region, 50);
+  const resolved = resolveRanking(type);
+  if (!resolved) notFound();
+  const { title, col, dir, label, region, filters } = resolved;
+  const cities = filters
+    ? getCitiesForFilteredRanking(col, dir, filters, 50)
+    : getCitiesForRanking(col, dir, region, 50);
+  if (cities.length === 0) notFound();
   const listItems = cities.map(c => ({ name: String(c.name), url: `/city/${c.slug}/` }));
   const crumbs = [{ name: 'Home', url: '/' }, { name: 'Rankings', url: '/rankings/' }, { name: title, url: `/rankings/${type}` }];
 
@@ -49,7 +89,7 @@ export default async function RankingPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema(title, `/rankings/${type}`, listItems)) }} />
       <Breadcrumb items={crumbs.map(c => ({ label: c.name, href: c.url }))} />
       <h1 className="text-3xl font-bold mb-2">{title}</h1>
-      <p className="text-slate-600 mb-4">{String(ranking.description)}</p>
+      <p className="text-slate-600 mb-4">{resolved.description}</p>
       <FreshnessTag source={siteConfig.dataSource.name} />
       <AdSlot id="top" />
       <div className="border rounded-lg overflow-hidden mt-4">

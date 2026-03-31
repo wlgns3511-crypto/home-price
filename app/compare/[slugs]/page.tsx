@@ -1,6 +1,6 @@
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getComparisonBySlug, getTopComparisons } from '@/lib/db';
+import { parseCityComparisonSlug, getTopComparisons } from '@/lib/db';
 import { formatCurrency, formatPercent, formatNumber } from '@/lib/format';
 import { breadcrumbSchema, faqSchema } from '@/lib/schema';
 import { AdSlot } from '@/components/AdSlot';
@@ -18,12 +18,12 @@ export const dynamicParams = true;
 export const revalidate = false;
 
 export async function generateStaticParams() {
-  return getTopComparisons(200).map(c => ({ slugs: c.slug }));
+  return getTopComparisons(500).map(c => ({ slugs: c.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slugs } = await params;
-  const comp = getComparisonBySlug(slugs);
+  const comp = parseCityComparisonSlug(slugs);
   if (!comp) return {};
   const nameA = String(comp.a.name);
   const nameB = String(comp.b.name);
@@ -39,8 +39,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ComparePage({ params }: Props) {
   const { slugs } = await params;
-  const comp = getComparisonBySlug(slugs);
+  const comp = parseCityComparisonSlug(slugs);
   if (!comp) notFound();
+
+  // Canonical: alphabetically sorted slug
+  const canonicalSlug = [String(comp.a.slug), String(comp.b.slug)].sort().join('-vs-');
+  if (canonicalSlug !== slugs) redirect(`/compare/${canonicalSlug}/`);
 
   const { a, b } = comp;
   const nameA = String(a.name);

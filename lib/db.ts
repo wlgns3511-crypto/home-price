@@ -119,6 +119,30 @@ export function getComparisonPair(slugA: string, slugB: string) {
   return { a, b };
 }
 
+// ── Dynamic Comparison Parsing (no table dependency) ────────
+
+export function parseCityComparisonSlug(slug: string) {
+  const vsIndex = slug.indexOf('-vs-');
+  if (vsIndex === -1) return null;
+  const slugA = slug.substring(0, vsIndex);
+  const slugB = slug.substring(vsIndex + 4);
+  const a = getBySlug(slugA);
+  const b = getBySlug(slugB);
+  if (!a || !b) return null;
+  return { slug, a, b };
+}
+
+export function parseCountryComparisonSlug(slug: string) {
+  const vsIndex = slug.indexOf('-vs-');
+  if (vsIndex === -1) return null;
+  const slugA = slug.substring(0, vsIndex);
+  const slugB = slug.substring(vsIndex + 4);
+  const a = getCountryBySlug(slugA);
+  const b = getCountryBySlug(slugB);
+  if (!a || !b) return null;
+  return { slug, a, b };
+}
+
 // ── Comparisons ─────────────────────────────────────────────
 
 export function getAllComparisonSlugs() {
@@ -182,10 +206,53 @@ export function getRankingBySlug(slug: string) {
 }
 
 export function getCitiesForRanking(column: string, direction: string, region?: string, limit = 50) {
-  const regionFilter = region ? ` AND region = '${region}'` : '';
+  if (region) {
+    return getDb().prepare(
+      `SELECT * FROM cities WHERE ${column} IS NOT NULL AND region = ? ORDER BY ${column} ${direction} LIMIT ?`
+    ).all(region, limit) as Record<string, unknown>[];
+  }
   return getDb().prepare(
-    `SELECT * FROM cities WHERE ${column} IS NOT NULL${regionFilter} ORDER BY ${column} ${direction} LIMIT ?`
+    `SELECT * FROM cities WHERE ${column} IS NOT NULL ORDER BY ${column} ${direction} LIMIT ?`
   ).all(limit) as Record<string, unknown>[];
+}
+
+export interface RankingFilters {
+  region?: string;
+  maxPrice?: number;
+  minPrice?: number;
+  minChange?: number;
+  maxChange?: number;
+}
+
+export function getCitiesForFilteredRanking(column: string, direction: string, filters: RankingFilters = {}, limit = 50) {
+  const conditions: string[] = [`${column} IS NOT NULL`];
+  const params: unknown[] = [];
+
+  if (filters.region) {
+    conditions.push('region = ?');
+    params.push(filters.region);
+  }
+  if (filters.maxPrice != null) {
+    conditions.push('avg_home_price_usd < ?');
+    params.push(filters.maxPrice);
+  }
+  if (filters.minPrice != null) {
+    conditions.push('avg_home_price_usd >= ?');
+    params.push(filters.minPrice);
+  }
+  if (filters.minChange != null) {
+    conditions.push('price_change_1yr_pct >= ?');
+    params.push(filters.minChange);
+  }
+  if (filters.maxChange != null) {
+    conditions.push('price_change_1yr_pct <= ?');
+    params.push(filters.maxChange);
+  }
+
+  params.push(limit);
+  return getDb().prepare(
+    `SELECT * FROM cities WHERE ${conditions.join(' AND ')} ORDER BY ${column} ${direction} LIMIT ?`
+  ).all(...params) as Record<string, unknown>[];
 }
 
 // ── Budgets ─────────────────────────────────────────────────
