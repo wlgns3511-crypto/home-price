@@ -82,6 +82,34 @@ export function getByCategory(category: string, limit = 50) {
   ).all(category, limit) as Record<string, unknown>[];
 }
 
+// ── Similar Items (cross-category internal mesh) ────────────
+
+export function getSimilarItems(numericColumn: string, value: number, excludeSlug: string, limit = 5) {
+  return getDb().prepare(
+    `SELECT * FROM ${TABLE} WHERE ${SLUG_COL} != ? ORDER BY ABS(${numericColumn} - ?) ASC LIMIT ?`
+  ).all(excludeSlug, value, limit) as Record<string, unknown>[];
+}
+
+// ── HomePricePeek-specific ───────────────────────────────────
+
+export function getSimilarPriceCities(avgPrice: number, excludeSlug: string, limit = 5) {
+  return getDb().prepare(
+    `SELECT * FROM ${TABLE} WHERE ${SLUG_COL} != ? ORDER BY ABS(avg_home_price_usd - ?) ASC LIMIT ?`
+  ).all(excludeSlug, avgPrice, limit) as Record<string, unknown>[];
+}
+
+export function getMostExpensiveCities(limit = 10) {
+  return getDb().prepare(
+    `SELECT * FROM ${TABLE} ORDER BY avg_home_price_usd DESC LIMIT ?`
+  ).all(limit) as Record<string, unknown>[];
+}
+
+export function getCheapestCities(limit = 10) {
+  return getDb().prepare(
+    `SELECT * FROM ${TABLE} ORDER BY avg_home_price_usd ASC LIMIT ?`
+  ).all(limit) as Record<string, unknown>[];
+}
+
 // ── Comparison ──────────────────────────────────────────────
 
 export function getComparisonPair(slugA: string, slugB: string) {
@@ -89,4 +117,37 @@ export function getComparisonPair(slugA: string, slugB: string) {
   const b = getBySlug(slugB);
   if (!a || !b) return null;
   return { a, b };
+}
+
+// ── Comparisons ─────────────────────────────────────────────
+
+export function getAllComparisonSlugs() {
+  return getDb().prepare('SELECT slug FROM comparisons').all() as { slug: string }[];
+}
+
+export function getComparisonBySlug(slug: string) {
+  const comp = getDb().prepare('SELECT * FROM comparisons WHERE slug = ?').get(slug) as { slug: string; city_a_slug: string; city_b_slug: string } | undefined;
+  if (!comp) return null;
+  const a = getBySlug(comp.city_a_slug);
+  const b = getBySlug(comp.city_b_slug);
+  if (!a || !b) return null;
+  return { slug: comp.slug, a, b };
+}
+
+export function getTopComparisons(limit = 50) {
+  return getDb().prepare('SELECT slug FROM comparisons LIMIT ?').all(limit) as { slug: string }[];
+}
+
+// ── Countries ───────────────────────────────────────────────
+
+export function getAllCountries() {
+  return getDb().prepare('SELECT * FROM countries ORDER BY name').all() as Record<string, unknown>[];
+}
+
+export function getCountryBySlug(slug: string) {
+  return getDb().prepare('SELECT * FROM countries WHERE slug = ?').get(slug) as Record<string, unknown> | undefined;
+}
+
+export function getCitiesByCountry(countryName: string, limit = 50) {
+  return getDb().prepare('SELECT * FROM cities WHERE country = ? ORDER BY population DESC LIMIT ?').all(countryName, limit) as Record<string, unknown>[];
 }

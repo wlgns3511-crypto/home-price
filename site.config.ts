@@ -15,25 +15,25 @@ const DATAPEEK_SITES = [
 
 export const siteConfig: SiteConfig = {
   // ── Basic Info ──────────────────────────────────────────
-  name: 'UhomeUprice',
+  name: 'HomePricePeek',
   domain: 'homepricepeek.com',
-  description: 'Free data tool for exploring ...',
+  description: 'Compare home prices, rents, and affordability across 500+ cities worldwide. Price per sqm, rent vs buy analysis, and mortgage calculators.',
 
   // ── Theme ───────────────────────────────────────────────
-  colors: { primary: 'blue', accent: 'teal' },
+  colors: { primary: 'emerald', accent: 'amber' },
   lang: 'en',
   locale: 'en-US',
 
   // ── Data Entity ─────────────────────────────────────────
   entity: {
-    slug: 'city',             // URL pattern: /item/[slug]
-    label: 'citys',           // Plural label
-    labelSingular: 'city',    // Singular label
-    dbPath: './data/main.db', // SQLite database path
-    tableName: 'items',       // Main table name
-    slugColumn: 'slug',       // Slug column name
-    nameColumn: 'name',       // Display name column
-    categoryColumn: 'category', // Category column (null if none)
+    slug: 'city',
+    label: 'Cities',
+    labelSingular: 'City',
+    dbPath: './data/main.db',
+    tableName: 'cities',
+    slugColumn: 'slug',
+    nameColumn: 'name',
+    categoryColumn: 'country',
   },
 
   // ── Monetization ────────────────────────────────────────
@@ -45,8 +45,8 @@ export const siteConfig: SiteConfig = {
 
   // ── Data Source ─────────────────────────────────────────
   dataSource: {
-    name: 'US Census Bureau',
-    url: 'https://www.census.gov',
-    year: 2024,
+    name: 'OECD, Numbeo & National Statistics',
+    url: 'https://data.oecd.org/price/housing-prices.htm',
+    year: 2025,
   },
 };
