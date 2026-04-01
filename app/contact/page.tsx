@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import { siteConfig } from '@/site.config';
 
 const c = siteConfig;
-export const metadata: Metadata = { title: 'Contact Us', description: `Get in touch with ${c.name}.`, alternates: { canonical: '/contact/' } };
+export const metadata: Metadata = { title: 'Contact Us', description: `Get in touch with ${c.name}.`, alternates: { canonical: '/contact/' },
+  openGraph: { url: "/contact/" },
+};
 
 export default function ContactPage() {
   return (

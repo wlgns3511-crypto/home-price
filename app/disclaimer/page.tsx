@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import { siteConfig } from '@/site.config';
 
 const c = siteConfig;
-export const metadata: Metadata = { title: 'Disclaimer', description: `Disclaimer for ${c.name}.`, alternates: { canonical: '/disclaimer/' } };
+export const metadata: Metadata = { title: 'Disclaimer', description: `Disclaimer for ${c.name}.`, alternates: { canonical: '/disclaimer/' },
+  openGraph: { url: "/disclaimer/" },
+};
 
 export default function DisclaimerPage() {
   return (

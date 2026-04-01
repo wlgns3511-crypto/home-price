@@ -3,7 +3,9 @@ import { siteConfig } from '@/site.config';
 import { getAllPosts } from '@/lib/blog';
 
 const c = siteConfig;
-export const metadata: Metadata = { title: 'Blog', description: `Latest articles and guides from ${c.name}.`, alternates: { canonical: '/blog/' } };
+export const metadata: Metadata = { title: 'Blog', description: `Latest articles and guides from ${c.name}.`, alternates: { canonical: '/blog/' },
+  openGraph: { url: "/blog/" },
+};
 
 export default function BlogPage() {
   const posts = getAllPosts();

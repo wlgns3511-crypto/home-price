@@ -3,7 +3,9 @@ import { siteConfig } from '@/site.config';
 import { getTopItems } from '@/lib/db';
 
 const c = siteConfig;
-export const metadata: Metadata = { title: `Compare ${c.entity.label}`, description: `Side-by-side comparison of ${c.entity.label.toLowerCase()}.`, alternates: { canonical: '/compare/' } };
+export const metadata: Metadata = { title: `Compare ${c.entity.label}`, description: `Side-by-side comparison of ${c.entity.label.toLowerCase()}.`, alternates: { canonical: '/compare/' },
+  openGraph: { url: "/compare/" },
+};
 
 export default function ComparePage() {
   const items = getTopItems(20);

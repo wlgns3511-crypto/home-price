@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import { siteConfig } from '@/site.config';
 
 const c = siteConfig;
-export const metadata: Metadata = { title: 'Terms of Service', description: `Terms of service for ${c.name}.`, alternates: { canonical: '/terms/' } };
+export const metadata: Metadata = { title: 'Terms of Service', description: `Terms of service for ${c.name}.`, alternates: { canonical: '/terms/' },
+  openGraph: { url: "/terms/" },
+};
 
 export default function TermsPage() {
   return (

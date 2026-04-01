@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import { siteConfig } from '@/site.config';
 
 const c = siteConfig;
-export const metadata: Metadata = { title: 'Privacy Policy', description: `Privacy policy for ${c.name}.`, alternates: { canonical: '/privacy/' } };
+export const metadata: Metadata = { title: 'Privacy Policy', description: `Privacy policy for ${c.name}.`, alternates: { canonical: '/privacy/' },
+  openGraph: { url: "/privacy/" },
+};
 
 export default function PrivacyPage() {
   return (
@@ -15,7 +17,7 @@ export default function PrivacyPage() {
       <h2 className="text-xl font-semibold mt-8 mb-3">Cookies</h2>
       <p>Our website uses cookies for experience improvement and traffic analysis.</p>
       <h2 className="text-xl font-semibold mt-8 mb-3">Google AdSense</h2>
-      <p>We use Google AdSense for advertisements. Opt out at <a href="https://www.google.com/settings/ads" className={`text-${c.colors.primary}-600 hover:underline`} target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.</p>
+      <p>We use Google AdSense for advertisements. Opt out at <a href="https://www.google.com/settings/ads" className={`text-${c.colors.primary}-600 hover:underline`} target="_blank" rel="noopener noreferrer">Google Ads Settings</a>. You can also opt out of third-party vendor cookies at <a href="https://www.aboutads.info/choices/" className={`text-${c.colors.primary}-600 hover:underline`} target="_blank" rel="noopener noreferrer">www.aboutads.info</a>.</p>
       <h2 className="text-xl font-semibold mt-8 mb-3">Contact</h2>
       <p>Questions? Visit our <a href="/contact" className={`text-${c.colors.primary}-600 hover:underline`}>Contact page</a>.</p>
       <p className="mt-8">{c.name} is part of the <a href="https://datapeekfacts.com" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">DataPeek Facts</a> network.</p>
