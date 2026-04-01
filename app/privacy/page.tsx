@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { siteConfig } from '@/site.config';
 
 const c = siteConfig;
-export const metadata: Metadata = { title: 'Privacy Policy', description: `Privacy policy for ${c.name}.` };
+export const metadata: Metadata = { title: 'Privacy Policy', description: `Privacy policy for ${c.name}.`, alternates: { canonical: '/privacy/' } };
 
 export default function PrivacyPage() {
   return (

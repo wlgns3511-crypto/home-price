@@ -7,6 +7,7 @@ const c = siteConfig;
 export const metadata: Metadata = {
   title: `Search ${c.entity.label}`,
   description: `Search across all ${c.entity.label.toLowerCase()} in ${c.name}.`,
+  alternates: { canonical: '/search/' },
 };
 
 export default async function SearchPage({ searchParams }: { searchParams: Promise<{ q?: string }> }) {

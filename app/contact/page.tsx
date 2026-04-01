@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { siteConfig } from '@/site.config';
 
 const c = siteConfig;
-export const metadata: Metadata = { title: 'Contact Us', description: `Get in touch with ${c.name}.` };
+export const metadata: Metadata = { title: 'Contact Us', description: `Get in touch with ${c.name}.`, alternates: { canonical: '/contact/' } };
 
 export default function ContactPage() {
   return (
