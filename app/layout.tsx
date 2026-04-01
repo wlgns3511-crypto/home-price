@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large' } },
   alternates: { canonical: '/' },
-  openGraph: { type: 'website', siteName: c.name, locale: c.locale.replace('-', '_') },
+  openGraph: { type: 'website', url: SITE_URL, siteName: c.name, locale: c.locale.replace('-', '_') },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
