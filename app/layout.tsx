@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
   openGraph: { type: 'website', url: SITE_URL, siteName: c.name, locale: c.locale.replace('-', '_') },
   twitter: { card: 'summary_large_image' },
+  other: { 'google-adsense-account': 'ca-pub-5724806562146685' },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
