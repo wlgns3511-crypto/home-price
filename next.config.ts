@@ -4,6 +4,16 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   serverExternalPackages: ["better-sqlite3"],
   outputFileTracingIncludes: { "/**": ["./data/**"] },
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.homepricepeek.com" }],
+        destination: "https://homepricepeek.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

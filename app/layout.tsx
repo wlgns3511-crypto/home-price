@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large' } },
   alternates: { canonical: '/' },
   openGraph: { type: 'website', url: SITE_URL, siteName: c.name, locale: c.locale.replace('-', '_') },
+  twitter: { card: 'summary_large_image' },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
