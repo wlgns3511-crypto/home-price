@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${comp.a.name} vs ${comp.b.name} — Housing Market Comparison`,
     description: `Compare housing markets: ${comp.a.name} (avg ${formatCurrency(comp.a.avg_home_price_usd as number)}) vs ${comp.b.name} (avg ${formatCurrency(comp.b.avg_home_price_usd as number)}).`,
     alternates: { canonical: `/compare/country/${slugs}` },
+    openGraph: { url: `/compare/country/${slugs}` },
   };
 }
 

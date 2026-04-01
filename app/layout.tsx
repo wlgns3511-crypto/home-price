@@ -12,8 +12,7 @@ export const metadata: Metadata = {
   description: c.description,
   metadataBase: new URL(SITE_URL),
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large' } },
-  alternates: { canonical: '/' },
-  openGraph: { type: 'website', url: SITE_URL, siteName: c.name, locale: c.locale.replace('-', '_') },
+  openGraph: { type: 'website', siteName: c.name, locale: c.locale.replace('-', '_') },
   twitter: { card: 'summary_large_image' },
   other: { 'google-adsense-account': 'ca-pub-5724806562146685' },
 };

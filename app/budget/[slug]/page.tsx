@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const budget = getBudgetBySlug(slug);
   if (!budget) return {};
-  return { title: String(budget.title), description: `Find cities where you can ${slug.includes('rent') ? 'rent' : 'buy a home'} within your budget.`, alternates: { canonical: `/budget/${slug}` } };
+  return { title: String(budget.title), description: `Find cities where you can ${slug.includes('rent') ? 'rent' : 'buy a home'} within your budget.`, alternates: { canonical: `/budget/${slug}` }, openGraph: { url: `/budget/${slug}` } };
 }
 
 export default async function BudgetPage({ params }: Props) {

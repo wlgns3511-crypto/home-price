@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const region = getRegionBySlug(slug);
   if (!region) return {};
-  return { title: `${region.name} Home Prices — Housing Market Overview`, description: `Compare home prices across ${region.name}: ${region.description}`, alternates: { canonical: `/region/${slug}` } };
+  return { title: `${region.name} Home Prices — Housing Market Overview`, description: `Compare home prices across ${region.name}: ${region.description}`, alternates: { canonical: `/region/${slug}` }, openGraph: { url: `/region/${slug}` } };
 }
 
 export default async function RegionPage({ params }: Props) {

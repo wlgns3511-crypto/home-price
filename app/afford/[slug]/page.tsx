@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const city = getBySlug(slug);
   if (!city) return {};
-  return { title: `What Salary Do You Need to Buy a Home in ${city.name}?`, description: `Calculate the income needed to afford a home in ${city.name}. Average price: ${formatCurrency(city.avg_home_price_usd as number)}, mortgage rate: ${formatPercent(city.mortgage_rate_pct as number)}.`, alternates: { canonical: `/afford/${slug}` } };
+  return { title: `What Salary Do You Need to Buy a Home in ${city.name}?`, description: `Calculate the income needed to afford a home in ${city.name}. Average price: ${formatCurrency(city.avg_home_price_usd as number)}, mortgage rate: ${formatPercent(city.mortgage_rate_pct as number)}.`, alternates: { canonical: `/afford/${slug}` }, openGraph: { url: `/afford/${slug}` } };
 }
 
 export default async function AffordPage({ params }: Props) {

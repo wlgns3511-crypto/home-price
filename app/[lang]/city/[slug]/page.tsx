@@ -43,6 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${name} ${t.home_prices} (${new Date().getFullYear()})`,
     description: `${name}: ${t.avg_home_price} ${formatCurrency(city.avg_home_price_usd as number)}, ${t.rent_1br} ${formatCurrency(city.avg_rent_1br_usd as number)}${t.per_month}.`,
     alternates: { canonical: `/${lang}/city/${slug}`, languages: hreflangs },
+    openGraph: { url: `/${lang}/city/${slug}` },
   };
 }
 
