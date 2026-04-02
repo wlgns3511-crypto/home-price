@@ -12,6 +12,7 @@ import { CrossSiteLinks } from '@/components/CrossSiteLinks';
 import { FAQ } from '@/components/FAQ';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import { InsightCards } from '@/components/InsightCards';
+import { AffordabilityBar } from '@/components/AffordabilityBar';
 
 const c = siteConfig;
 
@@ -165,6 +166,8 @@ export default async function CityPage({ params }: Props) {
       <AdSlot id="top" />
 
       <InsightCards price={price} change={change} medianIncome={city.median_income_usd as number} cityName={name} />
+
+      <AffordabilityBar price={price} income={city.median_income_usd as number} />
 
       {/* ── Buying ─────────────────────────────────────────── */}
       <section className="mt-8 border rounded-lg overflow-hidden">
