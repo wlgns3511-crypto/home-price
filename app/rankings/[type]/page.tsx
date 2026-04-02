@@ -12,7 +12,7 @@ import { CrossSiteLinks } from '@/components/CrossSiteLinks';
 import { siteConfig } from '@/site.config';
 
 interface Props { params: Promise<{ type: string }> }
-export const dynamicParams = true;
+export const dynamicParams = false;
 export const revalidate = false;
 
 function resolveRanking(type: string) {

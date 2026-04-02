@@ -17,7 +17,7 @@ const c = siteConfig;
 
 interface Props { params: Promise<{ lang: string; slug: string }> }
 
-export const dynamicParams = true;
+export const dynamicParams = false;
 export const revalidate = false;
 
 export async function generateStaticParams() {
