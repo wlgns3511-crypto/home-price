@@ -288,6 +288,20 @@ export function getCitiesByRegion(regionName: string) {
 
 // ── Next / Previous Navigation ─────────────────────────────
 
+// --- Insight Rankings ---
+
+export function getRankByField(field: string, value: number, direction: 'asc' | 'desc' = 'desc'): { rank: number; total: number } {
+  const total = (getDb().prepare(`SELECT COUNT(*) as c FROM ${TABLE} WHERE ${field} IS NOT NULL`).get() as { c: number }).c;
+  const op = direction === 'desc' ? '>' : '<';
+  const rank = (getDb().prepare(`SELECT COUNT(*) as c FROM ${TABLE} WHERE ${field} IS NOT NULL AND ${field} ${op} ?`).get(value) as { c: number }).c + 1;
+  return { rank, total };
+}
+
+export function getNationalMedianPrice(): number | null {
+  const row = getDb().prepare(`SELECT AVG(avg_home_price_usd) as med FROM ${TABLE} WHERE avg_home_price_usd IS NOT NULL`).get() as { med: number | null };
+  return row?.med ?? null;
+}
+
 export function getNextPrev(slug: string) {
   const prev = getDb().prepare(
     `SELECT ${SLUG_COL} as slug, ${NAME_COL} as name FROM ${TABLE} WHERE ${SLUG_COL} < ? ORDER BY ${SLUG_COL} DESC LIMIT 1`
