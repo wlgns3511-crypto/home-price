@@ -285,3 +285,15 @@ export function getRegionBySlug(slug: string) {
 export function getCitiesByRegion(regionName: string) {
   return getDb().prepare('SELECT * FROM cities WHERE region = ? ORDER BY avg_home_price_usd DESC').all(regionName) as Record<string, unknown>[];
 }
+
+// ── Next / Previous Navigation ─────────────────────────────
+
+export function getNextPrev(slug: string) {
+  const prev = getDb().prepare(
+    `SELECT ${SLUG_COL} as slug, ${NAME_COL} as name FROM ${TABLE} WHERE ${SLUG_COL} < ? ORDER BY ${SLUG_COL} DESC LIMIT 1`
+  ).get(slug) as { slug: string; name: string } | undefined;
+  const next = getDb().prepare(
+    `SELECT ${SLUG_COL} as slug, ${NAME_COL} as name FROM ${TABLE} WHERE ${SLUG_COL} > ? ORDER BY ${SLUG_COL} ASC LIMIT 1`
+  ).get(slug) as { slug: string; name: string } | undefined;
+  return { prev: prev || null, next: next || null };
+}
