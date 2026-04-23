@@ -1,0 +1,155 @@
+{
+  "takenAt": "2026-04-19",
+  "rows": [
+    {
+      "slug": "monaco",
+      "name": "Monaco",
+      "rank": 1,
+      "metric": 68.18181818181819
+    },
+    {
+      "slug": "incheon",
+      "name": "Incheon",
+      "rank": 2,
+      "metric": 48.611111111111114
+    },
+    {
+      "slug": "busan",
+      "name": "Busan",
+      "rank": 3,
+      "metric": 48.484848484848484
+    },
+    {
+      "slug": "seoul",
+      "name": "Seoul",
+      "rank": 4,
+      "metric": 48.333333333333336
+    },
+    {
+      "slug": "taipei",
+      "name": "Taipei",
+      "rank": 5,
+      "metric": 48.148148148148145
+    },
+    {
+      "slug": "daegu",
+      "name": "Daegu",
+      "rank": 6,
+      "metric": 46.2962962962963
+    },
+    {
+      "slug": "hong-kong",
+      "name": "Hong Kong",
+      "rank": 7,
+      "metric": 45.45454545454545
+    },
+    {
+      "slug": "beijing",
+      "name": "Beijing",
+      "rank": 8,
+      "metric": 43.93939393939394
+    },
+    {
+      "slug": "nanjing",
+      "name": "Nanjing",
+      "rank": 9,
+      "metric": 41.02564102564103
+    },
+    {
+      "slug": "shenzhen",
+      "name": "Shenzhen",
+      "rank": 10,
+      "metric": 40
+    },
+    {
+      "slug": "guangzhou",
+      "name": "Guangzhou",
+      "rank": 11,
+      "metric": 39.583333333333336
+    },
+    {
+      "slug": "venice",
+      "name": "Venice",
+      "rank": 12,
+      "metric": 38.888888888888886
+    },
+    {
+      "slug": "hangzhou",
+      "name": "Hangzhou",
+      "rank": 13,
+      "metric": 38.888888888888886
+    },
+    {
+      "slug": "shanghai",
+      "name": "Shanghai",
+      "rank": 14,
+      "metric": 38.19444444444444
+    },
+    {
+      "slug": "delhi",
+      "name": "Delhi",
+      "rank": 15,
+      "metric": 37.5
+    },
+    {
+      "slug": "san-jose",
+      "name": "San Jose",
+      "rank": 16,
+      "metric": 37.5
+    },
+    {
+      "slug": "nice",
+      "name": "Nice",
+      "rank": 17,
+      "metric": 37.5
+    },
+    {
+      "slug": "florence",
+      "name": "Florence",
+      "rank": 18,
+      "metric": 36.458333333333336
+    },
+    {
+      "slug": "kyoto",
+      "name": "Kyoto",
+      "rank": 19,
+      "metric": 35.55555555555556
+    },
+    {
+      "slug": "mumbai",
+      "name": "Mumbai",
+      "rank": 20,
+      "metric": 34.72222222222222
+    },
+    {
+      "slug": "paris",
+      "name": "Paris",
+      "rank": 21,
+      "metric": 34.44444444444444
+    },
+    {
+      "slug": "chengdu",
+      "name": "Chengdu",
+      "rank": 22,
+      "metric": 33.333333333333336
+    },
+    {
+      "slug": "wuhan",
+      "name": "Wuhan",
+      "rank": 23,
+      "metric": 33.333333333333336
+    },
+    {
+      "slug": "nagoya",
+      "name": "Nagoya",
+      "rank": 24,
+      "metric": 33.333333333333336
+    },
+    {
+      "slug": "sapporo",
+      "name": "Sapporo",
+      "rank": 25,
+      "metric": 33.333333333333336
+    }
+  ]
+}

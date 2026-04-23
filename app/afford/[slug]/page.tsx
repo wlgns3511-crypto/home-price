@@ -12,17 +12,17 @@ import { siteConfig } from '@/site.config';
 
 interface Props { params: Promise<{ slug: string }> }
 export const dynamicParams = false;
-export const revalidate = false;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
-  return getAllSlugs().slice(0, 300).map(s => ({ slug: s.slug }));
+  return getAllSlugs().slice(0, 500).map(s => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const city = getBySlug(slug);
   if (!city) return {};
-  return { title: `What Salary Do You Need to Buy a Home in ${city.name}?`, description: `Calculate the income needed to afford a home in ${city.name}. Average price: ${formatCurrency(city.avg_home_price_usd as number)}, mortgage rate: ${formatPercent(city.mortgage_rate_pct as number)}.`, alternates: { canonical: `/afford/${slug}` }, openGraph: { url: `/afford/${slug}` } };
+  return { title: `What Salary Do You Need to Buy a Home in ${city.name}?`, description: `Calculate the income needed to afford a home in ${city.name}. Average price: ${formatCurrency(city.avg_home_price_usd as number)}, mortgage rate: ${formatPercent(city.mortgage_rate_pct as number)}.`, alternates: { canonical: `/afford/${slug}/` }, openGraph: { url: `/afford/${slug}/` } };
 }
 
 export default async function AffordPage({ params }: Props) {
@@ -45,7 +45,7 @@ export default async function AffordPage({ params }: Props) {
   const affordable = income >= requiredSalary;
   const similar = getSimilarPriceCities(price, slug, 5);
 
-  const crumbs = [{ name: 'Home', url: '/' }, { name: name, url: `/city/${slug}/` }, { name: 'Affordability', url: `/afford/${slug}` }];
+  const crumbs = [{ name: 'Home', url: '/' }, { name: name, url: `/city/${slug}/` }, { name: 'Affordability', url: `/afford/${slug}/` }];
 
   return (
     <>

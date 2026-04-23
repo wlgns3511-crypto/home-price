@@ -1,30 +1,81 @@
-import type { Metadata } from 'next';
-import { siteConfig } from '@/site.config';
-import { getAllPosts } from '@/lib/blog';
+import type { Metadata } from "next";
+import { getAllPosts, getAllCategories } from "@/lib/blog";
 
-const c = siteConfig;
-export const metadata: Metadata = { title: 'Blog', description: `Latest articles and guides from ${c.name}.`, alternates: { canonical: '/blog/' },
+export const metadata: Metadata = {
+  title: "Guides & Resources",
+  description: "Expert guides and resources from HomePricePeek.",
+  alternates: { canonical: "/blog/" },
   openGraph: { url: "/blog/" },
 };
 
-export default function BlogPage() {
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+export default function BlogIndex() {
   const posts = getAllPosts();
+  const categories = getAllCategories();
+
   return (
-    <div>
-      <h1 className="text-3xl font-bold mb-6">{c.name} Blog</h1>
-      {posts.length === 0 ? (
-        <p className="text-slate-500">No posts yet. Check back soon!</p>
-      ) : (
-        <div className="space-y-6">
-          {posts.map(post => (
-            <a key={post.slug} href={`/blog/${post.slug}/`} className="block border rounded-lg p-4 hover:bg-slate-50">
-              <h2 className={`text-lg font-bold text-${c.colors.primary}-700`}>{post.title}</h2>
-              <p className="text-sm text-slate-500 mt-1">{post.publishedAt} · {post.readingTime} min read · {post.category}</p>
-              <p className="text-sm text-slate-600 mt-2">{post.description}</p>
-            </a>
-          ))}
-        </div>
-      )}
-    </div>
+    <>
+      <h1 className="text-3xl font-bold text-slate-900 mb-2">
+        HomePricePeek Guides &amp; Resources
+      </h1>
+      <p className="text-slate-600 mb-8">
+        Expert articles, guides, and analysis from HomePricePeek.
+      </p>
+
+      {/* Category filter pills */}
+      <div className="flex flex-wrap gap-2 mb-8">
+        {categories.map((cat) => (
+          <span
+            key={cat}
+            className="text-xs px-3 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full"
+          >
+            {cat}
+          </span>
+        ))}
+      </div>
+
+      {/* Post list */}
+      <div className="space-y-6">
+        {posts.map((post) => (
+          <a
+            key={post.slug}
+            href={`/blog/${post.slug}/`}
+            className="block group"
+          >
+            <article className="border border-slate-200 rounded-xl p-6 hover:border-emerald-300 hover:shadow-sm transition-all">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-xs px-2 py-0.5 bg-emerald-50 text-emerald-600 rounded-full">
+                  {post.category}
+                </span>
+                <span className="text-xs text-slate-400">
+                  {post.readingTime} min read
+                </span>
+              </div>
+              <h2 className="text-lg font-semibold text-slate-900 group-hover:text-emerald-700 mb-2 leading-snug">
+                {post.title}
+              </h2>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                {post.description}
+              </p>
+              <p className="text-xs text-slate-400 mt-3">
+                {formatDate(post.publishedAt)}
+                {post.updatedAt && post.updatedAt !== post.publishedAt && (
+                  <span className="ml-2">
+                    · Updated {formatDate(post.updatedAt)}
+                  </span>
+                )}
+              </p>
+            </article>
+          </a>
+        ))}
+      </div>
+    </>
   );
 }

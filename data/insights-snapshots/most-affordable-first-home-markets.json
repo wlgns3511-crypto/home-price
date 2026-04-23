@@ -1,0 +1,125 @@
+{
+  "takenAt": "2026-04-19",
+  "rows": [
+    {
+      "slug": "detroit",
+      "name": "Detroit",
+      "rank": 1,
+      "metric": 1.8
+    },
+    {
+      "slug": "milwaukee",
+      "name": "Milwaukee",
+      "rank": 2,
+      "metric": 2.8
+    },
+    {
+      "slug": "tashkent",
+      "name": "Tashkent",
+      "rank": 3,
+      "metric": 4.2
+    },
+    {
+      "slug": "havana",
+      "name": "Havana",
+      "rank": 4,
+      "metric": 4.5
+    },
+    {
+      "slug": "lahore",
+      "name": "Lahore",
+      "rank": 5,
+      "metric": 4.8
+    },
+    {
+      "slug": "durban",
+      "name": "Durban",
+      "rank": 6,
+      "metric": 4.8
+    },
+    {
+      "slug": "baku",
+      "name": "Baku",
+      "rank": 7,
+      "metric": 5
+    },
+    {
+      "slug": "karachi",
+      "name": "Karachi",
+      "rank": 8,
+      "metric": 5.2
+    },
+    {
+      "slug": "yerevan",
+      "name": "Yerevan",
+      "rank": 9,
+      "metric": 5.2
+    },
+    {
+      "slug": "gaborone",
+      "name": "Gaborone",
+      "rank": 10,
+      "metric": 5.2
+    },
+    {
+      "slug": "asuncion",
+      "name": "Asuncion",
+      "rank": 11,
+      "metric": 5.2
+    },
+    {
+      "slug": "cairo",
+      "name": "Cairo",
+      "rank": 12,
+      "metric": 5.5
+    },
+    {
+      "slug": "seville",
+      "name": "Seville",
+      "rank": 13,
+      "metric": 5.5
+    },
+    {
+      "slug": "almaty",
+      "name": "Almaty",
+      "rank": 14,
+      "metric": 5.5
+    },
+    {
+      "slug": "johannesburg",
+      "name": "Johannesburg",
+      "rank": 15,
+      "metric": 5.5
+    },
+    {
+      "slug": "guayaquil",
+      "name": "Guayaquil",
+      "rank": 16,
+      "metric": 5.5
+    },
+    {
+      "slug": "la-paz",
+      "name": "La Paz",
+      "rank": 17,
+      "metric": 5.5
+    },
+    {
+      "slug": "buenos-aires",
+      "name": "Buenos Aires",
+      "rank": 18,
+      "metric": 5.8
+    },
+    {
+      "slug": "tbilisi",
+      "name": "Tbilisi",
+      "rank": 19,
+      "metric": 5.8
+    },
+    {
+      "slug": "windhoek",
+      "name": "Windhoek",
+      "rank": 20,
+      "metric": 5.8
+    }
+  ]
+}

@@ -11,8 +11,8 @@ import { CrossSiteLinks } from '@/components/CrossSiteLinks';
 import { siteConfig } from '@/site.config';
 
 interface Props { params: Promise<{ slug: string }> }
-export const dynamicParams = false;
-export const revalidate = false;
+export const dynamicParams = true;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
   return getAllRegions().map(r => ({ slug: String(r.slug) }));
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const region = getRegionBySlug(slug);
   if (!region) return {};
-  return { title: `${region.name} Home Prices — Housing Market Overview`, description: `Compare home prices across ${region.name}: ${region.description}`, alternates: { canonical: `/region/${slug}` }, openGraph: { url: `/region/${slug}` } };
+  return { title: `${region.name} Home Prices — Housing Market Overview`, description: `Compare home prices across ${region.name}: ${region.description}`, alternates: { canonical: `/region/${slug}/` }, openGraph: { url: `/region/${slug}/` } };
 }
 
 export default async function RegionPage({ params }: Props) {
@@ -35,7 +35,7 @@ export default async function RegionPage({ params }: Props) {
   const dbRegion = regionMap[slug] || name;
   const cities = getCitiesByRegion(dbRegion);
   const avgPrice = cities.length > 0 ? Math.round(cities.reduce((s, c) => s + (c.avg_home_price_usd as number), 0) / cities.length) : 0;
-  const crumbs = [{ name: 'Home', url: '/' }, { name: 'Regions', url: '/' }, { name, url: `/region/${slug}` }];
+  const crumbs = [{ name: 'Home', url: '/' }, { name: 'Regions', url: '/' }, { name, url: `/region/${slug}/` }];
 
   return (
     <>

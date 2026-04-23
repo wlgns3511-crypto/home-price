@@ -1,0 +1,155 @@
+{
+  "takenAt": "2026-04-19",
+  "rows": [
+    {
+      "slug": "beirut",
+      "name": "Beirut",
+      "rank": 1,
+      "metric": -8.5
+    },
+    {
+      "slug": "buenos-aires",
+      "name": "Buenos Aires",
+      "rank": 2,
+      "metric": -5.2
+    },
+    {
+      "slug": "wuhan",
+      "name": "Wuhan",
+      "rank": 3,
+      "metric": -5.2
+    },
+    {
+      "slug": "shenzhen",
+      "name": "Shenzhen",
+      "rank": 4,
+      "metric": -4.5
+    },
+    {
+      "slug": "nanjing",
+      "name": "Nanjing",
+      "rank": 5,
+      "metric": -4.2
+    },
+    {
+      "slug": "guangzhou",
+      "name": "Guangzhou",
+      "rank": 6,
+      "metric": -3.8
+    },
+    {
+      "slug": "wellington",
+      "name": "Wellington",
+      "rank": 7,
+      "metric": -3.8
+    },
+    {
+      "slug": "hong-kong",
+      "name": "Hong Kong",
+      "rank": 8,
+      "metric": -3.5
+    },
+    {
+      "slug": "cologne",
+      "name": "Cologne",
+      "rank": 9,
+      "metric": -3.5
+    },
+    {
+      "slug": "berlin",
+      "name": "Berlin",
+      "rank": 10,
+      "metric": -3.2
+    },
+    {
+      "slug": "beijing",
+      "name": "Beijing",
+      "rank": 11,
+      "metric": -3.2
+    },
+    {
+      "slug": "hangzhou",
+      "name": "Hangzhou",
+      "rank": 12,
+      "metric": -3.2
+    },
+    {
+      "slug": "shanghai",
+      "name": "Shanghai",
+      "rank": 13,
+      "metric": -2.8
+    },
+    {
+      "slug": "hamburg",
+      "name": "Hamburg",
+      "rank": 14,
+      "metric": -2.8
+    },
+    {
+      "slug": "munich",
+      "name": "Munich",
+      "rank": 15,
+      "metric": -2.5
+    },
+    {
+      "slug": "auckland",
+      "name": "Auckland",
+      "rank": 16,
+      "metric": -2.5
+    },
+    {
+      "slug": "austin",
+      "name": "Austin",
+      "rank": 17,
+      "metric": -2.5
+    },
+    {
+      "slug": "chengdu",
+      "name": "Chengdu",
+      "rank": 18,
+      "metric": -2.5
+    },
+    {
+      "slug": "frankfurt",
+      "name": "Frankfurt",
+      "rank": 19,
+      "metric": -2.2
+    },
+    {
+      "slug": "toronto",
+      "name": "Toronto",
+      "rank": 20,
+      "metric": -2.1
+    },
+    {
+      "slug": "stockholm",
+      "name": "Stockholm",
+      "rank": 21,
+      "metric": -1.8
+    },
+    {
+      "slug": "san-francisco",
+      "name": "San Francisco",
+      "rank": 22,
+      "metric": -1.5
+    },
+    {
+      "slug": "luxembourg-city",
+      "name": "Luxembourg City",
+      "rank": 23,
+      "metric": -1.5
+    },
+    {
+      "slug": "seoul",
+      "name": "Seoul",
+      "rank": 24,
+      "metric": -1.2
+    },
+    {
+      "slug": "portland",
+      "name": "Portland",
+      "rank": 25,
+      "metric": -1.2
+    }
+  ]
+}

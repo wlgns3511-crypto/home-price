@@ -10,8 +10,8 @@ import { CrossSiteLinks } from '@/components/CrossSiteLinks';
 import { siteConfig } from '@/site.config';
 
 interface Props { params: Promise<{ slug: string }> }
-export const dynamicParams = false;
-export const revalidate = false;
+export const dynamicParams = true;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
   return getAllBudgets().map(b => ({ slug: String(b.slug) }));
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const budget = getBudgetBySlug(slug);
   if (!budget) return {};
-  return { title: String(budget.title), description: `Find cities where you can ${slug.includes('rent') ? 'rent' : 'buy a home'} within your budget.`, alternates: { canonical: `/budget/${slug}` }, openGraph: { url: `/budget/${slug}` } };
+  return { title: String(budget.title), description: `Find cities where you can ${slug.includes('rent') ? 'rent' : 'buy a home'} within your budget.`, alternates: { canonical: `/budget/${slug}/` }, openGraph: { url: `/budget/${slug}/` } };
 }
 
 export default async function BudgetPage({ params }: Props) {
@@ -30,7 +30,7 @@ export default async function BudgetPage({ params }: Props) {
   if (!budget) notFound();
   const isRent = slug.includes('rent');
   const cities = getCitiesInBudget(budget.min_price as number, budget.max_price as number, isRent);
-  const crumbs = [{ name: 'Home', url: '/' }, { name: 'Budget', url: '/budget/' }, { name: String(budget.title), url: `/budget/${slug}` }];
+  const crumbs = [{ name: 'Home', url: '/' }, { name: 'Budget' }, { name: String(budget.title), url: `/budget/${slug}/` }];
 
   return (
     <>

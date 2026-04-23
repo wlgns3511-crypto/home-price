@@ -1,6 +1,6 @@
 import { notFound, redirect } from 'next/navigation';
 import type { Metadata } from 'next';
-import { parseCountryComparisonSlug, getTopCountryComparisons, getCitiesByCountry } from '@/lib/db';
+import { parseCountryComparisonSlug, getAllCountryComparisonSlugs, getCitiesByCountry } from '@/lib/db';
 import { formatCurrency, formatPercent } from '@/lib/format';
 import { breadcrumbSchema, faqSchema } from '@/lib/schema';
 import { AdSlot } from '@/components/AdSlot';
@@ -13,22 +13,31 @@ import { CrossSiteLinks } from '@/components/CrossSiteLinks';
 import { siteConfig } from '@/site.config';
 
 interface Props { params: Promise<{ slugs: string }> }
+const STATIC_COUNTRY_COMPARISON_SLUGS = getAllCountryComparisonSlugs().map(c => c.slug);
+const STATIC_COUNTRY_COMPARISON_SET = new Set(STATIC_COUNTRY_COMPARISON_SLUGS);
+
 export const dynamicParams = false;
-export const revalidate = false;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
-  return getTopCountryComparisons(100).map(c => ({ slugs: c.slug }));
+  return STATIC_COUNTRY_COMPARISON_SLUGS.flatMap((slugs) => {
+    const comp = parseCountryComparisonSlug(slugs);
+    if (!comp) return [];
+    return [{ slugs }, { slugs: `${String(comp.b.slug)}-vs-${String(comp.a.slug)}` }];
+  });
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slugs } = await params;
   const comp = parseCountryComparisonSlug(slugs);
   if (!comp) return {};
+  const canonicalSlug = [String(comp.a.slug), String(comp.b.slug)].sort().join('-vs-');
+  if (!STATIC_COUNTRY_COMPARISON_SET.has(canonicalSlug)) return {};
   return {
     title: `${comp.a.name} vs ${comp.b.name} — Housing Market Comparison`,
     description: `Compare housing markets: ${comp.a.name} (avg ${formatCurrency(comp.a.avg_home_price_usd as number)}) vs ${comp.b.name} (avg ${formatCurrency(comp.b.avg_home_price_usd as number)}).`,
-    alternates: { canonical: `/compare/country/${slugs}` },
-    openGraph: { url: `/compare/country/${slugs}` },
+    alternates: { canonical: `/compare/country/${canonicalSlug}/` },
+    openGraph: { url: `/compare/country/${canonicalSlug}/` },
   };
 }
 
@@ -38,6 +47,7 @@ export default async function CountryComparePage({ params }: Props) {
   if (!comp) notFound();
 
   const canonicalSlug = [String(comp.a.slug), String(comp.b.slug)].sort().join('-vs-');
+  if (!STATIC_COUNTRY_COMPARISON_SET.has(canonicalSlug)) notFound();
   if (canonicalSlug !== slugs) redirect(`/compare/country/${canonicalSlug}/`);
 
   const { a, b } = comp;
@@ -61,12 +71,14 @@ export default async function CountryComparePage({ params }: Props) {
     { question: `Is ${nameA} or ${nameB} cheaper for housing?`, answer: `${cheaper} has more affordable housing, with prices ${diffPct}% lower.` },
     { question: `Which has lower mortgage rates?`, answer: `${(a.mortgage_rate_pct as number) < (b.mortgage_rate_pct as number) ? nameA : nameB} has lower mortgage rates at ${formatPercent(Math.min(a.mortgage_rate_pct as number, b.mortgage_rate_pct as number))}.` },
   ];
-  const crumbs = [{ name: 'Home', url: '/' }, { name: 'Compare Countries', url: '/compare/' }, { name: `${nameA} vs ${nameB}`, url: `/compare/country/${slugs}` }];
+  const crumbs = [{ name: 'Home', url: '/' }, { name: 'Compare Countries', url: '/compare/' }, { name: `${nameA} vs ${nameB}`, url: `/compare/country/${slugs}/` }];
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema(crumbs)) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(faqs)) }} />
+      {faqs.length > 0 && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(faqs)) }} />
+      )}
       <Breadcrumb items={crumbs.map(c => ({ label: c.name, href: c.url }))} />
       <h1 className="text-3xl font-bold mb-2">{nameA} vs {nameB}</h1>
       <p className="text-slate-500 mb-2">Housing Market Comparison</p>

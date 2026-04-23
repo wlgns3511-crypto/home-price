@@ -1,9 +1,22 @@
 import type { MetadataRoute } from 'next';
-import { siteConfig } from '@/site.config';
+
+const SITE_URL = 'https://homepricepeek.com';
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [{ userAgent: '*', allow: '/', disallow: ['/api/', '/_next/'] }],
-    sitemap: `https://${siteConfig.domain}/sitemap.xml`,
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/api/', '/_next/', '/embed/'],
+      },
+      { userAgent: 'AhrefsBot', disallow: '/' },
+      { userAgent: 'SemrushBot', disallow: '/' },
+      { userAgent: 'MJ12bot', disallow: '/' },
+      { userAgent: 'DotBot', disallow: '/' },
+      { userAgent: 'GPTBot', disallow: '/' },
+      { userAgent: 'CCBot', disallow: '/' },
+    ],
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

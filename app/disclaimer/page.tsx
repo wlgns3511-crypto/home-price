@@ -22,7 +22,7 @@ export default function DisclaimerPage() {
       <h2 className="text-xl font-semibold mt-8 mb-3">Limitation of Liability</h2>
       <p>{c.name} shall not be liable for any damages arising from use of this website.</p>
       <h2 className="text-xl font-semibold mt-8 mb-3">Contact</h2>
-      <p>Concerns? Visit our <a href="/contact" className={`text-${c.colors.primary}-600 hover:underline`}>Contact page</a>.</p>
+      <p>Concerns? Visit our <a href="/contact/" className={`text-${c.colors.primary}-600 hover:underline`}>Contact page</a>.</p>
     </article>
   );
 }

@@ -1,7 +1,11 @@
 import { siteConfig } from '@/site.config';
+import { getPublisherName, getReviewedAt } from '@/lib/seo';
+import { EDITORIAL_TEAM } from './authorship';
 
 const SITE_NAME = siteConfig.name;
 const SITE_URL = `https://${siteConfig.domain}`;
+const PUBLISHER_NAME = getPublisherName();
+const REVIEWED_AT = getReviewedAt();
 
 export function breadcrumbSchema(items: { name: string; url: string }[]) {
   return {
@@ -17,13 +21,14 @@ export function breadcrumbSchema(items: { name: string; url: string }[]) {
 }
 
 export function faqSchema(faqs: { question: string; answer: string }[]) {
+  if (!faqs || faqs.length === 0) return null;
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqs.map(faq => ({
+    mainEntity: faqs.map(f => ({
       '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
     })),
   };
 }
@@ -53,7 +58,8 @@ export function datasetSchema(name: string, description: string, url: string) {
     url: `${SITE_URL}${url}`,
     creator: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
     license: 'https://creativecommons.org/publicdomain/zero/1.0/',
-    temporalCoverage: `${siteConfig.dataSource.year}/${new Date().getFullYear()}`,
+    temporalCoverage: `${siteConfig.dataSource.year}/${siteConfig.dataVintage ?? siteConfig.dataSource.year}`,
+    distribution: { '@type': 'DataDownload', encodingFormat: 'text/html', contentUrl: `${SITE_URL}${url}` },
   };
 }
 
@@ -68,18 +74,21 @@ export function placeSchema(city: { name: string; country: string; slug: string;
   };
 }
 
-export function articleSchema(post: { title: string; description: string; slug: string; publishedAt: string; category?: string }) {
+export function articleSchema(post: { title: string; description: string; slug: string; urlPath?: string; publishedAt: string; updatedAt?: string; category?: string }) {
+  // slug is treated as a full path fragment (e.g. "blog/my-post" or "guide/my-guide")
+  const articlePath = post.urlPath ?? (post.slug.includes('/') ? `/${post.slug.replace(/^\/+|\/+$/g, '')}/` : `/blog/${post.slug}/`);
+  const url = `${SITE_URL}${articlePath}`;
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: post.title,
     description: post.description,
-    url: `${SITE_URL}/blog/${post.slug}`,
+    url,
     datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
-    author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+    dateModified: post.updatedAt ?? post.publishedAt,
+    author: { '@type': 'Organization', name: EDITORIAL_TEAM.name, url: EDITORIAL_TEAM.url },
     publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
-    mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
+    mainEntityOfPage: url,
     ...(post.category && { articleSection: post.category }),
   };
 }
@@ -92,6 +101,6 @@ export function webPageSchema(title: string, description: string, url: string) {
     description,
     url: `${SITE_URL}${url}`,
     isPartOf: { '@type': 'WebSite', name: SITE_NAME, url: SITE_URL },
-    dateModified: new Date().toISOString(),
+    ...(REVIEWED_AT && { dateModified: REVIEWED_AT }),
   };
 }

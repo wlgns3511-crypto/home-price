@@ -10,7 +10,9 @@ import { CrossSiteLinks } from '@/components/CrossSiteLinks';
 const c = siteConfig;
 interface Props { params: Promise<{ slug: string }> }
 
-export const revalidate = false;
+export const revalidate = 86400;
+
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return getAllPosts().map(p => ({ slug: p.slug }));
@@ -23,8 +25,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.description,
-    alternates: { canonical: `/blog/${slug}` },
-    openGraph: { title: post.title, description: post.description, url: `/blog/${slug}`, type: 'article', publishedTime: post.publishedAt },
+    alternates: { canonical: `/blog/${slug}/` },
+    openGraph: { title: post.title, description: post.description, url: `/blog/${slug}/`, type: 'article', publishedTime: post.publishedAt },
   };
 }
 
@@ -33,12 +35,12 @@ export default async function BlogPostPage({ params }: Props) {
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
-  const crumbs = [{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog/' }, { name: post.title, url: `/blog/${slug}` }];
+  const crumbs = [{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog/' }, { name: post.title, url: `/blog/${slug}/` }];
 
   return (
     <article className="prose prose-slate max-w-3xl mx-auto">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema(crumbs)) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema({ title: post.title, description: post.description, slug, publishedAt: post.publishedAt, category: post.category })) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema({ title: post.title, description: post.description, slug: `blog/${slug}`, publishedAt: post.publishedAt, updatedAt: post.updatedAt, category: post.category })) }} />
       <Breadcrumb items={crumbs.map(c => ({ label: c.name, href: c.url }))} />
       <h1>{post.title}</h1>
       <p className="text-sm text-slate-500">{post.publishedAt} · {post.readingTime} min read · {post.category}</p>

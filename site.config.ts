@@ -1,19 +1,5 @@
 import type { SiteConfig } from './lib/types';
 
-const DATAPEEK_SITES = [
-  'https://vocabwize.com', 'https://vocablibre.com', 'https://wortwize.com',
-  'https://kalimawize.com', 'https://dicionariowize.com', 'https://kotobapeek.com',
-  'https://salarybycity.com', 'https://netpaypeek.com', 'https://wagepeek.com',
-  'https://costbycity.com', 'https://fairrentwize.com', 'https://propertytaxpeek.com',
-  'https://homepricepeek.com',
-  'https://degreewize.com', 'https://nameblooms.com', 'https://myschoolpeek.com',
-  'https://medcheckwize.com', 'https://medcostpeek.com', 'https://eldercarepeek.com',
-  'https://ingredipeek.com', 'https://caloriewize.com', 'https://powerbillpeek.com',
-  'https://sunpowerpeek.com', 'https://shipcalcwize.com', 'https://tariffpeek.com',
-  'https://visapeek.com', 'https://zippeek.com', 'https://calcpeek.com',
-  'https://datapeekfacts.com', 'https://guidebycity.com', 'https://safecitypeek.com',
-];
-
 export const siteConfig: SiteConfig = {
   // ── Basic Info ──────────────────────────────────────────
   name: 'HomePricePeek',
@@ -24,6 +10,11 @@ export const siteConfig: SiteConfig = {
   colors: { primary: 'emerald', accent: 'amber' },
   lang: 'en',
   locale: 'en-US',
+  publisherMode: 'team',
+  methodologyUrl: '/methodology/',
+  dataVintage: '2026 OECD, Numbeo & national statistics snapshot',
+  reviewedAt: '2026-04-19',
+  reviewedBy: 'HomePricePeek Editorial Team',
 
   // ── Data Entity ─────────────────────────────────────────
   entity: {
@@ -42,12 +33,26 @@ export const siteConfig: SiteConfig = {
   adsenseId: 'ca-pub-5724806562146685',
 
   // ── Network ─────────────────────────────────────────────
-  sameAs: DATAPEEK_SITES,
 
   // ── Data Source ─────────────────────────────────────────
   dataSource: {
     name: 'OECD, Numbeo & National Statistics',
     url: 'https://data.oecd.org/price/housing-prices.htm',
-    year: 2025,
+    year: 2026,
+  },
+
+  // ── Honest freshness (updated manually on each DB rebuild) ──
+  dbUpdated: '2026-04-19',
+
+  // ── Byline (consistent editor across the network) ─────────
+  author: {
+    name: 'James Park',
+    role: 'Editor',
+    bio: 'James Park curates public housing and cost-of-living data for a small network of free data tools. HomePricePeek aggregates Numbeo, OECD, and national-statistics housing data into comparable per-city views. Reach out through the contact form — every correction request is read.',
+    sameAs: [
+      'https://datapeekfacts.com',
+      'https://costbycity.com',
+      'https://salarybycity.com',
+    ],
   },
 };

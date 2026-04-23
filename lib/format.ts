@@ -1,3 +1,5 @@
+import { siteConfig } from '@/site.config';
+
 export function formatNumber(num: number | null): string {
   if (num == null) return 'N/A';
   return num.toLocaleString('en-US');
@@ -26,5 +28,5 @@ export function formatDecimal(value: number | null, decimals = 2): string {
 }
 
 export function getDataYear(): number {
-  return new Date().getFullYear();
+  return siteConfig.dataSource.year;
 }

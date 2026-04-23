@@ -1,0 +1,155 @@
+{
+  "takenAt": "2026-04-19",
+  "rows": [
+    {
+      "slug": "istanbul",
+      "name": "Istanbul",
+      "rank": 1,
+      "metric": 35
+    },
+    {
+      "slug": "izmir",
+      "name": "Izmir",
+      "rank": 2,
+      "metric": 30
+    },
+    {
+      "slug": "ankara",
+      "name": "Ankara",
+      "rank": 3,
+      "metric": 28
+    },
+    {
+      "slug": "tehran",
+      "name": "Tehran",
+      "rank": 4,
+      "metric": 25
+    },
+    {
+      "slug": "cairo",
+      "name": "Cairo",
+      "rank": 5,
+      "metric": 15
+    },
+    {
+      "slug": "tbilisi",
+      "name": "Tbilisi",
+      "rank": 6,
+      "metric": 12.5
+    },
+    {
+      "slug": "warsaw",
+      "name": "Warsaw",
+      "rank": 7,
+      "metric": 8.5
+    },
+    {
+      "slug": "bangalore",
+      "name": "Bangalore",
+      "rank": 8,
+      "metric": 8.5
+    },
+    {
+      "slug": "lagos",
+      "name": "Lagos",
+      "rank": 9,
+      "metric": 8.5
+    },
+    {
+      "slug": "valencia",
+      "name": "Valencia",
+      "rank": 10,
+      "metric": 8.5
+    },
+    {
+      "slug": "sofia",
+      "name": "Sofia",
+      "rank": 11,
+      "metric": 8.5
+    },
+    {
+      "slug": "tashkent",
+      "name": "Tashkent",
+      "rank": 12,
+      "metric": 8.5
+    },
+    {
+      "slug": "addis-ababa",
+      "name": "Addis Ababa",
+      "rank": 13,
+      "metric": 8.5
+    },
+    {
+      "slug": "karachi",
+      "name": "Karachi",
+      "rank": 14,
+      "metric": 8.2
+    },
+    {
+      "slug": "yerevan",
+      "name": "Yerevan",
+      "rank": 15,
+      "metric": 8.2
+    },
+    {
+      "slug": "athens",
+      "name": "Athens",
+      "rank": 16,
+      "metric": 7.5
+    },
+    {
+      "slug": "lahore",
+      "name": "Lahore",
+      "rank": 17,
+      "metric": 7.5
+    },
+    {
+      "slug": "krakow",
+      "name": "Krakow",
+      "rank": 18,
+      "metric": 7.2
+    },
+    {
+      "slug": "seville",
+      "name": "Seville",
+      "rank": 19,
+      "metric": 6.8
+    },
+    {
+      "slug": "belgrade",
+      "name": "Belgrade",
+      "rank": 20,
+      "metric": 6.8
+    },
+    {
+      "slug": "almaty",
+      "name": "Almaty",
+      "rank": 21,
+      "metric": 6.5
+    },
+    {
+      "slug": "kigali",
+      "name": "Kigali",
+      "rank": 22,
+      "metric": 6.5
+    },
+    {
+      "slug": "sapporo",
+      "name": "Sapporo",
+      "rank": 23,
+      "metric": 6.2
+    },
+    {
+      "slug": "budapest",
+      "name": "Budapest",
+      "rank": 24,
+      "metric": 5.8
+    },
+    {
+      "slug": "milwaukee",
+      "name": "Milwaukee",
+      "rank": 25,
+      "metric": 5.8
+    }
+  ]
+}

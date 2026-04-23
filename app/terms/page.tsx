@@ -21,7 +21,7 @@ export default function TermsPage() {
       <h2 className="text-xl font-semibold mt-8 mb-3">Limitation of Liability</h2>
       <p>{c.name} shall not be liable for any damages arising from use of the website.</p>
       <h2 className="text-xl font-semibold mt-8 mb-3">Contact</h2>
-      <p>Questions? Visit our <a href="/contact" className={`text-${c.colors.primary}-600 hover:underline`}>contact page</a>.</p>
+      <p>Questions? Visit our <a href="/contact/" className={`text-${c.colors.primary}-600 hover:underline`}>contact page</a>.</p>
     </article>
   );
 }

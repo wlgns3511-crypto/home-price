@@ -1,0 +1,508 @@
+{
+  "generated_at": "2026-04-17",
+  "source": "GSC 28-day page-level performance",
+  "criteria": "clicks > 0 OR impressions >= 3",
+  "count": 100,
+  "entries": [
+    {
+      "path": "/compare/los-angeles-vs-shanghai/",
+      "clicks": 1,
+      "imprs": 14
+    },
+    {
+      "path": "/compare/san-francisco-vs-shanghai/",
+      "clicks": 1,
+      "imprs": 14
+    },
+    {
+      "path": "/compare/shenzhen-vs-zagreb/",
+      "clicks": 1,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/abu-dhabi-vs-mumbai/",
+      "clicks": 0,
+      "imprs": 7
+    },
+    {
+      "path": "/compare/almaty-vs-istanbul/",
+      "clicks": 0,
+      "imprs": 17
+    },
+    {
+      "path": "/compare/almaty-vs-prague/",
+      "clicks": 0,
+      "imprs": 5
+    },
+    {
+      "path": "/compare/atlanta-vs-gdansk/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/atlanta-vs-riga/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/atlanta-vs-tbilisi/",
+      "clicks": 0,
+      "imprs": 4
+    },
+    {
+      "path": "/compare/austin-vs-detroit/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/austin-vs-tokyo/",
+      "clicks": 0,
+      "imprs": 5
+    },
+    {
+      "path": "/compare/bangalore-vs-dubai/",
+      "clicks": 0,
+      "imprs": 4
+    },
+    {
+      "path": "/compare/bangalore-vs-san-francisco/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/barcelona-vs-seoul/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/barcelona-vs-toronto/",
+      "clicks": 0,
+      "imprs": 7
+    },
+    {
+      "path": "/compare/beijing-vs-chengdu/",
+      "clicks": 0,
+      "imprs": 11
+    },
+    {
+      "path": "/compare/beirut-vs-tehran/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/berlin-vs-chengdu/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/berlin-vs-lisbon/",
+      "clicks": 0,
+      "imprs": 12
+    },
+    {
+      "path": "/compare/birmingham-uk-vs-london/",
+      "clicks": 0,
+      "imprs": 14
+    },
+    {
+      "path": "/compare/boston-vs-chicago/",
+      "clicks": 0,
+      "imprs": 4
+    },
+    {
+      "path": "/compare/bratislava-vs-manchester/",
+      "clicks": 0,
+      "imprs": 4
+    },
+    {
+      "path": "/compare/brisbane-vs-chengdu/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/brisbane-vs-melbourne/",
+      "clicks": 0,
+      "imprs": 10
+    },
+    {
+      "path": "/compare/brisbane-vs-san-diego/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/brisbane-vs-singapore/",
+      "clicks": 0,
+      "imprs": 4
+    },
+    {
+      "path": "/compare/bucharest-vs-vilnius/",
+      "clicks": 0,
+      "imprs": 7
+    },
+    {
+      "path": "/compare/budapest-vs-frankfurt/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/buenos-aires-vs-madrid/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/busan-vs-valencia/",
+      "clicks": 0,
+      "imprs": 4
+    },
+    {
+      "path": "/compare/casablanca-vs-chicago/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/charlotte-vs-nashville/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/chicago-vs-philadelphia/",
+      "clicks": 0,
+      "imprs": 7
+    },
+    {
+      "path": "/compare/christchurch-vs-melbourne/",
+      "clicks": 0,
+      "imprs": 6
+    },
+    {
+      "path": "/compare/cologne-vs-hong-kong/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/copenhagen-vs-madrid/",
+      "clicks": 0,
+      "imprs": 9
+    },
+    {
+      "path": "/compare/copenhagen-vs-zurich/",
+      "clicks": 0,
+      "imprs": 9
+    },
+    {
+      "path": "/compare/country/australia-vs-japan/",
+      "clicks": 0,
+      "imprs": 30
+    },
+    {
+      "path": "/compare/country/australia-vs-sweden/",
+      "clicks": 0,
+      "imprs": 15
+    },
+    {
+      "path": "/compare/country/brazil-vs-morocco/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/country/canada-vs-ecuador/",
+      "clicks": 0,
+      "imprs": 5
+    },
+    {
+      "path": "/compare/country/canada-vs-south-korea/",
+      "clicks": 0,
+      "imprs": 14
+    },
+    {
+      "path": "/compare/country/czech-republic-vs-italy/",
+      "clicks": 0,
+      "imprs": 4
+    },
+    {
+      "path": "/compare/country/france-vs-singapore/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/country/germany-vs-norway/",
+      "clicks": 0,
+      "imprs": 11
+    },
+    {
+      "path": "/compare/country/india-vs-iran/",
+      "clicks": 0,
+      "imprs": 10
+    },
+    {
+      "path": "/compare/country/israel-vs-italy/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/country/japan-vs-united-kingdom/",
+      "clicks": 0,
+      "imprs": 16
+    },
+    {
+      "path": "/compare/country/netherlands-vs-united-states/",
+      "clicks": 0,
+      "imprs": 18
+    },
+    {
+      "path": "/compare/country/new-zealand-vs-singapore/",
+      "clicks": 0,
+      "imprs": 7
+    },
+    {
+      "path": "/compare/country/norway-vs-pakistan/",
+      "clicks": 0,
+      "imprs": 5
+    },
+    {
+      "path": "/compare/denver-vs-minneapolis/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/dubai-vs-las-vegas/",
+      "clicks": 0,
+      "imprs": 12
+    },
+    {
+      "path": "/compare/dubai-vs-toronto/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/dublin-vs-krakow/",
+      "clicks": 0,
+      "imprs": 6
+    },
+    {
+      "path": "/compare/dublin-vs-nashville/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/dublin-vs-pittsburgh/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/fukuoka-vs-tokyo/",
+      "clicks": 0,
+      "imprs": 6
+    },
+    {
+      "path": "/compare/gdansk-vs-london/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/guangzhou-vs-london/",
+      "clicks": 0,
+      "imprs": 6
+    },
+    {
+      "path": "/compare/hamburg-vs-melbourne/",
+      "clicks": 0,
+      "imprs": 4
+    },
+    {
+      "path": "/compare/incheon-vs-nanjing/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/incheon-vs-shanghai/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/istanbul-vs-mexico-city/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/istanbul-vs-prague/",
+      "clicks": 0,
+      "imprs": 4
+    },
+    {
+      "path": "/compare/jakarta-vs-manila/",
+      "clicks": 0,
+      "imprs": 4
+    },
+    {
+      "path": "/compare/jakarta-vs-nairobi/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/karachi-vs-lahore/",
+      "clicks": 0,
+      "imprs": 10
+    },
+    {
+      "path": "/compare/krakow-vs-seville/",
+      "clicks": 0,
+      "imprs": 5
+    },
+    {
+      "path": "/compare/kuala-lumpur-vs-tbilisi/",
+      "clicks": 0,
+      "imprs": 4
+    },
+    {
+      "path": "/compare/lima-vs-san-francisco/",
+      "clicks": 0,
+      "imprs": 4
+    },
+    {
+      "path": "/compare/london-vs-shenzhen/",
+      "clicks": 0,
+      "imprs": 5
+    },
+    {
+      "path": "/compare/london-vs-taipei/",
+      "clicks": 0,
+      "imprs": 4
+    },
+    {
+      "path": "/compare/los-angeles-vs-riyadh/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/manchester-vs-milan/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/melbourne-vs-perth/",
+      "clicks": 0,
+      "imprs": 6
+    },
+    {
+      "path": "/compare/mexico-city-vs-sao-paulo/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/milan-vs-paris/",
+      "clicks": 0,
+      "imprs": 10
+    },
+    {
+      "path": "/compare/milan-vs-valencia/",
+      "clicks": 0,
+      "imprs": 4
+    },
+    {
+      "path": "/compare/minneapolis-vs-portland/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/naples-vs-nice/",
+      "clicks": 0,
+      "imprs": 5
+    },
+    {
+      "path": "/compare/nashville-vs-seattle/",
+      "clicks": 0,
+      "imprs": 4
+    },
+    {
+      "path": "/compare/new-york-vs-seoul/",
+      "clicks": 0,
+      "imprs": 21
+    },
+    {
+      "path": "/compare/oslo-vs-valencia/",
+      "clicks": 0,
+      "imprs": 5
+    },
+    {
+      "path": "/compare/perth-vs-melbourne/",
+      "clicks": 0,
+      "imprs": 13
+    },
+    {
+      "path": "/compare/pittsburgh-vs-sapporo/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/prague-vs-salt-lake-city/",
+      "clicks": 0,
+      "imprs": 6
+    },
+    {
+      "path": "/compare/prague-vs-tel-aviv/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/raleigh-vs-reykjavik/",
+      "clicks": 0,
+      "imprs": 4
+    },
+    {
+      "path": "/compare/raleigh-vs-tel-aviv/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/raleigh-vs-yerevan/",
+      "clicks": 0,
+      "imprs": 6
+    },
+    {
+      "path": "/compare/san-francisco-vs-san-jose-cr/",
+      "clicks": 0,
+      "imprs": 12
+    },
+    {
+      "path": "/compare/seattle-vs-washington-dc/",
+      "clicks": 0,
+      "imprs": 10
+    },
+    {
+      "path": "/compare/seoul-vs-vienna/",
+      "clicks": 0,
+      "imprs": 10
+    },
+    {
+      "path": "/compare/seville-vs-valencia/",
+      "clicks": 0,
+      "imprs": 4
+    },
+    {
+      "path": "/compare/toronto-vs-warsaw/",
+      "clicks": 0,
+      "imprs": 6
+    },
+    {
+      "path": "/compare/vilnius-vs-wellington/",
+      "clicks": 0,
+      "imprs": 6
+    },
+    {
+      "path": "/compare/warsaw-vs-gdansk/",
+      "clicks": 0,
+      "imprs": 3
+    },
+    {
+      "path": "/compare/austin-vs-tokyo/",
+      "clicks": 0,
+      "imprs": 7
+    },
+    {
+      "path": "/compare/osaka-vs-manchester/",
+      "clicks": 0,
+      "imprs": 3
+    }
+  ]
+}

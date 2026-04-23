@@ -7,6 +7,7 @@ const c = siteConfig;
 export const metadata: Metadata = {
   title: `Search ${c.entity.label}`,
   description: `Search across all ${c.entity.label.toLowerCase()} in ${c.name}.`,
+  robots: { index: false, follow: true },
   alternates: { canonical: '/search/' },
   openGraph: { url: "/search/" },
 };

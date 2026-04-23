@@ -12,8 +12,8 @@ import { CrossSiteLinks } from '@/components/CrossSiteLinks';
 import { siteConfig } from '@/site.config';
 
 interface Props { params: Promise<{ type: string }> }
-export const dynamicParams = false;
-export const revalidate = false;
+export const dynamicParams = true;
+export const revalidate = 86400;
 
 function resolveRanking(type: string) {
   // 1. Direct DB match
@@ -61,8 +61,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: resolved.title,
     description: resolved.description,
-    alternates: { canonical: `/rankings/${type}` },
-    openGraph: { title: resolved.title, description: resolved.description, url: `/rankings/${type}` },
+    alternates: { canonical: `/rankings/${type}/` },
+    openGraph: { title: resolved.title, description: resolved.description, url: `/rankings/${type}/` },
   };
 }
 
@@ -82,11 +82,11 @@ export default async function RankingPage({ params }: Props) {
     : getCitiesForRanking(col, dir, region, 50);
   if (cities.length === 0) notFound();
   const listItems = cities.map(c => ({ name: String(c.name), url: `/city/${c.slug}/` }));
-  const crumbs = [{ name: 'Home', url: '/' }, { name: 'Rankings', url: '/rankings/' }, { name: title, url: `/rankings/${type}` }];
+  const crumbs = [{ name: 'Home', url: '/' }, { name: 'Rankings', url: '/rankings/' }, { name: title, url: `/rankings/${type}/` }];
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema(title, `/rankings/${type}`, listItems)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema(title, `/rankings/${type}/`, listItems)) }} />
       <Breadcrumb items={crumbs.map(c => ({ label: c.name, href: c.url }))} />
       <h1 className="text-3xl font-bold mb-2">{title}</h1>
       <p className="text-slate-600 mb-4">{resolved.description}</p>

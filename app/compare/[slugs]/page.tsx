@@ -1,6 +1,6 @@
 import { notFound, redirect } from 'next/navigation';
 import type { Metadata } from 'next';
-import { parseCityComparisonSlug, getTopComparisons } from '@/lib/db';
+import { parseCityComparisonSlug, getAllComparisonSlugs } from '@/lib/db';
 import { formatCurrency, formatPercent, formatNumber } from '@/lib/format';
 import { breadcrumbSchema, faqSchema } from '@/lib/schema';
 import { AdSlot } from '@/components/AdSlot';
@@ -13,18 +13,26 @@ import { CrossSiteLinks } from '@/components/CrossSiteLinks';
 import { siteConfig } from '@/site.config';
 
 interface Props { params: Promise<{ slugs: string }> }
+const STATIC_COMPARISON_SLUGS = getAllComparisonSlugs().slice(0, 100).map(c => c.slug);
+const STATIC_COMPARISON_SET = new Set(STATIC_COMPARISON_SLUGS);
 
 export const dynamicParams = false;
-export const revalidate = false;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
-  return getTopComparisons(500).map(c => ({ slugs: c.slug }));
+  return STATIC_COMPARISON_SLUGS.flatMap((slugs) => {
+    const comp = parseCityComparisonSlug(slugs);
+    if (!comp) return [];
+    return [{ slugs }, { slugs: `${String(comp.b.slug)}-vs-${String(comp.a.slug)}` }];
+  });
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slugs } = await params;
   const comp = parseCityComparisonSlug(slugs);
   if (!comp) return {};
+  const canonicalSlug = [String(comp.a.slug), String(comp.b.slug)].sort().join('-vs-');
+  if (!STATIC_COMPARISON_SET.has(canonicalSlug)) return {};
   const nameA = String(comp.a.name);
   const nameB = String(comp.b.name);
   const title = `${nameA} vs ${nameB} — Home Prices & Rent Comparison (${new Date().getFullYear()})`;
@@ -32,8 +40,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
-    alternates: { canonical: `/compare/${slugs}` },
-    openGraph: { title, description, url: `/compare/${slugs}` },
+    alternates: { canonical: `/compare/${canonicalSlug}/` },
+    openGraph: { title, description, url: `/compare/${canonicalSlug}/` },
   };
 }
 
@@ -44,6 +52,7 @@ export default async function ComparePage({ params }: Props) {
 
   // Canonical: alphabetically sorted slug
   const canonicalSlug = [String(comp.a.slug), String(comp.b.slug)].sort().join('-vs-');
+  if (!STATIC_COMPARISON_SET.has(canonicalSlug)) notFound();
   if (canonicalSlug !== slugs) redirect(`/compare/${canonicalSlug}/`);
 
   const { a, b } = comp;
@@ -70,7 +79,7 @@ export default async function ComparePage({ params }: Props) {
   const crumbs = [
     { name: 'Home', url: '/' },
     { name: 'Compare', url: '/compare/' },
-    { name: `${nameA} vs ${nameB}`, url: `/compare/${slugs}` },
+    { name: `${nameA} vs ${nameB}`, url: `/compare/${slugs}/` },
   ];
 
   const faqs = [
@@ -81,7 +90,9 @@ export default async function ComparePage({ params }: Props) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema(crumbs)) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(faqs)) }} />
+      {faqs.length > 0 && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(faqs)) }} />
+      )}
 
       <Breadcrumb items={crumbs.map(c => ({ label: c.name, href: c.url }))} />
 

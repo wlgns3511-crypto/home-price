@@ -13,8 +13,8 @@ import { siteConfig } from '@/site.config';
 
 interface Props { params: Promise<{ slug: string }> }
 
-export const dynamicParams = false;
-export const revalidate = false;
+export const dynamicParams = true;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
   return getAllCountries().map(c => ({ slug: String(c.slug) }));
@@ -28,8 +28,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${name} Home Prices & Housing Market (${new Date().getFullYear()})`,
     description: `${name} housing market: average home price ${formatCurrency(country.avg_home_price_usd as number)}, price per sqm ${formatCurrency(country.avg_price_per_sqm_usd as number)}, mortgage rate ${formatPercent(country.mortgage_rate_pct as number)}.`,
-    alternates: { canonical: `/country/${slug}` },
-    openGraph: { url: `/country/${slug}` },
+    alternates: { canonical: `/country/${slug}/` },
+    openGraph: { url: `/country/${slug}/` },
   };
 }
 
@@ -43,8 +43,8 @@ export default async function CountryPage({ params }: Props) {
 
   const crumbs = [
     { name: 'Home', url: '/' },
-    { name: 'Countries', url: '/search?q=' },
-    { name, url: `/country/${slug}` },
+    { name: 'Countries', url: '/search/?q=' },
+    { name, url: `/country/${slug}/` },
   ];
 
   return (
