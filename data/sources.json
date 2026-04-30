@@ -1,0 +1,115 @@
+{
+  "vintage": "2026-04-30",
+  "next_refresh_target": "2026-07-01",
+  "sources": [
+    {
+      "field": "medianHomePrice",
+      "name": "Zillow Home Value Index (ZHVI) — typical home value",
+      "url": "https://www.zillow.com/research/data/",
+      "vintage": "2025-04",
+      "license": "Free for use with attribution",
+      "notes": "Smoothed, seasonally adjusted, all single-family + condo, mid-tier (35th–65th percentile)."
+    },
+    {
+      "field": "yoyChange",
+      "name": "Zillow ZHVI 1-year percent change",
+      "url": "https://www.zillow.com/research/data/",
+      "vintage": "2024-04 → 2025-04",
+      "license": "Free for use with attribution"
+    },
+    {
+      "field": "fhfaHpi5yr",
+      "name": "FHFA House Price Index (all-transactions, state-level), 5-year cumulative",
+      "url": "https://www.fhfa.gov/data/hpi/datasets",
+      "vintage": "2019Q4 → 2024Q4",
+      "license": "Public domain"
+    },
+    {
+      "field": "fhfaHpi10yr",
+      "name": "FHFA House Price Index (all-transactions, state-level), 10-year cumulative",
+      "url": "https://www.fhfa.gov/data/hpi/datasets",
+      "vintage": "2014Q4 → 2024Q4",
+      "license": "Public domain"
+    },
+    {
+      "field": "medianHouseholdIncome",
+      "name": "US Census Bureau, ACS 2023 5-Year Estimates, B19013",
+      "url": "https://data.census.gov/table/ACSDT5Y2023.B19013",
+      "vintage": "2019–2023 5-Year",
+      "license": "Public domain"
+    },
+    {
+      "field": "costBurdenedOwnerPct",
+      "name": "US Census Bureau, ACS 2023 5-Year Estimates, B25091 (mortgaged owner-occupied units, ≥30% of income)",
+      "url": "https://data.census.gov/table/ACSDT5Y2023.B25091",
+      "vintage": "2019–2023 5-Year",
+      "license": "Public domain"
+    },
+    {
+      "field": "costBurdenedRenterPct",
+      "name": "US Census Bureau, ACS 2023 5-Year Estimates, B25070 (gross rent ≥30% of income)",
+      "url": "https://data.census.gov/table/ACSDT5Y2023.B25070",
+      "vintage": "2019–2023 5-Year",
+      "license": "Public domain"
+    },
+    {
+      "field": "avgPropertyTaxPct",
+      "name": "Tax Foundation — Property Taxes Paid as a Percentage of Owner-Occupied Home Value",
+      "url": "https://taxfoundation.org/data/all/state/property-taxes-by-state-2023/",
+      "vintage": "2023",
+      "license": "Free for non-commercial use with attribution"
+    },
+    {
+      "field": "avgInsuranceAnnual",
+      "name": "NAIC Dwelling Fire, Homeowners Owner-Occupied, and Homeowners Tenant and Condominium/Cooperative Unit Owner's Insurance Report (HO-3 average)",
+      "url": "https://content.naic.org/sites/default/files/publication-hmr-zu-homeowners-report.pdf",
+      "vintage": "2023",
+      "license": "Public domain"
+    },
+    {
+      "field": "avgMortgageRate30yr",
+      "name": "FRED — 30-Year Fixed Rate Mortgage Average in the United States (MORTGAGE30US)",
+      "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
+      "vintage": "2026-04 weekly average",
+      "license": "Public domain"
+    },
+    {
+      "field": "demographiaBucket",
+      "name": "Demographia International Housing Affordability — median multiple buckets",
+      "url": "https://www.demographia.com/dhi.pdf",
+      "vintage": "2024 (17th Annual)",
+      "license": "Free for non-commercial use with attribution",
+      "notes": "Buckets: Affordable (PIR<3.0), Moderately Unaffordable (3.0–3.9), Seriously Unaffordable (4.0–4.9), Severely Unaffordable (5.0+)."
+    },
+    {
+      "field": "priceToIncomeRatio",
+      "name": "Derived: medianHomePrice ÷ medianHouseholdIncome (state-level)",
+      "url": "https://www.demographia.com/dhi.pdf",
+      "vintage": "Computed at module load from anchored inputs",
+      "license": "Public-data derivative",
+      "notes": "Identical methodology to Demographia's median multiple."
+    },
+    {
+      "field": "buyVsRentCrossoverYr",
+      "name": "Derived: cumulative-cost crossover, 30-yr fixed mortgage, 20% down, 1% maintenance, 3% rent inflation, 2.5% own-cost escalator",
+      "url": null,
+      "vintage": "Computed at module load from anchored inputs",
+      "license": "Public-data derivative",
+      "notes": "Excludes capital appreciation, mortgage interest deduction, transaction cost, and opportunity cost of down payment."
+    },
+    {
+      "field": "affordabilityIndex",
+      "name": "Composite affordability index (NAR/HUD-style; lower = less affordable)",
+      "url": "https://www.nar.realtor/research-and-statistics/housing-statistics/housing-affordability-index",
+      "vintage": "2024 calibration",
+      "license": "Public-data derivative"
+    },
+    {
+      "field": "topCities",
+      "name": "US Census Bureau, 2023 Population Estimates Program",
+      "url": "https://www.census.gov/data/datasets/time-series/demo/popest/2020s-cities.html",
+      "vintage": "2023",
+      "license": "Public domain"
+    }
+  ]
+}

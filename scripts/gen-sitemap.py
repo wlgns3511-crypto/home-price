@@ -68,9 +68,14 @@ def main():
                  '/privacy/', '/terms/', '/contact/', '/disclaimer/', '/rankings/all/']:
         urls.append((f"{BASE}{page}", 1.0 if page == '/' else (0.9 if page == '/guide/' else 0.5)))
 
-    # All entity detail pages
-    for row in c.execute(f"SELECT {slug_col} as slug FROM {table_name} ORDER BY {slug_col}"):
-        urls.append((f"{BASE}/{entity_slug}/{row['slug']}/", 0.7))
+    # ─── /city/{slug} DROPPED 2026-04-28 (HCU sitemap-route mismatch) ───────────
+    # site.config.entity.slug='city' but actual route is app/[city]/[slug]/
+    # which only renders pre-defined slugs via getAllSlugs().slice(0,500).
+    # The /city/X/ URL pattern emitted here matches nothing — all 194 returned 404.
+    # Drop entirely: the [city][slug] route is orphaned/needs a separate refactor
+    # before announcing in sitemap.
+    # for row in c.execute(f"SELECT {slug_col} as slug FROM {table_name} ORDER BY {slug_col}"):
+    #     urls.append((f"{BASE}/{entity_slug}/{row['slug']}/", 0.7))
 
     # Tier S HCU expansion 2026-04-21 — state pages + monthly-payment subpages (51 × 2)
     state_slugs = [
@@ -90,10 +95,14 @@ def main():
         urls.append((f"{BASE}/state/{ss}/", 0.7))
         urls.append((f"{BASE}/state/{ss}/monthly-payment/", 0.7))
 
-    # Top comparison pairs — CAPPED at 100 to match page.tsx (2026-04-22 HCU-defense)
-    # page uses getAllComparisonSlugs().slice(0,100) → reads from `comparisons` table
-    for row in c.execute("SELECT slug FROM comparisons LIMIT 100"):
-        urls.append((f"{BASE}/compare/{row['slug']}/", 0.5))
+    # ─── /compare/ pairs DROPPED 2026-04-26 (AdSense scaled-content remediation) ──
+    # Precedent: nameblooms /middle-names/ AdSense policy violation 2026-04-26.
+    # page.tsx now sets robots: {index:false, follow:true}. Announcing noindex'd
+    # derivative pages in sitemap is a contradiction + crawl-budget waste.
+    # Pages still render (dynamicParams=false, 404-safe) for direct visitors.
+    # ~100 derivative URLs removed.
+    # for row in c.execute("SELECT slug FROM comparisons LIMIT 100"):
+    #     urls.append((f"{BASE}/compare/{row['slug']}/", 0.5))
 
     conn.close()
 

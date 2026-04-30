@@ -42,6 +42,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description,
     alternates: { canonical: `/compare/${canonicalSlug}/` },
     openGraph: { title, description, url: `/compare/${canonicalSlug}/` },
+    // 2026-04-26 AdSense scaled-content remediation: noindex derivative compare pages.
+    // Precedent: nameblooms /middle-names/ policy violation 2026-04-26.
+    robots: { index: false, follow: true },
   };
 }
 

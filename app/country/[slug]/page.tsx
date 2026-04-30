@@ -13,7 +13,7 @@ import { siteConfig } from '@/site.config';
 
 interface Props { params: Promise<{ slug: string }> }
 
-export const dynamicParams = true;
+export const dynamicParams = false;
 export const revalidate = 86400;
 
 export async function generateStaticParams() {

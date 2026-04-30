@@ -20,7 +20,7 @@ const t = getDictionarySync('es');
 
 interface Props { params: Promise<{ city: string }> }
 
-export const dynamicParams = true;
+export const dynamicParams = false;
 export const revalidate = 86400;
 
 export async function generateStaticParams() {
@@ -250,23 +250,7 @@ export default async function EsCityPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="mt-8">
-        <h2 className="text-xl font-bold mb-3">{t.compare_with} {name}</h2>
-        <div className="flex flex-wrap gap-2">
-          {similarPrice.map(r => (
-            <a key={String(r.slug)} href={`/compare/${slug}-vs-${r.slug}/`}
-              className="px-4 py-2 border rounded-full text-sm hover:bg-emerald-50 text-emerald-700 font-medium">
-              {name} {t.vs} {String(r.name)}
-            </a>
-          ))}
-          {related.map(r => (
-            <a key={String(r.slug)} href={`/compare/${slug}-vs-${r.slug}/`}
-              className="px-4 py-2 border rounded-full text-sm hover:bg-emerald-50 text-emerald-700 font-medium">
-              {name} {t.vs} {String(r.name)}
-            </a>
-          ))}
-        </div>
-      </section>
+      {/* 2026-04-28 — Spanish 'Compare with' /compare/ 위젯 제거 (AdSense scaled-content remediation) */}
 
       <AdSlot id="bottom" />
       <AuthorBox />

@@ -51,10 +51,7 @@ export default function GuidesIndex() {
           Read a guide, then apply it to real markets with our data tools.
         </p>
         <ul className="space-y-2 text-sm">
-          <li>
-            <Link href="/compare/" className="text-emerald-700 hover:underline font-medium">Compare any two cities →</Link>
-            <span className="text-slate-500"> side-by-side prices, rents, affordability</span>
-          </li>
+          {/* 2026-04-28 — 'Compare any two cities' bullet 제거 (AdSense scaled-content remediation) */}
           <li>
             <Link href="/rankings/" className="text-emerald-700 hover:underline font-medium">Affordability rankings →</Link>
             <span className="text-slate-500"> cities sorted by price-to-income ratio</span>

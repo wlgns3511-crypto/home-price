@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
-import { headers } from 'next/headers';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { siteConfig } from '@/site.config';
-import { buildLocaleAlternates, getHtmlLang, getMethodologyUrl } from '@/lib/seo';
+import { buildLocaleAlternates, getMethodologyUrl } from '@/lib/seo';
 import { UpgradeAnalytics } from "@/components/upgrades/UpgradeAnalytics";
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
@@ -15,16 +14,12 @@ export const metadata: Metadata = {
   description: c.description,
   metadataBase: new URL(SITE_URL),
   alternates: buildLocaleAlternates('/'),
-  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large' } },
   openGraph: { type: 'website', siteName: c.name, locale: c.locale.replace('-', '_') },
   twitter: { card: 'summary_large_image' },
   other: { 'google-adsense-account': 'ca-pub-5724806562146685' },
 };
 
-export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const headerStore = await headers();
-  const pathname = headerStore.get('x-pathname');
-  const htmlLang = getHtmlLang(pathname);
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const searchAction = {
     '@type': 'SearchAction',
     target: `${SITE_URL}/search/?q={search_term_string}`,
@@ -52,7 +47,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
             },
   ];
   return (
-    <html lang={htmlLang}>
+    <html lang="en">
       <head>
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
@@ -73,7 +68,10 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
             <nav className="flex gap-4 text-sm">
               <a href={`/${c.entity.slug}/`} className="text-slate-600 hover:text-slate-900">{c.entity.label}</a>
               <a href="/state/" className="text-slate-600 hover:text-slate-900">By State</a>
-              <a href="/compare/" className="text-slate-600 hover:text-slate-900">Compare</a>
+              {/* 2026-04-28 — 'Compare' nav 제거 (AdSense scaled-content remediation).
+                  /compare/* 트리는 4/18 doorway-thin 판단으로 noindex 처리됨.
+                  Sitewide layout 링크는 모든 indexable 페이지에 박히므로 AdSense
+                  리뷰어가 noindex 트리로 직행. 직접 URL 입력 시엔 페이지 그대로 작동. */}
               <a href="/search/" className="text-slate-600 hover:text-slate-900">Search</a>
               <a href="/guide/" className="text-slate-600 hover:text-slate-900">Guides</a>
               <a href="/blog/" className="text-slate-600 hover:text-slate-900">Articles</a>

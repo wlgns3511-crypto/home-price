@@ -6,7 +6,10 @@
     "dev": "next dev -p 3099",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "audit:housing": "npx tsx scripts/audit-housing.ts",
+    "audit:housing:gate": "npx tsx scripts/audit-housing.ts --gate",
+    "indexnow:phase-d": "npx tsx scripts/indexnow-phase-d.ts"
   },
   "dependencies": {
     "better-sqlite3": "^12.8.0",

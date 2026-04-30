@@ -426,24 +426,9 @@ export default async function CityPage({ params }: Props) {
         </div>
       </section>
 
-      {/* ── Popular Comparisons ───────────────────────────── */}
-      <section className="mt-8">
-        <h2 className="text-xl font-bold mb-3">Compare {name} With</h2>
-        <div className="flex flex-wrap gap-2">
-          {similarPrice.map(r => (
-            <a key={String(r.slug)} href={`/compare/${slug}-vs-${r.slug}/`}
-              className="px-4 py-2 border rounded-full text-sm hover:bg-emerald-50 text-emerald-700 font-medium">
-              {name} vs {String(r.name)}
-            </a>
-          ))}
-          {related.map(r => (
-            <a key={String(r.slug)} href={`/compare/${slug}-vs-${r.slug}/`}
-              className="px-4 py-2 border rounded-full text-sm hover:bg-emerald-50 text-emerald-700 font-medium">
-              {name} vs {String(r.name)}
-            </a>
-          ))}
-        </div>
-      </section>
+      {/* 2026-04-28 — 'Popular Comparisons' /compare/{a}-vs-{b}/ 위젯 제거
+          (AdSense scaled-content remediation, /compare/* noindex).
+          RelatedEntities 위젯이 비슷한 가격대 도시 탐색 경로 유지함. */}
 
       <RelatedEntities
         entityName={name}

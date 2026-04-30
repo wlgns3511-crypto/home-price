@@ -16,11 +16,28 @@ import { CrossSiteLinks } from '@/components/CrossSiteLinks';
 import { FeedbackButton } from "@/components/FeedbackButton";
 import { DataSourceBadge } from '@/components/DataSourceBadge';
 import { TrustBlock } from '@/components/upgrades/TrustBlock';
+import { PIRGauge } from '@/components/upgrades/PIRGauge';
+import { MortgageDeltaCard } from '@/components/upgrades/MortgageDeltaCard';
+import { BuyVsRentCrossover } from '@/components/upgrades/BuyVsRentCrossover';
+import { CostBurdenCompass } from '@/components/upgrades/CostBurdenCompass';
+import { AppreciationSparkline } from '@/components/upgrades/AppreciationSparkline';
+import { PITIBreakdownCard } from '@/components/upgrades/PITIBreakdownCard';
+import {
+  getAffordabilityIndex,
+  getMortgageCostDelta,
+  getBuyVsRentCrossover,
+  getCostBurdenCompass,
+  getAppreciationTrend,
+  getOwnershipBurden,
+  getPeerStates,
+  getCrossSiteLinks,
+} from '@/lib/housing-landscape';
+import { buildNarrative } from '@/lib/housing-narrative';
 import { siteConfig } from '@/site.config';
 import { StateRich } from '@/components/state/StateRich';
 
 interface Props { params: Promise<{ slug: string }> }
-export const dynamicParams = true;
+export const dynamicParams = false;
 export const revalidate = 86400;
 
 function buildStateTopAnswer(state: NonNullable<ReturnType<typeof getStateBySlug>>) {
@@ -86,9 +103,23 @@ export default async function StatePage({ params }: Props) {
     { name: 'By State', url: '/state/' },
     { name: state.name, url: `/state/${slug}/` },
   ];
+  const allStates = getAllStates();
   const faqs = buildFaqs(state);
-  const insights = generateStateInsights(state, getAllStates());
+  const insights = generateStateInsights(state, allStates);
   const topAnswer = buildStateTopAnswer(state);
+
+  // Layer 1 facts (housing-landscape.ts)
+  const affordability = getAffordabilityIndex(state, allStates);
+  const mortgageDelta = getMortgageCostDelta(state);
+  const crossover = getBuyVsRentCrossover(state);
+  const costBurden = getCostBurdenCompass(state, allStates);
+  const appreciation = getAppreciationTrend(state, allStates);
+  const ownership = getOwnershipBurden(state);
+  const peers = getPeerStates(state, allStates);
+  const crossSite = getCrossSiteLinks(state);
+
+  // Layer 2 narrative (housing-narrative.ts)
+  const narrative = buildNarrative(state, allStates);
 
   // Rank among all states
   const sortedByPrice = getStatesSortedByPrice('desc');
@@ -179,7 +210,78 @@ export default async function StatePage({ params }: Props) {
         </ul>
       </section>
 
+      <h2 className="text-2xl font-bold text-slate-900 mt-10 mb-2">Affordability landscape</h2>
+      <p className="text-sm text-slate-600 mb-4 max-w-3xl leading-6">{narrative.affordability}</p>
+      <PIRGauge facts={affordability} stateName={state.name} />
+
       <AdSlot id="top" />
+
+      <h2 className="text-2xl font-bold text-slate-900 mt-10 mb-2">Rate translator — what a 1% move costs</h2>
+      <p className="text-sm text-slate-600 mb-4 max-w-3xl leading-6">{narrative.rateContext}</p>
+      <MortgageDeltaCard facts={mortgageDelta} stateName={state.name} />
+
+      <h2 className="text-2xl font-bold text-slate-900 mt-10 mb-2">PITI breakdown on the median home</h2>
+      <PITIBreakdownCard facts={ownership} stateName={state.name} />
+
+      <h2 className="text-2xl font-bold text-slate-900 mt-10 mb-2">Buy vs rent crossover</h2>
+      <p className="text-sm text-slate-600 mb-4 max-w-3xl leading-6">{narrative.buyVsRent}</p>
+      <BuyVsRentCrossover facts={crossover} stateName={state.name} />
+
+      <h2 className="text-2xl font-bold text-slate-900 mt-10 mb-2">Long-run appreciation path</h2>
+      <p className="text-sm text-slate-600 mb-4 max-w-3xl leading-6">{narrative.appreciation}</p>
+      <AppreciationSparkline facts={appreciation} stateName={state.name} />
+
+      <h2 className="text-2xl font-bold text-slate-900 mt-10 mb-2">Cost burden — HUD 30% threshold</h2>
+      <p className="text-sm text-slate-600 mb-4 max-w-3xl leading-6">{narrative.costBurden}</p>
+      <CostBurdenCompass facts={costBurden} stateName={state.name} totalStates={allStates.length} />
+
+      <section className="my-8 rounded-xl border border-slate-200 p-5 bg-slate-50/50">
+        <h2 className="text-lg font-bold text-slate-900 mb-3">
+          {peers.clusterLabel} peer states
+        </h2>
+        <p className="text-sm text-slate-600 mb-3">
+          States with the most similar price-to-income structure to {state.name}.
+        </p>
+        {peers.peers.length > 0 ? (
+          <div className="grid sm:grid-cols-2 gap-2">
+            {peers.peers.map(p => (
+              <Link
+                key={p.slug}
+                href={`/state/${p.slug}/`}
+                className="flex justify-between items-center p-3 rounded-lg bg-white hover:bg-emerald-50 border border-slate-100 text-sm transition-colors"
+              >
+                <span className="font-medium text-slate-900">{p.name}</span>
+                <span className="text-slate-600 tabular-nums">
+                  {formatCurrency(p.medianHomePrice)} <span className="text-slate-400 ml-1">PIR {p.pir.toFixed(2)}×</span>
+                </span>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <p className="text-sm text-slate-500">No peer states in this cluster.</p>
+        )}
+      </section>
+
+      <aside className="my-8 rounded-xl border border-slate-200 p-5 bg-gradient-to-br from-slate-50 to-white">
+        <div className="text-xs uppercase tracking-wider text-slate-500 mb-2">Pair with</div>
+        <h2 className="text-lg font-bold text-slate-900 mb-3">
+          Adjacent {state.name} datasets across the network
+        </h2>
+        <ul className="grid sm:grid-cols-2 gap-2">
+          {crossSite.map(l => (
+            <li key={l.site}>
+              <a
+                href={l.url}
+                rel="noopener noreferrer"
+                className="block p-3 rounded-lg bg-white hover:bg-emerald-50 border border-slate-100 transition-colors"
+              >
+                <div className="font-medium text-slate-900 text-sm">{l.label}</div>
+                <div className="text-xs text-slate-500 mt-0.5 leading-5">{l.blurb}</div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </aside>
 
       {/* Monthly-payment cross-link (HCU depth expansion) */}
       <section className="my-6">
