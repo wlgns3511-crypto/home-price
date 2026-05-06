@@ -4,7 +4,8 @@ export const siteConfig: SiteConfig = {
   // ── Basic Info ──────────────────────────────────────────
   name: 'HomePricePeek',
   domain: 'homepricepeek.com',
-  description: 'Compare home prices, rents, and affordability across 500+ cities worldwide. Price per sqm, rent vs buy analysis, and mortgage calculators.',
+  description:
+    'Housing affordability for 51 US states + 35 US cities (deep) and 159 international cities (broad). Anchored to OECD, FHFA, Census ACS, FRED, and national statistics offices.',
 
   // ── Theme ───────────────────────────────────────────────
   colors: { primary: 'emerald', accent: 'amber' },
@@ -12,7 +13,9 @@ export const siteConfig: SiteConfig = {
   locale: 'en-US',
   publisherMode: 'team',
   methodologyUrl: '/methodology/',
-  dataVintage: '2026 OECD, Numbeo & national statistics snapshot',
+  // Top-level dataVintage is an anchor for the *site identity* layer (rebuild date).
+  // Per-section vintages live in lib/authorship.ts (ENTITY/ABOUT/METHODOLOGY/LEGAL_REVIEWED).
+  dataVintage: '2026-04 site rebuild',
   reviewedAt: '2026-04-19',
   reviewedBy: 'HomePricePeek Editorial Team',
 
@@ -34,9 +37,9 @@ export const siteConfig: SiteConfig = {
 
   // ── Network ─────────────────────────────────────────────
 
-  // ── Data Source ─────────────────────────────────────────
+  // ── Data Source (single primary anchor; full source list in lib/authorship.ts) ──
   dataSource: {
-    name: 'OECD, Numbeo & National Statistics',
+    name: 'OECD Housing Prices',
     url: 'https://data.oecd.org/price/housing-prices.htm',
     year: 2026,
   },
@@ -48,7 +51,7 @@ export const siteConfig: SiteConfig = {
   author: {
     name: 'James Park',
     role: 'Editor',
-    bio: 'James Park curates public housing and cost-of-living data for a small network of free data tools. HomePricePeek aggregates Numbeo, OECD, and national-statistics housing data into comparable per-city views. Reach out through the contact form — every correction request is read.',
+    bio: 'James Park curates public housing data for a small network of free data tools. HomePricePeek aggregates OECD price-to-income series, FHFA HPI, Census ACS, FRED mortgage rates, and national statistics offices into comparable per-state and per-city views. Reach out through the contact form — every correction request is read.',
     sameAs: [
       'https://datapeekfacts.com',
       'https://costbycity.com',

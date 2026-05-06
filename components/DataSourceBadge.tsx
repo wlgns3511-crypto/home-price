@@ -1,10 +1,7 @@
 /**
- * DataSourceBadge v2 — with "Last Updated" freshness signal
+ * DataSourceBadge — vintage badge with neutral label.
  *
- * Usage:
- *   <DataSourceBadge sources={[{ name: "US Census", url: "..." }]} />
- *   <DataSourceBadge sources={[...]} updatedAt="2026-04" />
- *   <DataSourceBadge sources={[...]} updatedAt="2026-04" verifiedLabel="Data verified" />
+ * Default label is "Data vintage"; pass verifiedLabel to override per surface.
  */
 
 const CheckIcon = () => (
@@ -28,22 +25,20 @@ interface DataSourceBadgeProps {
   sources: { name: string; url: string }[];
   /** e.g. "2026-04" or "April 2026" — defaults to build month */
   updatedAt?: string;
-  /** Label before date — defaults to "Data verified" */
+  /** Label before date — defaults to "Data vintage" */
   verifiedLabel?: string;
 }
 
-export function DataSourceBadge({ sources, updatedAt, verifiedLabel = 'Data verified' }: DataSourceBadgeProps) {
+export function DataSourceBadge({ sources, updatedAt, verifiedLabel = 'Data vintage' }: DataSourceBadgeProps) {
   const dateStr = updatedAt || getBuildDate();
 
   return (
     <div className="mt-4 space-y-2">
-      {/* Freshness badge */}
       <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 rounded-full">
         <CheckIcon />
         <span>{verifiedLabel}: <strong>{dateStr}</strong></span>
       </div>
 
-      {/* Source links */}
       <div className="flex flex-wrap gap-2">
         {sources.map((s) => (
           <a

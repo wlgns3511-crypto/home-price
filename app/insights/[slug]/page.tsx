@@ -228,23 +228,23 @@ export default async function InsightPage({ params }: Props) {
       </section>
 
       <MethodologyInline
-        source={{ name: 'Numbeo', url: 'https://www.numbeo.com/property-investment/' }}
-        release={`Numbeo ${new Date().getFullYear()} snapshot`}
-        dataYear={new Date().getFullYear()}
-        cadence="Monthly refresh on the 19th"
+        source={{ name: 'OECD Housing Prices', url: 'https://data.oecd.org/price/housing-prices.htm' }}
+        release={`${siteConfig.dataVintage}`}
+        dataYear={siteConfig.dataSource.year}
+        cadence="Rebuilt against the most recent ingestion of OECD + named national statistics offices"
         dbUpdated={lastUpdated}
         pageLimits={[topic.methodNote]}
         limits={[
-          'Numbeo uses crowdsourced data — city-level sample sizes vary.',
-          'Price changes are reported in local currency to reduce FX noise.',
+          'Cross-country data has uneven sample sizes; cities below the per-source observation floor are excluded from rankings.',
+          'Price changes are reported in local currency where the underlying source publishes a national index, to reduce FX noise.',
         ]}
         fullHref="/methodology/"
       />
 
       <section className="mb-8">
-        <h2 className="text-lg font-semibold text-slate-900 mb-2">How we update this page</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-2">How this page is updated</h2>
         <p className="text-slate-700 leading-relaxed">
-          This is an evergreen data page — the URL stays stable, but the ranking is regenerated from our live database every month. On the 19th of each month, we pull a fresh Numbeo snapshot, recompute the filters above, and publish a "What changed this month" summary showing which cities joined the list, which dropped off, and how rankings shifted. The underlying methodology does not change month to month — only the data does.
+          This is an evergreen ranking — the URL stays stable, the ranking is regenerated against the most recent ingestion of OECD price-to-income series, US Census ACS housing tables, and named national statistics offices. The underlying methodology does not change between rebuilds — only the data does. The section vintage at the top of the page reflects the latest rebuild date for this surface.
         </p>
       </section>
 

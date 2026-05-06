@@ -168,10 +168,10 @@ export default async function StatePage({ params }: Props) {
       />
       <TrustBlock
         sources={[
-          { name: 'OECD Housing Prices', url: 'https://data.oecd.org/price/housing-prices.htm' },
-          { name: 'Numbeo Property Prices', url: 'https://www.numbeo.com/property-investment/' },
-          { name: 'US Census Bureau', url: 'https://www.census.gov/programs-surveys/acs' },
-          { name: 'Redfin Data Center', url: 'https://www.redfin.com/news/data-center/' },
+          { name: 'Zillow Home Value Index (ZHVI)', url: 'https://www.zillow.com/research/data/' },
+          { name: 'FHFA House Price Index', url: 'https://www.fhfa.gov/data/hpi' },
+          { name: 'US Census Bureau (ACS 5-year)', url: 'https://www.census.gov/programs-surveys/acs/' },
+          { name: 'FRED MORTGAGE30US', url: 'https://fred.stlouisfed.org/series/MORTGAGE30US' },
         ]}
         updated={buildTrustUpdatedLabel()}
         reviewedBy={getReviewedBy()}

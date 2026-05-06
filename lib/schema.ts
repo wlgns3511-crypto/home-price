@@ -1,6 +1,12 @@
 import { siteConfig } from '@/site.config';
 import { getPublisherName, getReviewedAt } from '@/lib/seo';
-import { EDITORIAL_TEAM } from './authorship';
+import {
+  EDITORIAL_TEAM,
+  PUBLISHER,
+  SOURCE_AUTHORITIES,
+  ENTITY_VINTAGE,
+  METHODOLOGY_REVIEWED,
+} from './authorship';
 
 const SITE_NAME = siteConfig.name;
 const SITE_URL = `https://${siteConfig.domain}`;
@@ -56,10 +62,24 @@ export function datasetSchema(name: string, description: string, url: string) {
     name,
     description,
     url: `${SITE_URL}${url}`,
-    creator: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
-    license: 'https://creativecommons.org/publicdomain/zero/1.0/',
-    temporalCoverage: `${siteConfig.dataSource.year}/${siteConfig.dataVintage ?? siteConfig.dataSource.year}`,
-    distribution: { '@type': 'DataDownload', encodingFormat: 'text/html', contentUrl: `${SITE_URL}${url}` },
+    // Editorial team is what reviewed/curated this surface (not the source).
+    reviewedBy: { '@type': 'Organization', name: EDITORIAL_TEAM.name, url: EDITORIAL_TEAM.url },
+    creator: { '@type': 'Organization', name: PUBLISHER.name, url: PUBLISHER.url },
+    publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+    // Actual data providers backing the DB columns referenced by this surface.
+    sourceOrganization: SOURCE_AUTHORITIES.map((s) => ({
+      '@type': 'Organization',
+      name: s.name,
+      url: s.url,
+    })),
+    isBasedOn: SOURCE_AUTHORITIES.map((s) => s.url),
+    temporalCoverage: `${ENTITY_VINTAGE}/${ENTITY_VINTAGE}`,
+    dateModified: METHODOLOGY_REVIEWED,
+    distribution: {
+      '@type': 'DataDownload',
+      encodingFormat: 'text/html',
+      contentUrl: `${SITE_URL}${url}`,
+    },
   };
 }
 

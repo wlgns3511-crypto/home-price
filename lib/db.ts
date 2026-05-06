@@ -1,6 +1,7 @@
 import Database from 'better-sqlite3';
 import path from 'path';
 import { siteConfig } from '@/site.config';
+import type { ClusterInputCity } from './affordability-cluster';
 
 const DB_PATH = path.join(process.cwd(), siteConfig.entity.dbPath);
 const TABLE = siteConfig.entity.tableName;
@@ -47,6 +48,15 @@ export function getAllSlugs() {
 
 export function getSlugsPage(offset: number, limit: number) {
   return getDb().prepare(`SELECT ${SLUG_COL} as slug FROM ${TABLE} LIMIT ? OFFSET ?`).all(limit, offset) as { slug: string }[];
+}
+
+// ── Cluster-rank inputs (for affordability-cluster.ts) ──────
+
+export function getClusterInputs(): ClusterInputCity[] {
+  return getDb().prepare(
+    `SELECT slug, name, country, avg_home_price_usd, median_income_usd, price_to_income_ratio
+     FROM ${TABLE}`
+  ).all() as ClusterInputCity[];
 }
 
 // ── Related Items ───────────────────────────────────────────

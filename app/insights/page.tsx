@@ -32,7 +32,7 @@ export default function InsightsHub() {
       <header className="mb-8">
         <h1 className="text-3xl font-bold text-slate-900 mb-3">Housing Market Insights</h1>
         <p className="text-slate-600 leading-relaxed">
-          Monthly-refreshed data dives on global home prices. Each page is rebuilt on the 19th with a fresh Numbeo snapshot and a "what changed" summary.
+          Five fixed-URL rankings of the global price-to-income, price-to-rent, and 1-year-change distributions in the city DB. Each page is rebuilt against the most recent ingestion of OECD price-to-income series, US Census ACS housing tables, and named national statistics offices.
         </p>
       </header>
 

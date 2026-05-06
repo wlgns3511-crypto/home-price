@@ -1,7 +1,9 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/site.config';
-import { getBySlug, getRelated, getAllSlugs, getSimilarPriceCities, getNationalMedianPrice } from '@/lib/db';
+import { getBySlug, getRelated, getAllSlugs, getSimilarPriceCities, getNationalMedianPrice, getClusterInputs } from '@/lib/db';
+import { rankCluster } from '@/lib/affordability-cluster';
+import { ClusterRankCard } from '@/components/upgrades/ClusterRankCard';
 import { buildDbPageRobots, buildTrustUpdatedLabel, getDbPageGate } from '@/lib/db-page';
 import { breadcrumbSchema, faqSchema, placeSchema } from '@/lib/schema';
 import { formatCurrency, formatPercent, formatNumber } from '@/lib/format';
@@ -136,6 +138,7 @@ export default async function CityPage({ params }: Props) {
 
   const related = getRelated(country, slug, 6);
   const similarPrice = getSimilarPriceCities(price, slug, 5);
+  const clusterRank = rankCluster(getClusterInputs()).get(slug);
 
   const crumbs = [
     { name: 'Home', url: '/' },
@@ -193,24 +196,20 @@ export default async function CityPage({ params }: Props) {
       <TrustBlock
         sources={[
           {
-            name: "Numbeo Property Prices",
-            url: `https://www.numbeo.com/property-investment/in/${encodeURIComponent(name)}/`,
-          },
-          {
-            name: "Census ACS Housing",
-            url: "https://www.census.gov/topics/housing.html",
-          },
-          {
-            name: "Federal Reserve H.15 (mortgage rates)",
-            url: "https://www.federalreserve.gov/releases/h15/",
-          },
-          {
-            name: "Freddie Mac PMMS",
-            url: "https://www.freddiemac.com/pmms",
-          },
-          {
             name: "OECD Housing Prices",
             url: "https://data.oecd.org/price/housing-prices.htm",
+          },
+          {
+            name: "US Census Bureau (ACS 5-year)",
+            url: "https://www.census.gov/programs-surveys/acs/",
+          },
+          {
+            name: "FRED — Federal Reserve Economic Data",
+            url: "https://fred.stlouisfed.org/series/MORTGAGE30US",
+          },
+          {
+            name: "National statistics offices",
+            url: "https://unstats.un.org/unsd/methodology/m49/",
           },
         ]}
         updated={buildTrustUpdatedLabel()}
@@ -247,6 +246,8 @@ export default async function CityPage({ params }: Props) {
         reviewedBy={getReviewedBy()}
         dataVintage={getDataVintageLabel()}
       />
+
+      {clusterRank && <ClusterRankCard rank={clusterRank} cityName={name} />}
 
       {/* ── Key Metrics ────────────────────────────────────── */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -444,15 +445,15 @@ export default async function CityPage({ params }: Props) {
       <AdSlot id="bottom" />
 
       <MethodologyInline
-        source={{ name: 'Numbeo Property Prices', url: `https://www.numbeo.com/property-investment/in/${encodeURIComponent(name)}/` }}
-        release="Crowd-sourced dataset, refreshed monthly"
+        source={{ name: 'OECD Housing Prices', url: 'https://data.oecd.org/price/housing-prices.htm' }}
+        release={c.dataVintage ?? '2026-04 site rebuild'}
         dataYear={c.dataSource.year}
-        cadence="Monthly rebuild from Numbeo + Census ACS + Federal Reserve H.15"
+        cadence="Rebuilt against the most recent ingestion of OECD + Census ACS + FRED + named national statistics offices"
         dbUpdated={siteConfig.dbUpdated ?? getReviewedAt() ?? '2026-04-19'}
         limits={[
-          'Numbeo prices are user-submitted; spot checks against Census ACS and local MLS may diverge 5–15%.',
-          'Mortgage rates reflect Freddie Mac PMMS national averages and not point-lender quotes.',
-          `Currency displayed in USD; local ${String(city.currency)} figures round-tripped at the release date FX rate.`,
+          'International city figures may not match local MLS or appraiser quotes; spot checks against the most recent national-statistics release may diverge 5–15%.',
+          'Mortgage rate is the FRED MORTGAGE30US national benchmark; lender quotes for an individual loan can differ by credit profile, points, and loan size.',
+          `Currency displayed in USD; local ${String(city.currency)} figures round-tripped at the release-date FX rate.`,
         ]}
         pageLimits={[
           `${name} price-to-income uses median household income (${formatCurrency(city.median_income_usd as number)}) — individual households may see materially different ratios.`,
