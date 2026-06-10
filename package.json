@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3099",
-    "build": "next build",
+    "build": "python3 scripts/gen-sitemap.py && next build",
     "start": "next start",
     "lint": "eslint",
     "audit:housing": "npx tsx scripts/audit-housing.ts",
