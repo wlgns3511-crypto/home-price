@@ -104,10 +104,12 @@ export default function AboutPage() {
           prices will go next year&rdquo; pages.
         </li>
         <li>
-          <strong>Per-page LLM commentary.</strong> The per-city and per-state insight
-          paragraphs you see on entity pages are template-fills against numeric thresholds
-          (e.g. &ldquo;PIR &gt; 10 → unaffordable language&rdquo;), not generative prose. The
-          templates are auditable in <code>lib/insights.ts</code>.
+          <strong>Per-page commentary is template-driven.</strong> The per-city and
+          per-state insight paragraphs you see on entity pages are deterministic
+          template-fills against numeric thresholds (e.g. &ldquo;PIR &gt; 10 →
+          unaffordable language&rdquo;), with the Census ACS / FHFA HPI / OECD Housing
+          Prices inputs as the source-of-truth. The templates are auditable in{" "}
+          <code>lib/insights.ts</code>.
         </li>
         <li>
           <strong>Neighborhood-level resolution.</strong> All international data is
@@ -219,6 +221,79 @@ export default function AboutPage() {
         </a>
         ; the {c.name}-specific layer is on{" "}
         <a href="/editorial-policy/">/editorial-policy/</a>.
+      </p>
+
+      <h2>Path C hybrid &mdash; how we cover the world</h2>
+      <p>
+        Housing data has a sharply uneven publishing landscape. The United States Census
+        Bureau publishes the American Community Survey 5-year tables annually with thousands
+        of cross-tabulated fields per state and county; the Federal Housing Finance Agency
+        publishes a quarterly House Price Index back to 1975; FRED publishes the
+        MORTGAGE30US weekly observation back to 1971; HUD publishes Fair Market Rents
+        annually. No equivalent depth exists outside the US. The OECD <em>Housing Prices</em>
+        dataset publishes a price-to-income index, a price-to-rent index, and a real house
+        price index for each member economy, but at country aggregation and at a longer
+        publication lag than the US series. For non-OECD economies we anchor to named
+        national statistics offices.
+      </p>
+      <p>
+        Rather than pretend OECD country aggregates and US Census ACS state cuts are the
+        same data, {c.name} runs a deliberate hybrid (&ldquo;Path C&rdquo;) scope. The US
+        surface is deep, per-state, anchored to Census ACS, FHFA HPI, and FRED. The
+        international surface is broad, per-country, anchored to OECD Housing Prices and to
+        named national statistics offices where OECD does not publish. The two surfaces
+        share an interpretation layer (the Price-to-Income Band, the Mortgage Burden
+        Decoder, the Housing Affordability Verdict) so a reader comparing Sydney to Phoenix
+        sees the same Demographia bucket and the same CFPB tier framing, but the underlying
+        anchored fields differ and each page labels its source on page.
+      </p>
+
+      <h2>Interpretation layer &mdash; PSU 1 lever stack</h2>
+      <p>
+        Numbers alone do not answer the question the visitor came with: <em>is this place
+        affordable for someone like me?</em> {c.name} maintains a deterministic
+        interpretation layer that composes three named, source-anchored levers into a single
+        plain-English verdict on every entity page:
+      </p>
+      <ul>
+        <li>
+          <strong>Price-to-Income Band.</strong> The Demographia 5-band tier
+          (Highly Affordable / Affordable / Moderately / Seriously / Severely Unaffordable),
+          with the verbatim cutoffs ≥ 9.0 / ≥ 5.1 / ≥ 4.1 / ≥ 3.1 / 0 that Demographia has
+          used continuously since the early 2000s. Inputs: home value and median household
+          income. Anchored externally to OECD Housing Prices, the Demographia annual report,
+          and Census ACS B19013 for the US.
+        </li>
+        <li>
+          <strong>Mortgage Burden Decoder.</strong> Computes the implied monthly principal
+          and interest payment under a standard 30-year fixed amortisation at the current
+          FRED MORTGAGE30US weekly rate (US) or the country&apos;s national mortgage rate
+          (international), assuming a 20% downpayment. Compares the resulting share of
+          income against the CFPB Owning a Home 28% / 36% / 43% cutoffs documented in the
+          Qualified Mortgage rule at 12 CFR §1026.43(c).
+        </li>
+        <li>
+          <strong>Housing Affordability Verdict.</strong> A 5-bucket synthesis
+          (Severely &amp; High Burden / Seriously &amp; Stretched / Moderately Balanced /
+          Affordable &amp; Comfortable / Highly Affordable &amp; Undervalued) computed by a
+          fixed priority chain over the PIR band and the CFPB burden tier, plus a 4-paragraph
+          branching strip that names the Demographia anchor, the CFPB citation, the peer
+          cluster rank (from the Demographia bucket cluster lever), and the FHFA HPI 5-year
+          trajectory.
+        </li>
+      </ul>
+      <p>
+        The interpretation layer is purely deterministic. Every paragraph is a
+        template-fill against the named Demographia / CFPB cutoffs and the named Census
+        ACS / FHFA HPI / FRED MORTGAGE30US / OECD Housing Prices source citations; the
+        verbatim source for all three levers is reproduced on{" "}
+        <a href="/methodology/">/methodology/</a>, and each lever has its own hub
+        explainer at{" "}
+        ,{" "}
+        ,{" "}
+        ,
+        and{" "}
+        .
       </p>
 
       <h2>Tone</h2>

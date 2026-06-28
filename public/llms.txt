@@ -1,0 +1,30 @@
+# HomePricePeek
+
+> HomePricePeek
+
+Housing affordability for 51 US states + 35 US cities (deep) and 159 international cities (broad). Anchored to OECD, FHFA, Census ACS, FRED, and national statistics offices.
+
+## Core pages
+- [Methodology and data sources](https://homepricepeek.com/methodology/): how every figure is derived, with primary-source citations
+- [Cities directory](https://homepricepeek.com/city/): browse every city we cover
+- [Rankings](https://homepricepeek.com/rankings/): cities ranked by the key metric
+- [Compare](https://homepricepeek.com/compare/): side-by-side comparison
+- [About and editorial standards](https://homepricepeek.com/about/): authorship and review policy
+
+## Key cities
+- [Alabama](https://homepricepeek.com/state/alabama/)
+- [Monthly Payment](https://homepricepeek.com/state/alabama/monthly-payment/)
+- [Alaska](https://homepricepeek.com/state/alaska/)
+- [Monthly Payment](https://homepricepeek.com/state/alaska/monthly-payment/)
+- [Arizona](https://homepricepeek.com/state/arizona/)
+- [Monthly Payment](https://homepricepeek.com/state/arizona/monthly-payment/)
+- [Arkansas](https://homepricepeek.com/state/arkansas/)
+- [Monthly Payment](https://homepricepeek.com/state/arkansas/monthly-payment/)
+- [California](https://homepricepeek.com/state/california/)
+- [Monthly Payment](https://homepricepeek.com/state/california/monthly-payment/)
+- [Colorado](https://homepricepeek.com/state/colorado/)
+- [Monthly Payment](https://homepricepeek.com/state/colorado/monthly-payment/)
+
+## Data
+- Primary sources: OECD Housing Prices, US Census Bureau (ACS 5-year), FHFA House Price Index, FRED — Federal Reserve Economic Data
+- All figures are derived from these primary sources; see /methodology/ for derivation and vintage.

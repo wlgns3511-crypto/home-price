@@ -3,8 +3,18 @@ Allow: /
 Disallow: /api/
 Disallow: /_next/
 Disallow: /embed/
-Disallow: /es/
-# 2026-04-28 — AdSense scaled-content remediation: /compare/* (4/18 doorway-thin noindex)
+# 2026-06-02 — Compare-Wrap pilot: 5 canonical state pairs restored to indexable
+# (substantial FHFA-HPI state synthesis, not thin scaled-content). A longest-match
+# Allow overrides the blanket /compare/ Disallow for these exact paths only;
+# every other compare URL stays blocked. AdSense crawlers (Mediapartners-Google /
+# AdsBot-Google) stay FULLY blocked from /compare/ below — pilots are indexed for
+# search/AI citation but kept out of the AdSense scaled-content review surface.
+Allow: /compare/state/california-vs-texas/
+Allow: /compare/state/florida-vs-new-york/
+Allow: /compare/state/massachusetts-vs-new-hampshire/
+Allow: /compare/state/new-jersey-vs-pennsylvania/
+Allow: /compare/state/oregon-vs-washington/
+# 2026-04-28 — AdSense scaled-content remediation: all other /compare/* (4/18 doorway-thin noindex)
 Disallow: /compare/
 
 # ── SEO scraper tools (zero user-facing traffic) ──

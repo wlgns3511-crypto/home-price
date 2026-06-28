@@ -1,0 +1,3539 @@
+{
+  "vintage": "2026-01-01",
+  "fetchedAt": "2026-06-01T04:05:14.391Z",
+  "source": "FHFA House Price Index (state, all-transactions) · S&P CoreLogic Case-Shiller U.S. National HPI · redistributed by FRED",
+  "sourceUrl": "https://fred.stlouisfed.org/release?rid=308",
+  "methodology": "State series = FHFA HPI all-transactions index, quarterly cadence (1980 Q1 = 100), one observation per state including DC. National overlay = S&P CoreLogic Case-Shiller CSUSHPISA, monthly seasonally adjusted national index. YoY = current quarter vs 4 quarters prior. Five-year cumulative = current vs 20 quarters prior (10-yr = 40). FHFA state HPI is purchase-only repeat-sales; methodology differs from Case-Shiller (which is national, monthly, and includes a larger metro-weighted basket) — the two are not directly comparable in level, only in directional sign. The pair pages disclose this explicitly: the state quarterly anchor is the FHFA repeat-sales index; Case-Shiller is shown as the national context overlay.",
+  "fredSeriesIds": {
+    "stateStHpiPattern": "{CODE}STHPI (51 series, e.g., CASTHPI, TXSTHPI, DCSTHPI)",
+    "nationalCaseShiller": "CSUSHPISA"
+  },
+  "current": {
+    "stateQuarterDate": "2026-01-01",
+    "stateQuarterLabel": "Q1 2026",
+    "nationalMonth": "2026-03-01",
+    "nationalCsIndex": 331.27,
+    "nationalCsYoyPct": 0.7
+  },
+  "states": {
+    "alabama": {
+      "code": "AL",
+      "currentIndex": 540.51,
+      "yoyPct": 4.2,
+      "fiveYrCumPct": 48.2,
+      "tenYrCumPct": 88.6,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 481.7
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 490.54
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 489.24
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 497.06
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 507.42
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 514.54
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 519.74
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 518.83
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 530.12
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 529.83
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 538.6
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 540.51
+        }
+      ]
+    },
+    "alaska": {
+      "code": "AK",
+      "currentIndex": 495.28,
+      "yoyPct": 7.4,
+      "fiveYrCumPct": 42.5,
+      "tenYrCumPct": 59.3,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 434.18
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 448.63
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 433.7
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 445.85
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 457.33
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 462.34
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 456.18
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 461.27
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 480.61
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 476.55
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 486.25
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 495.28
+        }
+      ]
+    },
+    "arizona": {
+      "code": "AZ",
+      "currentIndex": 734.15,
+      "yoyPct": 2.3,
+      "fiveYrCumPct": 47.7,
+      "tenYrCumPct": 121.5,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 676.35
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 689.56
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 694.73
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 699.41
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 711.45
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 717.07
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 718.04
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 717.31
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 725.49
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 726.56
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 729.91
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 734.15
+        }
+      ]
+    },
+    "arkansas": {
+      "code": "AR",
+      "currentIndex": 478.52,
+      "yoyPct": 3.8,
+      "fiveYrCumPct": 52.3,
+      "tenYrCumPct": 88.3,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 425.86
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 432.67
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 435.54
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 437.19
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 446.97
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 455.55
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 457.59
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 461.06
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 466.09
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 471.34
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 476.5
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 478.52
+        }
+      ]
+    },
+    "california": {
+      "code": "CA",
+      "currentIndex": 976.79,
+      "yoyPct": 1.8,
+      "fiveYrCumPct": 35.9,
+      "tenYrCumPct": 79.6,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 906.24
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 916.71
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 917.04
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 932.24
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 947.01
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 955.87
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 958.47
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 959.78
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 968.26
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 967.57
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 971.2
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 976.79
+        }
+      ]
+    },
+    "colorado": {
+      "code": "CO",
+      "currentIndex": 854.97,
+      "yoyPct": 0.8,
+      "fiveYrCumPct": 34.3,
+      "tenYrCumPct": 92.1,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 825.75
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 825.77
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 817.24
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 830.32
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 843.53
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 845.26
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 845.67
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 848.36
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 852.9
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 851.94
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 857.16
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 854.97
+        }
+      ]
+    },
+    "connecticut": {
+      "code": "CT",
+      "currentIndex": 720.72,
+      "yoyPct": 6.5,
+      "fiveYrCumPct": 60.6,
+      "tenYrCumPct": 87.5,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 596.65
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 608.04
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 617.22
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 620.74
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 650.08
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 664.24
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 668.24
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 676.42
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 696.98
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 706.18
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 709.08
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 720.72
+        }
+      ]
+    },
+    "delaware": {
+      "code": "DE",
+      "currentIndex": 775.22,
+      "yoyPct": 3.9,
+      "fiveYrCumPct": 48.5,
+      "tenYrCumPct": 81.5,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 671.67
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 693.37
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 693.6
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 715.21
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 724.5
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 732.71
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 736.47
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 745.77
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 754.02
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 763.75
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 776.95
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 775.22
+        }
+      ]
+    },
+    "florida": {
+      "code": "FL",
+      "currentIndex": 827.88,
+      "yoyPct": 1.9,
+      "fiveYrCumPct": 55.9,
+      "tenYrCumPct": 126.1,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 775.63
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 792.6
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 791.01
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 801.64
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 808.43
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 813.01
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 821.41
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 812.1
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 817.08
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 815.2
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 822.02
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 827.88
+        }
+      ]
+    },
+    "georgia": {
+      "code": "GA",
+      "currentIndex": 662.12,
+      "yoyPct": 2.5,
+      "fiveYrCumPct": 56,
+      "tenYrCumPct": 117.9,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 597.54
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 607.71
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 609.97
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 619.07
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 630.28
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 637.49
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 639.47
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 646.26
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 651
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 655.21
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 658.47
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 662.12
+        }
+      ]
+    },
+    "hawaii": {
+      "code": "HI",
+      "currentIndex": 950.52,
+      "yoyPct": 1.3,
+      "fiveYrCumPct": 43.5,
+      "tenYrCumPct": 69.8,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 890.13
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 871.95
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 859.29
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 908.41
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 900.04
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 930.27
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 902.71
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 938.21
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 916.44
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 938.23
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 944.96
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 950.52
+        }
+      ]
+    },
+    "idaho": {
+      "code": "ID",
+      "currentIndex": 873.6,
+      "yoyPct": 1.8,
+      "fiveYrCumPct": 46.2,
+      "tenYrCumPct": 153.2,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 796.19
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 811.7
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 803.65
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 821.94
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 829.34
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 867.17
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 845.69
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 858.47
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 863.06
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 867.24
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 863.49
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 873.6
+        }
+      ]
+    },
+    "illinois": {
+      "code": "IL",
+      "currentIndex": 550.96,
+      "yoyPct": 5.8,
+      "fiveYrCumPct": 49.4,
+      "tenYrCumPct": 73.2,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 464.9
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 475.99
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 478.55
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 485.86
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 501.63
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 510
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 512.33
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 520.98
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 534.38
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 542.24
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 544.78
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 550.96
+        }
+      ]
+    },
+    "indiana": {
+      "code": "IN",
+      "currentIndex": 529.95,
+      "yoyPct": 4.3,
+      "fiveYrCumPct": 52.7,
+      "tenYrCumPct": 104.1,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 464.03
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 470.16
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 472.51
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 476.4
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 490.49
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 498.19
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 502.6
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 508.03
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 515.86
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 521.67
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 525.44
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 529.95
+        }
+      ]
+    },
+    "iowa": {
+      "code": "IA",
+      "currentIndex": 462.37,
+      "yoyPct": 3.8,
+      "fiveYrCumPct": 42,
+      "tenYrCumPct": 69.8,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 414.81
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 422.41
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 423.17
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 426.81
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 437.84
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 442.72
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 441.63
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 445.27
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 455.54
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 457.96
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 459.98
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 462.37
+        }
+      ]
+    },
+    "kansas": {
+      "code": "KS",
+      "currentIndex": 481.32,
+      "yoyPct": 3.9,
+      "fiveYrCumPct": 49.3,
+      "tenYrCumPct": 91.5,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 421.1
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 428.83
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 428.33
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 438.78
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 447.75
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 451.24
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 454.67
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 463.11
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 469.35
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 472.92
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 474.28
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 481.32
+        }
+      ]
+    },
+    "kentucky": {
+      "code": "KY",
+      "currentIndex": 579.93,
+      "yoyPct": 4.4,
+      "fiveYrCumPct": 50.2,
+      "tenYrCumPct": 92,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 507.21
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 511.25
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 515.5
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 521.77
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 539.37
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 545.51
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 548.62
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 555.64
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 562.92
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 570.44
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 573.73
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 579.93
+        }
+      ]
+    },
+    "louisiana": {
+      "code": "LA",
+      "currentIndex": 376.99,
+      "yoyPct": 2.9,
+      "fiveYrCumPct": 22.7,
+      "tenYrCumPct": 42.1,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 359.35
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 357.01
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 355.56
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 360.47
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 362.29
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 362.21
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 364.47
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 366.23
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 372.46
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 374.24
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 379.17
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 376.99
+        }
+      ]
+    },
+    "maine": {
+      "code": "ME",
+      "currentIndex": 1035.68,
+      "yoyPct": 4.9,
+      "fiveYrCumPct": 64.9,
+      "tenYrCumPct": 123.1,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 893.25
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 921.63
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 907.32
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 927.32
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 958.03
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 969.65
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 974.66
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 987.36
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 1012.49
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 1021.44
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 1029.41
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 1035.68
+        }
+      ]
+    },
+    "maryland": {
+      "code": "MD",
+      "currentIndex": 720.1,
+      "yoyPct": 3.4,
+      "fiveYrCumPct": 37.8,
+      "tenYrCumPct": 65,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 649.77
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 656.77
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 653.54
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 665.6
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 682.76
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 687.16
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 694.17
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 696.51
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 707.97
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 710.82
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 715.37
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 720.1
+        }
+      ]
+    },
+    "massachusetts": {
+      "code": "MA",
+      "currentIndex": 1312.72,
+      "yoyPct": 4.2,
+      "fiveYrCumPct": 47.8,
+      "tenYrCumPct": 92.5,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 1143.79
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 1167.53
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 1176.36
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 1193.72
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 1229.7
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 1239.24
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 1246.69
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 1259.64
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 1287.7
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 1293.4
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 1302.95
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 1312.72
+        }
+      ]
+    },
+    "michigan": {
+      "code": "MI",
+      "currentIndex": 574.03,
+      "yoyPct": 5,
+      "fiveYrCumPct": 50.8,
+      "tenYrCumPct": 104,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 496.14
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 504.7
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 506.26
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 512.21
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 532.08
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 539.62
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 539.57
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 546.63
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 560.07
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 566.96
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 570
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 574.03
+        }
+      ]
+    },
+    "minnesota": {
+      "code": "MN",
+      "currentIndex": 604.1,
+      "yoyPct": 3.8,
+      "fiveYrCumPct": 36.1,
+      "tenYrCumPct": 77.4,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 556.01
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 558.27
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 552.56
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 559.8
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 575.1
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 579.57
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 579.92
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 582.12
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 596.01
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 599.62
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 599.36
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 604.1
+        }
+      ]
+    },
+    "mississippi": {
+      "code": "MS",
+      "currentIndex": 424.2,
+      "yoyPct": 3.5,
+      "fiveYrCumPct": 42.5,
+      "tenYrCumPct": 68.6,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 376.91
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 380.85
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 392.52
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 386.73
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 398.96
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 405.46
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 406.27
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 409.98
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 414.82
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 418.73
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 423.46
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 424.2
+        }
+      ]
+    },
+    "missouri": {
+      "code": "MO",
+      "currentIndex": 567.45,
+      "yoyPct": 4.4,
+      "fiveYrCumPct": 51.5,
+      "tenYrCumPct": 95.6,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 498.95
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 506.03
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 506.94
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 513.58
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 528.84
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 532.72
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 536.57
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 543.35
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 553
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 556.97
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 559.07
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 567.45
+        }
+      ]
+    },
+    "montana": {
+      "code": "MT",
+      "currentIndex": 817.53,
+      "yoyPct": 2.7,
+      "fiveYrCumPct": 58.6,
+      "tenYrCumPct": 113.2,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 738.96
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 741.85
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 744.98
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 756.27
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 776.29
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 775.12
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 789.34
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 796.36
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 799.69
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 812.58
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 805.83
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 817.53
+        }
+      ]
+    },
+    "nebraska": {
+      "code": "NE",
+      "currentIndex": 545.44,
+      "yoyPct": 4.2,
+      "fiveYrCumPct": 47.8,
+      "tenYrCumPct": 93.2,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 489.88
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 496.81
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 492.12
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 502.41
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 516.83
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 517.19
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 522.41
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 523.38
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 534.32
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 539.76
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 541.45
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 545.44
+        }
+      ]
+    },
+    "nevada": {
+      "code": "NV",
+      "currentIndex": 640.48,
+      "yoyPct": 1.8,
+      "fiveYrCumPct": 42.4,
+      "tenYrCumPct": 116.6,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 578.04
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 591.1
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 588.36
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 604.46
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 615.68
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 619.56
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 624.61
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 629.4
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 634.73
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 628.39
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 637.56
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 640.48
+        }
+      ]
+    },
+    "new-hampshire": {
+      "code": "NH",
+      "currentIndex": 906.43,
+      "yoyPct": 5.3,
+      "fiveYrCumPct": 61.6,
+      "tenYrCumPct": 119.9,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 772.58
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 791.22
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 791.94
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 807.59
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 839.12
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 849.26
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 850.82
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 860.42
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 887.24
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 893.73
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 896.89
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 906.43
+        }
+      ]
+    },
+    "new-jersey": {
+      "code": "NJ",
+      "currentIndex": 947.27,
+      "yoyPct": 5.4,
+      "fiveYrCumPct": 62.3,
+      "tenYrCumPct": 97.3,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 779.05
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 802.13
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 814.58
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 829.71
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 858.75
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 873.17
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 884.69
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 898.88
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 918.87
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 927.57
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 938.64
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 947.27
+        }
+      ]
+    },
+    "new-mexico": {
+      "code": "NM",
+      "currentIndex": 556.35,
+      "yoyPct": 3,
+      "fiveYrCumPct": 46.8,
+      "tenYrCumPct": 88.4,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 496.56
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 510.72
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 508.59
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 514.98
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 527.05
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 532.83
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 538.87
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 539.99
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 551.38
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 550.69
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 553.69
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 556.35
+        }
+      ]
+    },
+    "new-york": {
+      "code": "NY",
+      "currentIndex": 1157.14,
+      "yoyPct": 6.1,
+      "fiveYrCumPct": 51.6,
+      "tenYrCumPct": 95,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 968.62
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 1000.74
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 1002.39
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 1012.92
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 1050.9
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 1071.48
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 1081.32
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 1090.51
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 1126.94
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 1144.5
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 1149.6
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 1157.14
+        }
+      ]
+    },
+    "north-carolina": {
+      "code": "NC",
+      "currentIndex": 702.88,
+      "yoyPct": 2.4,
+      "fiveYrCumPct": 59.3,
+      "tenYrCumPct": 114.9,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 630.59
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 642.82
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 643.08
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 654.36
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 669.27
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 674.78
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 678.63
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 686.23
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 692.75
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 696.77
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 700.77
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 702.88
+        }
+      ]
+    },
+    "north-dakota": {
+      "code": "ND",
+      "currentIndex": 523.26,
+      "yoyPct": 3.8,
+      "fiveYrCumPct": 35,
+      "tenYrCumPct": 49.2,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 469.57
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 475.99
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 473.71
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 477.56
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 488.74
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 497.91
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 496.12
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 504.15
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 514.65
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 525.69
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 521.91
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 523.26
+        }
+      ]
+    },
+    "ohio": {
+      "code": "OH",
+      "currentIndex": 513.93,
+      "yoyPct": 4.8,
+      "fiveYrCumPct": 53.1,
+      "tenYrCumPct": 102.9,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 442.04
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 449.7
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 451.46
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 456.94
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 475.17
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 480.35
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 484.2
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 490.27
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 501.41
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 505.91
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 508.83
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 513.93
+        }
+      ]
+    },
+    "oklahoma": {
+      "code": "OK",
+      "currentIndex": 395.71,
+      "yoyPct": 2.6,
+      "fiveYrCumPct": 44.6,
+      "tenYrCumPct": 76.5,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 359.35
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 364.19
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 363.74
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 371.49
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 373.67
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 379.86
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 383.83
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 385.77
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 391.16
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 389.68
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 396.61
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 395.71
+        }
+      ]
+    },
+    "oregon": {
+      "code": "OR",
+      "currentIndex": 848.51,
+      "yoyPct": 2,
+      "fiveYrCumPct": 31,
+      "tenYrCumPct": 85.1,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 807.66
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 812
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 799.52
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 810.73
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 826.78
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 827.53
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 827.43
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 831.47
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 842.3
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 843
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 843.18
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 848.51
+        }
+      ]
+    },
+    "pennsylvania": {
+      "code": "PA",
+      "currentIndex": 722.56,
+      "yoyPct": 5.3,
+      "fiveYrCumPct": 48.4,
+      "tenYrCumPct": 86.9,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 621.21
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 633.4
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 634.82
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 644.22
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 664.6
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 672.7
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 675.31
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 686.25
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 701.89
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 708.82
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 712.94
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 722.56
+        }
+      ]
+    },
+    "rhode-island": {
+      "code": "RI",
+      "currentIndex": 1039.61,
+      "yoyPct": 4.5,
+      "fiveYrCumPct": 61.3,
+      "tenYrCumPct": 119.3,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 872.24
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 899.95
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 902.96
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 919
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 954.13
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 970.37
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 980.34
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 995.14
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 1015.51
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 1020.95
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 1031.76
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 1039.61
+        }
+      ]
+    },
+    "south-carolina": {
+      "code": "SC",
+      "currentIndex": 717.02,
+      "yoyPct": 3.4,
+      "fiveYrCumPct": 61.8,
+      "tenYrCumPct": 115.2,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 622.46
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 641.4
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 645.16
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 651.48
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 668.71
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 675.13
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 682.82
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 693.22
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 699.66
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 708.3
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 709.9
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 717.02
+        }
+      ]
+    },
+    "south-dakota": {
+      "code": "SD",
+      "currentIndex": 642.33,
+      "yoyPct": 4.2,
+      "fiveYrCumPct": 50.5,
+      "tenYrCumPct": 91.8,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 577.48
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 589.26
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 589.39
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 599.03
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 605.17
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 609.68
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 614.51
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 616.25
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 630.42
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 634.1
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 637.06
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 642.33
+        }
+      ]
+    },
+    "tennessee": {
+      "code": "TN",
+      "currentIndex": 704.14,
+      "yoyPct": 3.5,
+      "fiveYrCumPct": 58.8,
+      "tenYrCumPct": 122.5,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 632.02
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 638.03
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 643.28
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 654.22
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 664.92
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 671.13
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 677.56
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 680.25
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 690.05
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 695.99
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 698.9
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 704.14
+        }
+      ]
+    },
+    "texas": {
+      "code": "TX",
+      "currentIndex": 529.31,
+      "yoyPct": 1.2,
+      "fiveYrCumPct": 41.6,
+      "tenYrCumPct": 91.2,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 500.84
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 506.34
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 502.79
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 509.68
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 515.71
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 517.64
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 521.04
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 522.82
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 524.87
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 526.03
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 527.1
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 529.31
+        }
+      ]
+    },
+    "utah": {
+      "code": "UT",
+      "currentIndex": 858.12,
+      "yoyPct": 3,
+      "fiveYrCumPct": 46.2,
+      "tenYrCumPct": 124.3,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 789.86
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 795.49
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 790.26
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 799.36
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 818.2
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 825.28
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 828.4
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 833.51
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 843.4
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 847.18
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 853.04
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 858.12
+        }
+      ]
+    },
+    "vermont": {
+      "code": "VT",
+      "currentIndex": 885.87,
+      "yoyPct": 3.9,
+      "fiveYrCumPct": 61.7,
+      "tenYrCumPct": 99.5,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 765.06
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 794.92
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 780.31
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 796.38
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 837.94
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 842.39
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 847.26
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 852.69
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 863.73
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 866.51
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 888.47
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 885.87
+        }
+      ]
+    },
+    "virginia": {
+      "code": "VA",
+      "currentIndex": 768.03,
+      "yoyPct": 3.8,
+      "fiveYrCumPct": 48.2,
+      "tenYrCumPct": 83.3,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 674.18
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 683.55
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 684.91
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 698.51
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 721.32
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 726.31
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 732.27
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 740.11
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 753.72
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 758.31
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 763.48
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 768.03
+        }
+      ]
+    },
+    "washington": {
+      "code": "WA",
+      "currentIndex": 1031.17,
+      "yoyPct": 1.7,
+      "fiveYrCumPct": 39.2,
+      "tenYrCumPct": 111.8,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 955.62
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 960.24
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 953.09
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 969.89
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 995.69
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 1001.61
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 1000.05
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 1013.61
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 1024.54
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 1022.12
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 1028.08
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 1031.17
+        }
+      ]
+    },
+    "washington-dc": {
+      "code": "DC",
+      "currentIndex": 1063.59,
+      "yoyPct": 0.9,
+      "fiveYrCumPct": 11.2,
+      "tenYrCumPct": 39,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 1027.98
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 1032.85
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 1018.26
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 1037.07
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 1054.19
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 1044.86
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 1037.44
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 1054.51
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 1045.68
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 1063.22
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 1068.11
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 1063.59
+        }
+      ]
+    },
+    "west-virginia": {
+      "code": "WV",
+      "currentIndex": 361.29,
+      "yoyPct": 4.8,
+      "fiveYrCumPct": 42.9,
+      "tenYrCumPct": 64.7,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 305.48
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 317.72
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 320.54
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 320.3
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 333.35
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 336.32
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 342.87
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 344.69
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 346.2
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 355.45
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 360.9
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 361.29
+        }
+      ]
+    },
+    "wisconsin": {
+      "code": "WI",
+      "currentIndex": 627.66,
+      "yoyPct": 4.9,
+      "fiveYrCumPct": 57.5,
+      "tenYrCumPct": 102.5,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 534.65
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 551.02
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 551.21
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 558.39
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 577.05
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 585.51
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 587.2
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 598.32
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 612.47
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 619.31
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 620.91
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 627.66
+        }
+      ]
+    },
+    "wyoming": {
+      "code": "WY",
+      "currentIndex": 519.43,
+      "yoyPct": 3.5,
+      "fiveYrCumPct": 45.1,
+      "tenYrCumPct": 75.1,
+      "history": [
+        {
+          "quarterDate": "2023-04-01",
+          "quarterLabel": "Q2 2023",
+          "index": 461.54
+        },
+        {
+          "quarterDate": "2023-07-01",
+          "quarterLabel": "Q3 2023",
+          "index": 472.58
+        },
+        {
+          "quarterDate": "2023-10-01",
+          "quarterLabel": "Q4 2023",
+          "index": 465.35
+        },
+        {
+          "quarterDate": "2024-01-01",
+          "quarterLabel": "Q1 2024",
+          "index": 469.64
+        },
+        {
+          "quarterDate": "2024-04-01",
+          "quarterLabel": "Q2 2024",
+          "index": 483.2
+        },
+        {
+          "quarterDate": "2024-07-01",
+          "quarterLabel": "Q3 2024",
+          "index": 488.52
+        },
+        {
+          "quarterDate": "2024-10-01",
+          "quarterLabel": "Q4 2024",
+          "index": 491.5
+        },
+        {
+          "quarterDate": "2025-01-01",
+          "quarterLabel": "Q1 2025",
+          "index": 501.64
+        },
+        {
+          "quarterDate": "2025-04-01",
+          "quarterLabel": "Q2 2025",
+          "index": 509.04
+        },
+        {
+          "quarterDate": "2025-07-01",
+          "quarterLabel": "Q3 2025",
+          "index": 509.61
+        },
+        {
+          "quarterDate": "2025-10-01",
+          "quarterLabel": "Q4 2025",
+          "index": 511.17
+        },
+        {
+          "quarterDate": "2026-01-01",
+          "quarterLabel": "Q1 2026",
+          "index": 519.43
+        }
+      ]
+    }
+  }
+}

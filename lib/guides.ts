@@ -1,263 +1,47 @@
-/**
- * Long-form evergreen guides — global housing market methodology.
- * Hub pages that link deep into the city/country/compare matrix.
- * Each guide targets a high-intent keyword and answers a complete question
- * with domain-specific authority.
- */
-
+// lib/guides.ts — stub after /guide/* HCU kill (2026-05-27).
+// Real guide content + routes removed; this stub keeps external imports
+// (sitemap loops, orphan components, etc.) type-safe by returning an empty
+// array. All Guide fields are optional so any orphaned consumer that reads
+// guide.readingTime / .lastModified / .content compiles. At runtime the
+// array is empty so those accesses never execute.
 export interface Guide {
   slug: string;
   title: string;
   description: string;
-  intro: string; // HTML
-  sections: Array<{ heading: string; html: string }>;
-  faqs: Array<{ question: string; answer: string }>;
-  category: string;
-  updatedAt: string;
+  intro?: string;
+  sections?: Array<{ heading: string; html: string }>;
+  faqs?: Array<{ question: string; answer: string }>;
+  category?: string;
+  updatedAt?: string;
+  // Optional fields observed in portfolio orphan-component consumers:
+  date?: string;
+  publishedAt?: string;
+  lastModified?: string;
+  content?: string;
+  readingTime?: number;
+  tags?: string[];
+  level?: string;
+  excerpt?: string;
+  image?: string;
+  author?: string;
+  metaDesc?: string;
+  oneLine?: string;
+  screener?: string;
+  name?: string;
+  categoryLabel?: string;
+  titleLabel?: string;
 }
 
-const u = '2026-04-10';
-
-export const guides: Guide[] = [
-  {
-    slug: 'price-to-income-ratio-housing-bubble-indicator',
-    title: 'Price-to-Income Ratio: The One Metric That Predicts Housing Bubbles',
-    description: 'How economists use the price-to-income ratio to identify overheated markets. Historical bubbles, global benchmarks, and how to read this number for any city.',
-    category: 'Market Fundamentals',
-    updatedAt: u,
-    intro: `<p>The price-to-income ratio is the single most reliable number for judging whether a housing market is overheated, fairly priced, or a rare bargain. It takes the median home price in a city and divides it by the median annual household income. A ratio of 3 means a typical home costs three years of typical income before tax. That simple number has flagged every major housing bubble of the last 40 years, months or years before prices actually broke.</p><p>This guide explains what the ratio actually measures, the thresholds that matter, which cities are most overheated today, and — critically — the limitations that mean you should never rely on it alone.</p>`,
-    sections: [
-      {
-        heading: 'What the ratio actually measures',
-        html: `<p>The price-to-income ratio, sometimes called the "median multiple," is the cleanest proxy for how much of a household's lifetime earnings go toward shelter. Unlike monthly affordability metrics (which change with interest rates), the ratio compares two relatively stable, comparable numbers across cities and countries.</p><p>The formula is deliberately simple:</p><p><code>Price-to-Income Ratio = Median Home Price ÷ Median Household Income</code></p><p>A ratio of 3 in a city where median household income is $60,000 implies a typical home costs about $180,000. A ratio of 10 in the same city implies a $600,000 home for the same family — which tells you, without even checking mortgage rates, that ownership is out of reach for typical residents. The ratio strips away the noise of mortgage products, down payment schemes, and monthly-payment illusions.</p>`,
-      },
-      {
-        heading: 'The thresholds economists actually use',
-        html: `<p>The Demographia International Housing Affordability Survey, which has tracked English-speaking markets since 2004, uses these bands:</p><ul><li><strong>Affordable:</strong> 3.0 or less — typical in most US Sun Belt cities, parts of Germany, and smaller European cities.</li><li><strong>Moderately unaffordable:</strong> 3.1 to 4.0 — common in mid-sized US metros and secondary European capitals.</li><li><strong>Seriously unaffordable:</strong> 4.1 to 5.0 — the warning zone. Most major US coastal cities sit here.</li><li><strong>Severely unaffordable:</strong> 5.1 and above — households cannot access homeownership through income alone; inherited wealth or rapid price appreciation becomes the only path.</li></ul><p>The OECD and IMF track the ratio differently (indexed to a long-term average rather than absolute thresholds), but the direction is the same: when the ratio exceeds the 20-year average by more than 20 percent, bubble risk rises sharply.</p>`,
-      },
-      {
-        heading: 'Historical bubbles the ratio flagged early',
-        html: `<p>The ratio is not a perfect oracle, but it has pre-warned every major housing correction in the last four decades:</p><ul><li><strong>Japan, 1989:</strong> Central Tokyo reached an estimated price-to-income ratio above 18. The market fell for the next 20 years.</li><li><strong>Ireland, 2006:</strong> Dublin hit roughly 10. By 2012, prices had fallen more than 50 percent from peak.</li><li><strong>United States, 2006:</strong> The national ratio reached 5.5, nearly double its 30-year average of about 3. Peak-to-trough correction: 27 percent.</li><li><strong>Spain, 2007:</strong> Coastal cities exceeded 8. Prices fell 40 percent over the following six years.</li></ul><p>In every case, the ratio had been flashing red for 18 to 36 months before the correction actually began. The lag is long because housing markets are sticky on the way down — sellers anchor to recent peak prices and refuse to cut, creating a period of frozen transaction volume before prices finally move.</p>`,
-      },
-      {
-        heading: 'Today&apos;s most overheated markets',
-        html: `<p>As of the latest published data, a handful of global cities dominate the top of the affordability-stress list:</p><ul><li><strong>Hong Kong:</strong> consistently the world&apos;s most unaffordable at ratios around 20, driven by land scarcity and mainland capital inflows.</li><li><strong>Sydney and Melbourne:</strong> both in the 12 to 14 range, elevated by investor-led demand and foreign buyer activity.</li><li><strong>Vancouver and Toronto:</strong> 12 to 13, reflecting foreign ownership pressure and supply constraints.</li><li><strong>Auckland:</strong> around 11, in the top tier for more than a decade.</li><li><strong>London:</strong> around 9 citywide, though inner boroughs exceed 15.</li></ul><p>By contrast, cities in the US Midwest and parts of Eastern Europe often sit at ratios of 3 to 4 — mathematically affordable but often reflecting slower job markets. You can see current values for any city in our <a href="/city/">city database</a> or compare two markets directly in the <a href="/compare/">comparison tool</a>.</p>`,
-      },
-      {
-        heading: 'Why the ratio is not a complete answer',
-        html: `<p>The ratio has three blind spots you need to account for before using it to make a decision:</p><ol><li><strong>It ignores interest rates.</strong> A ratio of 5 at 3 percent mortgage rates is more affordable monthly than a ratio of 4 at 8 percent. Japan's ratios look less extreme when you factor in its near-zero borrowing costs.</li><li><strong>It uses median income, which hides inequality.</strong> In cities with a bifurcated economy (tech wealth above, service wages below), the median misleads. The relevant denominator for most buyers is the income of the bottom 60 percent of households, not the median.</li><li><strong>It doesn&apos;t capture transaction costs or ownership overhead.</strong> A city with 2 percent property taxes and 1 percent annual maintenance is far less affordable over time than its ratio suggests. See our guide on <a href="/guide/rent-vs-buy-5-percent-rule/">the 5% rule</a> for how to fold these costs into a buy decision.</li></ol>`,
-      },
-      {
-        heading: 'How to use the ratio in your own decision',
-        html: `<p>Treat the price-to-income ratio as a first-pass filter, not a final answer. A practical workflow:</p><ol><li><strong>Screen out severely unaffordable markets</strong> unless you have inheritance, co-investment, or a specific reason (job opportunity, quality of life) to stay. Ratios above 8 almost always mean the math does not work on salary alone.</li><li><strong>Among affordable-to-moderately-unaffordable markets</strong>, compare the ratio against the same city's 15-year average. A city at 4 that used to average 3 is overheated relative to itself. A city at 5 that has averaged 5 for a decade is stable, not frothy.</li><li><strong>Cross-check against rent yields.</strong> If the price-to-income ratio is high but rent yields are also normal (5–6 percent), the market is pricing in future rent growth. If rent yields are low (under 3 percent), buyers are betting on capital appreciation alone — the classic bubble signature.</li></ol><p>Use the <a href="/rankings/">affordability rankings</a> to find cities whose ratios are well below their regional peers — those are the markets worth investigating further.</p>`,
-      },
-    ],
-    faqs: [
-      { question: 'What is a good price-to-income ratio for buying a home?', answer: 'A ratio at or below 3 is considered affordable by international standards, meaning a typical home costs three years of typical household income. Between 3 and 4 is moderately unaffordable. Above 5 is classified as severely unaffordable, and above 8 typically means the market relies on inherited wealth or leveraged investment rather than salary-based buying.' },
-      { question: 'Does the price-to-income ratio work for individual buyers or only for cities?', answer: 'It works for both, but with a twist. For an individual buyer, use your own household income (not the city median). If the home you want costs more than 4 to 5 times your gross household income, you are stretching, regardless of what the city average looks like.' },
-      { question: 'Why do some expensive cities have low ratios and vice versa?', answer: 'Because the ratio depends on both variables. A wealthy tech city can have high absolute prices but a reasonable ratio if incomes are also high. A poor region can have low absolute prices but an elevated ratio if wages are even lower. This is exactly why the ratio is more useful than raw prices.' },
-      { question: 'How often is this data updated?', answer: 'Most authoritative sources (OECD, Eurostat, Demographia) publish annually, with a 6 to 12 month lag. National statistics offices often release quarterly data. We refresh our database on the schedule of the underlying source for each country.' },
-      { question: 'Can the ratio stay elevated for years without a crash?', answer: 'Yes. Hong Kong has sustained ratios above 15 for more than a decade. A high ratio signals risk, not timing. Markets correct when a catalyst arrives (interest rate shock, policy change, recession) — the ratio tells you which markets will fall hardest when the catalyst comes.' },
-      { question: 'Should I use median household income or individual income?', answer: 'Household income, always. Most homes are bought by couples or families pooling earnings. Individual income will overstate unaffordability in most developed markets and understate it in markets with lower household formation.' },
-      { question: 'How does the ratio compare to the price-to-rent ratio?', answer: 'They measure different things. Price-to-income measures whether residents can afford to buy at all. Price-to-rent measures whether buying is a better deal than renting at current prices. A healthy market has both ratios in line with historical norms. A bubble typically shows both stretched simultaneously.' },
-    ],
-  },
-  {
-    slug: 'compare-home-prices-across-countries',
-    title: 'How to Compare Home Prices Across Countries Without Getting Fooled',
-    description: 'PPP vs nominal exchange rates, square meter versus square foot conversions, and the hidden transaction costs that distort cross-border price comparisons. A practical methodology.',
-    category: 'Methodology',
-    updatedAt: u,
-    intro: `<p>When you read "the average home in Lisbon costs €300,000 versus $450,000 in Austin," you are looking at two numbers that are barely comparable. Different currencies, different units (square meters versus square feet), different what-is-included definitions (gross versus net living area), different transaction cost structures, and different tax treatments. Getting this wrong can cost you six figures when you move or invest internationally.</p><p>This guide walks through the five corrections you must apply to make any cross-country home price comparison meaningful, with real numbers from major markets.</p>`,
-    sections: [
-      {
-        heading: 'Start with price per square meter, not total price',
-        html: `<p>Total home prices are almost meaningless across borders because housing stock size varies enormously. A "typical" home in Tokyo is around 65 square meters. In the United States, the median new-build is about 200 square meters. Comparing the total price tells you nothing about the underlying market — you are comparing a studio to a mansion.</p><p>The only honest comparison is <strong>price per square meter</strong> (or price per square foot in US/UK data). This isolates the cost of space itself from the cultural preference for smaller or larger homes.</p><p>Quick conversion: <strong>1 square meter = 10.764 square feet</strong>. A price of $500 per square foot equals roughly $5,382 per square meter. Our <a href="/compare/">compare tool</a> automatically converts between the two units so you can place any two cities on the same axis.</p>`,
-      },
-      {
-        heading: 'Nominal exchange rates lie — use PPP for long-term comparisons',
-        html: `<p>If you convert a European price to dollars using today&apos;s exchange rate, you are capturing currency volatility, not housing affordability. The euro can swing 20 percent against the dollar in 18 months without a single home changing hands.</p><p>For meaningful long-term comparisons, use <strong>Purchasing Power Parity (PPP)</strong> conversions published by the OECD and IMF. PPP asks: how many units of local currency does it take to buy the same basket of goods in each country? That rate, applied to home prices, gives you a real-purchasing-power comparison that does not whipsaw with forex markets.</p><p>Example: the nominal dollar price of a Paris apartment in early 2022 was different from the price six months later only because of EUR/USD moves. The PPP-adjusted price was nearly identical. If you are deciding where to live or invest for the long run, PPP is the number that matters.</p>`,
-      },
-      {
-        heading: 'Beware of different "what counts as living area" definitions',
-        html: `<p>Countries measure living space differently, and the differences are large enough to distort price-per-meter comparisons by 10 to 20 percent.</p><ul><li><strong>France (Loi Carrez):</strong> only counts rooms with ceiling height above 1.80 meters. Attics and basements typically excluded. Terraces and balconies not counted.</li><li><strong>Germany (Wohnfläche):</strong> counts balconies at 25 to 50 percent, low-ceiling rooms at 50 percent. Gross internal area.</li><li><strong>United States:</strong> "gross living area" typically excludes basements (even finished) from the headline figure but includes them in "total square footage." The difference can be 30 percent.</li><li><strong>Japan:</strong> uses exclusive floor area (専有面積) which excludes balconies and shared walls. Sometimes listed in <em>tsubo</em> (1 tsubo ≈ 3.3 m²).</li><li><strong>United Kingdom:</strong> internal floor area, but older listings may use "square foot" without specifying gross or net.</li></ul><p>When comparing across countries, always verify the measurement standard. A French apartment at €8,000 per m² under Loi Carrez is materially more expensive than a German apartment at €8,000 per m² Wohnfläche, because the German figure includes space the French standard excludes.</p>`,
-      },
-      {
-        heading: 'Transaction costs can add 15 percent to the real price',
-        html: `<p>The headline sticker price is only the beginning. Transaction costs — stamp duties, notary fees, registration taxes, agent commissions — vary from about 2 percent in efficient markets to over 15 percent in inefficient ones. These are real costs you pay on top of the purchase price, and they differ wildly:</p><ul><li><strong>Germany:</strong> 9 to 12 percent total (3.5 to 6.5 percent land transfer tax depending on state, 1.5 percent notary, 3 to 7 percent agent).</li><li><strong>France:</strong> 7 to 8 percent for existing homes (notaire fees), 2 to 3 percent for new construction.</li><li><strong>United Kingdom:</strong> Stamp Duty Land Tax is progressive, reaching 12 percent on the portion above £1.5 million. Second-home buyers pay an additional 3 percent.</li><li><strong>Japan:</strong> roughly 7 to 10 percent (real estate acquisition tax 3 percent, registration tax 2 percent, agent 3 percent plus consumption tax).</li><li><strong>United States:</strong> 2 to 5 percent closing costs, with significant state variation.</li><li><strong>Singapore:</strong> Buyer&apos;s Stamp Duty 1 to 6 percent, plus Additional Buyer&apos;s Stamp Duty up to 60 percent for foreign buyers.</li></ul><p>See our dedicated <a href="/guide/transaction-fees-by-country/">country-by-country transaction cost guide</a> for the full breakdown. The point for comparison purposes: a German home at €300,000 costs you about €330,000 all-in, while a French home at €300,000 costs you about €324,000, and a US home at $330,000 costs you about $340,000. Same sticker, different real cost.</p>`,
-      },
-      {
-        heading: 'Ongoing costs vary more than purchase prices',
-        html: `<p>Even after you buy, annual ownership costs differ by an order of magnitude across countries:</p><ul><li><strong>Property tax as percent of home value:</strong> Luxembourg 0.1%, France 1.0%, Germany 0.3%, UK (council tax, not value-based) varies, US varies by state from 0.3% (Hawaii) to 2.3% (New Jersey).</li><li><strong>Maintenance charges for apartments:</strong> France and Germany commonly run €2 to €4 per square meter per month. Singapore condo fees can exceed SGD 0.50 per square foot per month.</li><li><strong>Insurance:</strong> mandatory in France and Germany, often around 0.3 to 0.5 percent of value annually. Much lower in many Asian markets.</li></ul><p>A home that looks 20 percent cheaper in City A versus City B may actually be more expensive to own over ten years if annual ownership costs are double. The only honest comparison is total cost over an intended holding period — see our <a href="/guide/rent-vs-buy-5-percent-rule/">rent versus buy guide</a> for the full calculation framework.</p>`,
-      },
-      {
-        heading: 'A six-step comparison checklist',
-        html: `<ol><li><strong>Convert to price per square meter</strong> (not total price). Use the Carrez / Wohnfläche / gross-living-area standard consistently.</li><li><strong>Adjust to PPP</strong>, not nominal exchange rate, for long-term comparisons.</li><li><strong>Add transaction costs</strong> specific to each country to the sticker price.</li><li><strong>Factor in annual ownership costs</strong> (taxes, maintenance, insurance) over your intended holding period.</li><li><strong>Account for any foreign-buyer restrictions or surcharges</strong> — these can add 10 to 30 percent on top of base transaction costs in Canada, Australia, New Zealand, and Singapore.</li><li><strong>Sanity-check against local incomes</strong> using the <a href="/guide/price-to-income-ratio-housing-bubble-indicator/">price-to-income ratio</a>. If your own income is well below local median, you are likely overpaying even when the international comparison looks favorable.</li></ol>`,
-      },
-    ],
-    faqs: [
-      { question: 'Should I use today\'s exchange rate or PPP to compare prices?', answer: 'PPP for any comparison you care about for more than a few months. Nominal exchange rates swing with forex markets and have nothing to do with underlying housing affordability. PPP-adjusted prices are the standard used by the OECD, IMF, and serious real estate researchers.' },
-      { question: 'Why are European homes smaller than American homes at similar prices?', answer: 'Urban land scarcity, different construction norms, and historical building stock. European cities were built before cars, so land near the center is scarce and expensive. US suburbs were planned around highways, making large lots cheaper. Always compare price per square meter, not total price.' },
-      { question: 'What is the most reliable source for global home price data?', answer: 'The OECD Housing Prices dataset, the BIS Residential Property Price database, and Eurostat all publish standardized cross-country data. Each has limitations (coverage varies by country, lag times differ). Our data combines these with national statistics offices for the most complete picture.' },
-      { question: 'Do foreign buyers pay the same price as locals?', answer: 'Often no. Australia, Canada, New Zealand, and Singapore all have additional taxes or restrictions for foreign buyers, which can add 8 to 60 percent on top of normal transaction costs. Some countries (Switzerland, Denmark) effectively prohibit foreign ownership of primary residences.' },
-      { question: 'How do I convert price per square foot to price per square meter?', answer: 'Multiply price per square foot by 10.764. So $500 per square foot equals $5,382 per square meter. Our comparison tool does this automatically.' },
-      { question: 'Why do transaction costs vary so much between countries?', answer: 'Different tax systems. Germany funds states via land transfer tax, so rates are high. The US funds local government via annual property tax, so closing costs are lower but ongoing costs are higher. Neither is cheaper overall — they just shift when you pay.' },
-    ],
-  },
-  {
-    slug: 'transaction-fees-by-country',
-    title: 'The True Cost of Buying Abroad: Transaction Fees by Country',
-    description: 'Stamp duties, notary fees, agent commissions, and foreign buyer surcharges for the 15 most popular countries. What the sticker price hides when you buy a home internationally.',
-    category: 'International Buying',
-    updatedAt: u,
-    intro: `<p>The sticker price of a home is rarely what you actually pay. In most countries, stamp duties, notary fees, land registration charges, and agent commissions add between 5 and 15 percent on top of the purchase price. For foreign buyers, additional surcharges can push the real cost 20 to 60 percent above the listing. This guide breaks down the total transaction costs in the 15 most popular countries for international property buyers, with current rates and practical notes on how each system works.</p>`,
-    sections: [
-      {
-        heading: 'United States: closing costs are relatively low, but watch the agent fee',
-        html: `<p>US transaction costs for buyers are typically 2 to 5 percent of the purchase price. Components:</p><ul><li><strong>Loan origination fees:</strong> 0.5 to 1 percent of the loan amount if financing.</li><li><strong>Title insurance:</strong> 0.5 to 1 percent, protects against title defects.</li><li><strong>Appraisal and inspection:</strong> $400 to $800 combined.</li><li><strong>Transfer tax:</strong> 0 to 1 percent depending on state. Most US states charge modest fees; New York, New Jersey, and Pennsylvania are higher.</li><li><strong>Recording and escrow:</strong> varies, usually under $1,000.</li></ul><p>Traditionally the <strong>agent commission of 5 to 6 percent</strong> was paid by the seller, so buyers didn&apos;t feel it. Following the 2024 NAR settlement, buyers now negotiate and often pay their own agent directly, adding 2 to 3 percent to buyer-side costs. Always ask upfront who is paying the buyer&apos;s agent.</p>`,
-      },
-      {
-        heading: 'United Kingdom: stamp duty is the biggest variable',
-        html: `<p>UK buyers face Stamp Duty Land Tax (SDLT), which is progressive and can be substantial:</p><ul><li><strong>£0 to £250,000:</strong> 0 percent (primary residence)</li><li><strong>£250,001 to £925,000:</strong> 5 percent</li><li><strong>£925,001 to £1.5 million:</strong> 10 percent</li><li><strong>Above £1.5 million:</strong> 12 percent</li></ul><p>Second-home buyers add 3 percent to every band, and non-UK residents add another 2 percent. A £2 million home bought by a foreign second-home buyer pays SDLT of approximately £254,000, or about 12.7 percent of the price.</p><p>Other costs: legal fees (£1,000 to £3,000), survey (£400 to £1,500), land registry (£40 to £910 sliding scale). Agent commission is typically paid by the seller.</p>`,
-      },
-      {
-        heading: 'France: "frais de notaire" bundles everything into one big number',
-        html: `<p>French transaction costs are famously called "notary fees" but the notaire&apos;s own cut is only a fraction. The total breaks down as:</p><ul><li><strong>Transfer taxes (droits de mutation):</strong> about 5.8 percent for older homes, the single biggest component.</li><li><strong>Notaire fee:</strong> 0.8 to 1.0 percent on a regressive scale.</li><li><strong>Disbursements and registration:</strong> about 0.3 to 0.5 percent.</li></ul><p>Total: <strong>7 to 8 percent for existing homes</strong>, or 2 to 3 percent for new construction (where VAT at 20 percent has already been paid on the build). Agent commission of 4 to 8 percent is typically built into the asking price, so the buyer doesn&apos;t see it separately.</p>`,
-      },
-      {
-        heading: 'Germany: high transfer tax, agent fee split since 2020',
-        html: `<p>Germany has some of the highest transaction costs in Europe:</p><ul><li><strong>Grunderwerbsteuer (land transfer tax):</strong> 3.5 percent (Bavaria) to 6.5 percent (NRW, Brandenburg, Saarland, Schleswig-Holstein, Thuringia). Most states charge 5 to 6.5 percent.</li><li><strong>Notary and land registry:</strong> 1.5 to 2 percent combined, mandatory.</li><li><strong>Agent commission (Maklergebühr):</strong> typically 3.57 percent to each side (buyer and seller) since a 2020 law split commissions 50/50 between buyer and seller. Previously buyers often paid the full 7.14 percent.</li></ul><p>Total for buyers: <strong>9 to 12 percent</strong>. Plan for 10 percent as a safe default when budgeting.</p>`,
-      },
-      {
-        heading: 'Japan: spread across multiple small fees',
-        html: `<p>Japan&apos;s transaction costs are moderate but fragmented across many line items:</p><ul><li><strong>Real estate acquisition tax (不動産取得税):</strong> 3 percent of assessed value, paid to the prefecture a few months after purchase.</li><li><strong>Registration and license tax:</strong> 2 percent of assessed value for land, 0.3 percent for a new building.</li><li><strong>Agent commission:</strong> up to 3 percent plus ¥60,000, plus 10 percent consumption tax.</li><li><strong>Stamp duty:</strong> ¥10,000 to ¥60,000 depending on contract value.</li><li><strong>Judicial scrivener (司法書士) fees:</strong> ¥100,000 to ¥200,000 for title transfer paperwork.</li></ul><p>Total: <strong>7 to 10 percent</strong>. Foreign buyers face no restrictions on residential purchases and pay the same rates as locals, one of the more open major markets.</p>`,
-      },
-      {
-        heading: 'Canada: provincial variation and foreign buyer taxes',
-        html: `<p>Canadian transaction costs vary significantly by province:</p><ul><li><strong>Land transfer tax:</strong> 0.5 to 2 percent federally, with Ontario and British Columbia adding their own progressive LTT on top. Toronto has a municipal LTT that doubles the provincial charge.</li><li><strong>Legal fees:</strong> CAD 1,500 to 3,000.</li><li><strong>Title insurance and disbursements:</strong> CAD 500 to 1,500.</li></ul><p><strong>Foreign buyer surcharges:</strong> British Columbia levies an additional 20 percent property transfer tax on foreign buyers in Vancouver. Ontario levies a 25 percent Non-Resident Speculation Tax across the province. Combined with standard fees, a foreign buyer in Vancouver pays roughly 23 to 25 percent above the purchase price in transaction costs alone.</p>`,
-      },
-      {
-        heading: 'Australia: stamp duty plus foreign surcharges can reach 20 percent',
-        html: `<p>Australian stamp duty is state-based and progressive, typically 3 to 5.5 percent of purchase price for primary residences. Foreign buyers face:</p><ul><li><strong>FIRB (Foreign Investment Review Board) application fee:</strong> AUD 14,700 to 140,000+ depending on property value.</li><li><strong>Foreign surcharge duty:</strong> 8 percent additional in NSW, 8 percent in Victoria, 7 percent in Queensland.</li><li><strong>Annual land tax foreign surcharge:</strong> up to 4 percent per year in some states.</li></ul><p>A foreign buyer in Sydney pays roughly 12 to 15 percent in upfront transaction costs, plus annual surcharges. Foreign buyers also cannot purchase existing established dwellings except under narrow exemptions — most are restricted to new construction.</p>`,
-      },
-      {
-        heading: 'Singapore: the world\'s steepest foreign buyer surcharge',
-        html: `<p>Singapore levies <strong>Buyer&apos;s Stamp Duty (BSD)</strong> on all purchases: 1 to 6 percent progressive, with the top rate applying above SGD 1.5 million. On top of this, the Additional Buyer&apos;s Stamp Duty (ABSD) hits non-residents hard:</p><ul><li>Singapore citizens buying second property: 20 percent</li><li>Permanent residents buying first property: 5 percent</li><li><strong>Foreigners buying any residential property: 60 percent</strong></li></ul><p>A foreign buyer purchasing a SGD 2 million condo in Singapore pays BSD of about SGD 65,000 plus ABSD of SGD 1.2 million — total transaction tax alone exceeds SGD 1.26 million, or 63 percent of the purchase price. This policy has effectively frozen foreign residential investment in Singapore since 2023.</p>`,
-      },
-      {
-        heading: 'Portugal, Spain, Italy: friendlier Mediterranean options',
-        html: `<p>Southern European countries have historically been more foreign-buyer friendly, though rules have tightened recently:</p><ul><li><strong>Portugal:</strong> IMT (transfer tax) 0 to 7.5 percent progressive, plus 0.8 percent stamp duty, notary 1 to 2 percent, legal 1 to 2 percent. Total 5 to 10 percent. Portugal ended its Golden Visa residential real estate pathway in 2023.</li><li><strong>Spain:</strong> transfer tax 6 to 10 percent depending on region (resale) or 10 percent VAT (new), plus 1 to 2 percent notary and legal. Total 8 to 12 percent.</li><li><strong>Italy:</strong> registration tax 2 percent for primary residence or 9 percent for second home, plus about 1 to 2 percent notary and agent. Non-resident buyers of second homes face the 9 percent rate plus additional fees — total 12 to 15 percent.</li></ul>`,
-      },
-      {
-        heading: 'A quick planning table',
-        html: `<p>As a rough budgeting guide, allocate these total transaction costs on top of the sticker price:</p><ul><li><strong>US:</strong> 3 to 5 percent (buyer)</li><li><strong>UK (primary):</strong> 3 to 8 percent + progressive SDLT above £250k</li><li><strong>UK (foreign second home):</strong> 10 to 15 percent</li><li><strong>France (existing):</strong> 7 to 8 percent</li><li><strong>Germany:</strong> 9 to 12 percent</li><li><strong>Japan:</strong> 7 to 10 percent</li><li><strong>Canada (local):</strong> 2 to 4 percent</li><li><strong>Canada (foreign, Vancouver/Toronto):</strong> 23 to 28 percent</li><li><strong>Australia (local):</strong> 4 to 6 percent</li><li><strong>Australia (foreign):</strong> 12 to 18 percent plus FIRB</li><li><strong>Singapore (foreign):</strong> 63 to 65 percent</li><li><strong>Spain/Portugal/Italy:</strong> 8 to 15 percent</li></ul><p>Use these as a starting point for feasibility, then get country-specific legal advice before signing anything. Transaction cost rules change frequently, especially for foreign buyers.</p>`,
-      },
-    ],
-    faqs: [
-      { question: 'Are transaction costs negotiable?', answer: 'Some are, most are not. Stamp duty, transfer tax, and notary fees are set by law. Agent commission is sometimes negotiable, especially in the US and UK. Legal fees can be shopped around. Plan for the non-negotiable costs as fixed and negotiate only the service fees.' },
-      { question: 'Which country has the lowest buying costs?', answer: 'Among developed markets, the United States has some of the lowest upfront costs (2 to 5 percent) but higher annual property taxes. Switzerland and some Nordic countries also have moderate transaction costs but often restrict foreign ownership. No market has both low upfront costs and low ongoing costs.' },
-      { question: 'Do I pay VAT on a home purchase?', answer: 'Only on new construction in most European countries. Existing homes are exempt from VAT but subject to transfer taxes instead. France, for example, charges about 2 to 3 percent total on new builds (since VAT is included in the price) versus 7 to 8 percent on existing homes.' },
-      { question: 'Can foreign buyers avoid the surcharges by using a local entity?', answer: 'Rarely successful anymore. Most countries with foreign buyer taxes (Canada, Australia, Singapore, UK) have closed the corporate ownership loophole. Using a local company typically triggers equivalent or higher corporate taxes on ownership and transfer. Get specific legal advice — do not assume a structure will work.' },
-      { question: 'What about ongoing costs after purchase?', answer: 'Very different from purchase costs. US homes carry higher annual property taxes (1 to 2.5 percent of value) but lower transaction costs. European and Asian homes generally have lower annual taxes but higher transaction costs. The break-even depends on how long you hold the property — see our rent vs buy guide.' },
-      { question: 'How much should I budget as a total buffer?', answer: 'Add the country-specific transaction cost percentage to the sticker price, then add another 1 to 2 percent for unexpected items (surveys, minor repairs, furniture). For foreign buyers in high-surcharge markets, verify the exact surcharge rate with a local lawyer — rates have changed multiple times in the last three years in Canada, Australia, and Singapore.' },
-    ],
-  },
-  {
-    slug: 'rent-vs-buy-5-percent-rule',
-    title: 'Rent vs Buy: When the 5% Rule Actually Works (and When It Lies)',
-    description: 'The clearest framework for deciding whether to rent or buy — and the adjustments you must make for property tax, maintenance, and opportunity cost that turn the simple rule into a real answer.',
-    category: 'Decision Frameworks',
-    updatedAt: u,
-    intro: `<p>Most rent-versus-buy advice is either lazy ("renting is throwing money away") or impenetrable (50-variable spreadsheets). The 5% rule — popularized by Canadian portfolio manager Ben Felix — is the cleanest middle ground. It compresses all the unrecoverable costs of homeownership into a single number you can compare directly against rent. In most markets, it gives you a decision in under five minutes. But it also has three failure modes where it gives the wrong answer, and this guide covers both the rule and when to override it.</p>`,
-    sections: [
-      {
-        heading: 'The rule in one sentence',
-        html: `<p><strong>If annual rent on a comparable home is less than 5 percent of the purchase price, renting is mathematically favored. If rent is more than 5 percent, buying is favored.</strong></p><p>That is the entire rule. Monthly version: if you can rent for less than roughly 0.42 percent of purchase price per month, renting wins. A $500,000 home with rent under $2,080 per month favors renting. The same home with rent above $2,080 favors buying.</p><p>The 5 percent threshold is not arbitrary — it is the sum of the three unrecoverable annual costs of ownership, which we break down next.</p>`,
-      },
-      {
-        heading: 'Where the 5 percent comes from',
-        html: `<p>Ben Felix&apos;s original formulation breaks the 5 percent into three equal components of roughly 1.67 percent each:</p><ul><li><strong>Property tax: about 1 percent</strong> (global average; varies significantly by country and US state).</li><li><strong>Maintenance and depreciation: about 1 percent</strong> (the classic "1% rule" used by real estate investors).</li><li><strong>Cost of capital: about 3 percent</strong> (the real return you give up by tying money into equity versus investing elsewhere).</li></ul><p>Total: <strong>about 5 percent</strong>. These are all unrecoverable — they are not equity, not principal, not resale value. They are money that disappears whether you rent or buy. The genius of the rule is framing ownership costs in a way that makes them directly comparable to rent (which is also unrecoverable).</p><p>Note: the "cost of capital" component is the one most people skip. Putting $100,000 down on a house means you no longer have $100,000 invested in other assets. If those assets would have earned 6 percent and inflation is 3 percent, the real opportunity cost is roughly 3 percent of your equity, every year, forever. This is the silent tax on ownership that spreadsheets often miss.</p>`,
-      },
-      {
-        heading: 'Adjustments that change the threshold',
-        html: `<p>The 5 percent number is a global average. In real markets, you should adjust it for local conditions:</p><ul><li><strong>High property tax states (US):</strong> New Jersey, Illinois, Texas, Vermont, and New Hampshire all have effective property taxes above 1.8 percent. Add the excess above 1 percent to your threshold. In New Jersey (2.5 percent), the rule becomes the <strong>6.5 percent rule</strong>.</li><li><strong>High-maintenance buildings:</strong> old homes, luxury buildings with amenities, HOA communities with high fees. If your expected maintenance plus HOA is 2 percent instead of 1 percent, add 1 percent to the threshold.</li><li><strong>High interest rate environments:</strong> if mortgage rates are 7 percent instead of 3 percent, the real cost of capital rises. The rule becomes closer to 7 percent in high-rate eras.</li><li><strong>Expected appreciation:</strong> if you believe the local market will appreciate faster than inflation, subtract your expected real appreciation from the threshold. A market you expect to appreciate 2 percent above inflation makes the rule closer to <strong>3 percent</strong>, favoring buying.</li></ul><p>Use our <a href="/afford/">affordability pages</a> for each city to see the current rent-to-price ratio and compare against your adjusted threshold.</p>`,
-      },
-      {
-        heading: 'Three cases where the rule lies',
-        html: `<p>The 5 percent rule assumes you are comparing apples to apples. There are three cases where this assumption breaks, and the rule gives wrong answers:</p><ol><li><strong>You are comparing a home you would buy to a home you would actually rent.</strong> People usually buy larger homes than they would rent. If the rule says "buy" but you would have rented a 1-bedroom and are now considering a 3-bedroom purchase, you are spending more regardless of what the math says. Run the rule on the exact same home — rent-or-buy the same unit.</li><li><strong>You are not staying long enough.</strong> Transaction costs (typically 2 to 6 percent to buy plus 6 percent to sell) need to be amortized over your holding period. Under 5 years, these costs alone often overwhelm any advantage from the rule. A common guideline: the rule works for holdings of 7+ years; under 5 years, rent almost always wins regardless of the ratio.</li><li><strong>You are not investing the difference.</strong> The "cost of capital" component only applies if you would actually invest the money you are not spending on ownership. If you would spend it on cars, vacations, or lifestyle upgrades, the real opportunity cost is lower than 3 percent — closer to zero. Buying becomes relatively more attractive.</li></ol>`,
-      },
-      {
-        heading: 'A worked example using real city data',
-        html: `<p>Let&apos;s compare three cities with very different price-to-rent ratios.</p><p><strong>City A: Sydney, Australia.</strong> Median home about AUD 1,200,000. Median rent for a comparable home: about AUD 3,000 per month, or AUD 36,000 per year. Rent-to-price ratio: 3.0 percent. That is well below the 5 percent rule threshold — <strong>renting strongly favored</strong>. The only way to justify buying is strong expected appreciation, which a buyer would need to feel confident will exceed 2 percent real, on top of the 5 percent baseline.</p><p><strong>City B: Houston, USA.</strong> Median home about USD 350,000. Median rent: about USD 1,900 per month, or USD 22,800 per year. Rent-to-price ratio: 6.5 percent. Texas property tax averages 1.7 percent, so the adjusted threshold is about 5.7 percent. At 6.5 percent actual rent-to-price, <strong>buying is favored</strong>, even after accounting for the high tax.</p><p><strong>City C: Berlin, Germany.</strong> Median 2-bedroom apartment about €550,000. Median rent for a comparable apartment: about €1,700 per month, or €20,400 per year. Rent-to-price ratio: 3.7 percent. Combined with high transaction costs (10 percent of purchase amortized over holding period), <strong>renting is strongly favored</strong> — you would need to hold the property for at least 12 years just to break even on transaction costs alone.</p>`,
-      },
-      {
-        heading: 'Non-financial factors the rule cannot measure',
-        html: `<p>The 5 percent rule is a financial tool, not a life tool. There are real reasons to buy even when renting is financially better, and real reasons to rent even when buying wins the math:</p><ul><li><strong>Security of tenure.</strong> In countries with weak renter protections (most of the US, Australia), owning gives you certainty of staying. In countries with strong protections (Germany, Switzerland), renting gives comparable security at lower cost.</li><li><strong>Forced savings.</strong> For people who would otherwise spend the difference, mortgage amortization acts as involuntary savings. Behavioral finance matters more than spreadsheet logic for some households.</li><li><strong>Optionality.</strong> Renting preserves the option to move. For careers that may require relocation, renting has an "option value" not captured by any affordability rule.</li><li><strong>Psychological ownership.</strong> Control over modifications, decor, pets. Worth something, but not infinite.</li></ul><p>Run the rule first to understand the financial baseline. Then consciously decide how much you are willing to pay for the non-financial benefits. If you are paying 2 percent extra per year of the home&apos;s value for "peace of mind," at least know that is what you are doing.</p>`,
-      },
-    ],
-    faqs: [
-      { question: 'Why is the rule 5 percent and not 4 or 6?', answer: 'Because 5 percent is the rough sum of property tax (1%), maintenance (1%), and real cost of capital (3%). These are all unrecoverable annual costs of ownership that need to be offset by something of equivalent annual value — which is rent. The exact number is not magic; it&apos;s a simplification of the underlying math.' },
-      { question: 'Does the rule work in countries with very low interest rates?', answer: 'Partially. Low rates reduce the cost-of-capital component, so the rule shifts toward 3 to 4 percent. But low rates also inflate home prices, so rent-to-price ratios often fall even faster. Run the adjusted math for your specific market rather than applying 5 percent mechanically.' },
-      { question: 'What if I can buy without a mortgage?', answer: 'The opportunity cost is the return you would otherwise earn on that cash. If you would put the money in diversified stocks, use a 6 to 7 percent gross expected return minus inflation, giving roughly a 3 to 4 percent real opportunity cost. Cash buyers should still use the rule; they just need to be honest about what they would do with the cash otherwise.' },
-      { question: 'How should I handle expected price appreciation?', answer: 'Subtract your expected real (inflation-adjusted) appreciation from the 5 percent threshold. If you believe the market will rise 2 percent above inflation annually, the rule becomes 3 percent. But be careful: most buyers systematically overestimate appreciation. Historical real appreciation for broad residential markets is close to 1 percent per year over long horizons.' },
-      { question: 'Is the 5 percent rule better than the 1 percent rule investors use?', answer: 'They measure different things. The 1 percent rule (monthly rent ≥ 1 percent of price) is a screening tool for landlords looking for cash-flow-positive rentals; it implies a 12 percent annual yield and is rarely achievable in developed markets today. The 5 percent rule is for owner-occupiers deciding whether to rent or buy their home. Do not confuse them.' },
-      { question: 'How long do I need to stay to make buying worth it?', answer: 'Usually 5 to 7 years in most markets. The break-even is when accumulated ownership savings (versus renting) exceed transaction costs (roughly 8 to 12 percent round-trip). In high-transaction-cost markets like Germany or France, 10+ years is more realistic. Short-term buyers almost always lose to renters after transaction costs.' },
-      { question: 'Should I buy just to get on the property ladder?', answer: 'Only if the math works in your current city. "Getting on the ladder" is a phrase that makes sense when nominal prices are rising rapidly, but it is not a strategy. If renting makes more financial sense where you live, rent and invest the difference. You can buy later without having owned earlier.' },
-    ],
-  },
-  {
-    slug: 'reading-housing-data-what-median-hides',
-    title: 'Reading Housing Data: What Median Price Hides',
-    description: 'Why median home prices mislead you, the difference between median and mean, and which metrics actually track the underlying market. A practical guide to avoiding statistical traps in real estate data.',
-    category: 'Methodology',
-    updatedAt: u,
-    intro: `<p>When a news headline says "median home prices rose 8 percent in Q3," most people assume the average home got 8 percent more expensive. It is rarely that simple. Median price can rise without a single home changing value, if the mix of homes being sold shifts toward larger or more expensive properties. It can also fall while every individual home holds its price, if the sales mix shifts the other way. This is one of the most misunderstood statistics in real estate. This guide explains why, and shows you which metrics actually measure what you care about.</p>`,
-    sections: [
-      {
-        heading: 'Median versus mean: why both are imperfect',
-        html: `<p>The <strong>median</strong> is the price at which half of homes sold for more and half for less. The <strong>mean</strong> (average) is the total dollar volume divided by the number of sales.</p><p>The mean is famously distorted by outliers. One $50 million penthouse sale in a quarter can move the mean for an entire neighborhood while being irrelevant to what a typical family pays. That is why virtually all reputable sources report the median instead.</p><p>But the median has its own problem: it is still just a snapshot of what happened to sell that quarter. If the only homes changing hands are luxury ones (because lower-tier buyers are priced out), the median rises — even though prices on the lower tier may have frozen or fallen. The median describes <em>transacted</em> homes, not the housing stock.</p>`,
-      },
-      {
-        heading: 'The mix-shift trap',
-        html: `<p>Imagine a neighborhood with 100 homes, split evenly between $300,000 starter homes and $900,000 luxury homes. In a normal quarter, sales reflect the mix: 10 starter sales and 10 luxury sales. Median price: $600,000.</p><p>Now interest rates rise and starter buyers disappear. Next quarter, only 3 starter sales happen but luxury sales hold steady at 10. The new median is $900,000 — a "50 percent increase" in median price. But no individual home actually appreciated. The headlines will scream "prices surge" when the underlying market is actually softening.</p><p>This is not a hypothetical. It happens every time interest rates rise sharply or affordability tightens at the low end. The US housing market in 2022 and 2023 saw exactly this pattern — median prices held up even as transaction volumes fell 30 percent and many entry-level markets softened, because luxury sales continued while first-time buyers withdrew.</p><p>The fix: look at <strong>repeat-sales indices</strong> (like Case-Shiller in the US), which track the same homes over time, not the mix of what sold.</p>`,
-      },
-      {
-        heading: 'Price per square meter is (mostly) better',
-        html: `<p>Price per square meter (or per square foot) is a more robust metric because it isolates the price of space itself from the size mix. A quarter in which the sales mix shifts toward larger homes will push up median price but should leave price per square meter roughly unchanged if underlying values are stable.</p><p>That said, price per square meter has its own blind spots:</p><ul><li><strong>Location premium is real but invisible.</strong> A square meter in central Paris is different from a square meter in its suburbs; mixing them distorts the metric.</li><li><strong>Age and quality drop out.</strong> A 1980s concrete block and a new-build of the same size will show the same price per square meter if sold at the same price, but they are not the same asset.</li><li><strong>Definition of living area varies</strong> (see our <a href="/guide/compare-home-prices-across-countries/">country comparison guide</a>).</li></ul><p>Price per square meter is the right metric for cross-city or cross-country comparisons. For tracking one neighborhood over time, prefer a repeat-sales index if available.</p>`,
-      },
-      {
-        heading: 'Repeat-sales indices: the gold standard',
-        html: `<p>A repeat-sales index tracks the price of the same homes each time they sell. The Case-Shiller index in the US is the most famous, but similar indices exist in most major markets (Nationwide in the UK, Teranet in Canada, CoreLogic globally).</p><p>The logic: if house 123 Main Street sold for $400,000 in 2020 and $460,000 in 2024, that is a verified 15 percent appreciation for that specific home. Aggregating thousands of such paired sales produces a much more accurate picture of what the same home would cost today than the median of all sales.</p><p>Limitations: repeat-sales indices require at least two sales of the same property, which means they miss homes that rarely transact (long-held primary residences, inherited homes). They also have a lag of 2 to 3 months because pairing takes time. For our city-level data, we report median and price per square meter — the most widely available — but cross-check against Case-Shiller-style indices where they exist.</p>`,
-      },
-      {
-        heading: 'Volume matters as much as price',
-        html: `<p>Any price metric should be read alongside transaction volume. A median price that rose 5 percent while volume fell 40 percent is not a strong market — it is a frozen market where only confident sellers are transacting. These environments often precede corrections because:</p><ol><li>Seller expectations are anchored to last year&apos;s prices</li><li>Buyers are withdrawing due to affordability or rates</li><li>The gap widens until sellers capitulate, usually 12 to 24 months later</li></ol><p>A healthy rising market shows rising prices <em>and</em> rising or stable volume. A rising price with falling volume is a warning, not a bull signal.</p><p>Always check monthly transaction counts alongside price headlines. Most statistics offices publish both, and the ratio tells you more than either number alone.</p>`,
-      },
-      {
-        heading: 'How we report prices',
-        html: `<p>For the data in our city database, we use the following hierarchy based on availability:</p><ol><li><strong>Repeat-sales index</strong> where available (Case-Shiller, Nationwide, Teranet, etc.) — gold standard for tracking the same homes over time.</li><li><strong>Price per square meter</strong> from national statistics offices or OECD — the most comparable number across cities and countries.</li><li><strong>Median sales price</strong> as a fallback — with a clear note that it reflects the mix of what sold, not the underlying stock.</li></ol><p>We update each figure on the underlying source's release schedule. For full details see our <a href="/methodology/">methodology page</a>. When you see a price figure on any city page, you can hover over it to see the source, the methodology, and the date.</p>`,
-      },
-    ],
-    faqs: [
-      { question: 'Is median price the same as average price?', answer: 'No. Median is the middle value when prices are sorted; half sold for more, half for less. Mean (average) is total sales dollars divided by number of sales. Mean is distorted by a few luxury sales, which is why median is preferred. But median still has mix-shift problems that mean does not — neither is a perfect measure of "what homes cost."' },
-      { question: 'Why do news reports always use median?', answer: 'Because median is more stable than mean and is widely available from official sources. It is the best simple number you can quote in a headline. But as this guide shows, it can still mislead when the composition of sales shifts. Serious analysts use repeat-sales indices or price-per-meter data, which are less headline-friendly.' },
-      { question: 'What is a repeat-sales index and where can I find one?', answer: 'An index that tracks price changes of the same individual properties across time. Famous examples: Case-Shiller (US), Nationwide (UK), Teranet (Canada), Halifax (UK), CoreLogic (global). Most are published monthly with a 2-month lag. They are the most accurate measure of price change for a given market.' },
-      { question: 'How can prices "rise" without any home actually appreciating?', answer: 'Through mix shift. If fewer cheap homes sell while expensive home sales remain steady, the median rises even though no individual home changed price. This is especially common when rising interest rates push first-time buyers out of the market.' },
-      { question: 'Should I trust Zillow or Redfin Zestimates?', answer: 'They are reasonable starting points for a specific home but have known error margins of 5 to 15 percent. For broader market tracking, use official indices or multiple-listing-service data. Do not rely on any single estimate when the decision involves six figures; always get comparable sales from multiple sources.' },
-      { question: 'What about data from crowd-sourced cost-of-living sites?', answer: 'Crowd-sourced data has selection bias — submitters are usually expats and urban professionals, overrepresenting central and high-end locations. We anchor international city figures to the OECD price-to-income series and named national statistics offices instead, and only fall back to lower-confidence sources where the entity itself is excluded from authoritative coverage.' },
-      { question: 'Why do different sources report different prices for the same city?', answer: 'Different definitions (new-build only vs. all homes, urban core vs. metro area), different time periods, and different methodologies (median vs. mean vs. repeat-sales). Always check what the headline number actually represents before comparing two sources. A "Paris price" could mean the first arrondissement or the whole Île-de-France region — a 3x difference.' },
-    ],
-  },
-];
+export const guides: Guide[] = [];
 
 export function getAllGuides(): Guide[] {
-  return guides;
+  return [];
 }
 
-export function getGuideBySlug(slug: string): Guide | undefined {
-  return guides.find((g) => g.slug === slug);
+export function getGuideBySlug(_slug: string): Guide | undefined {
+  return undefined;
 }
 
-export function getGuidesByCategory(category: string): Guide[] {
-  return guides.filter((g) => g.category === category);
-}
+// Some sites use these alias function names — keep all surfaces stub-compatible.
+export const getAllStaticGuides = getAllGuides;
+export const getGuide = getGuideBySlug;

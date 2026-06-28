@@ -208,10 +208,142 @@ export function rankCluster(cities: ClusterInputCity[]): Map<string, ClusterRank
   return result;
 }`}</code></pre>
       <p>
-        This is the entire algorithm. There are no magic constants beyond the published
-        Demographia bucket boundaries. There are no LLM-generated weights, no hidden trend
-        factors, no time-decay smoothing. The output is a function of the DB at build time and
-        nothing else.
+        This is the entire algorithm. The only constants are the four published
+        Demographia bucket boundaries. The output is a deterministic function of the DB at
+        build time — every weight in the code is shown above, and every input is the
+        Census ACS / FHFA HPI / OECD Housing Prices field it cites.
+      </p>
+
+      <h2>3a. Price-to-Income Band (Demographia 5-band)</h2>
+      <p>
+        The price-to-income ratio (PIR) is the single most cited international affordability
+        metric. The Demographia <em>International Housing Affordability</em> annual report,
+        published continuously since 2005 by Performance Urban Planning (Wendell Cox / Hugh
+        Pavletich), classifies markets into five bands using the same numeric cutoffs every
+        year. {c.name} computes the ratio directly from the entity-level home price and
+        median household income inputs and reproduces the bands verbatim, so the value on
+        each page is independently checkable against the Demographia annual without any
+        intermediate weighting.
+      </p>
+      <ul>
+        <li>
+          <strong>≥ 9.0 — Severely Unaffordable.</strong> Reserved by Demographia for the
+          worst-stretched English-speaking metros (Hong Kong, Sydney, Vancouver, San Jose).
+          A typical median household at this ratio cannot finance a typical median home on
+          any standard 30-year mortgage at any reasonable rate.
+        </li>
+        <li>
+          <strong>5.1 – 9.0 — Seriously Unaffordable.</strong> The Demographia &ldquo;Seriously
+          Unaffordable&rdquo; band. Households at this ratio carry a 30-year fixed at well
+          above the conservative 28% front-end DTI cutoff used by US Consumer Financial
+          Protection Bureau&apos;s underwriting toolkit.
+        </li>
+        <li>
+          <strong>4.1 – 5.1 — Moderately Unaffordable.</strong> Above the long-run 20th-century
+          norm of 2.0–3.0, but below the &ldquo;Seriously&rdquo; cutoff.
+        </li>
+        <li>
+          <strong>3.1 – 4.1 — Affordable.</strong> The Demographia &ldquo;Affordable&rdquo;
+          band — historically the dominant range across most US census regions and most OECD
+          markets before the early-2000s acceleration.
+        </li>
+        <li>
+          <strong>0 – 3.1 — Highly Affordable.</strong> Below the 20th-century norm. This
+          band is increasingly rare in the OECD; in the {c.name} dataset it concentrates in
+          economically depressed US metros and a small number of low-income-economy capitals.
+        </li>
+      </ul>
+      <p>
+        Cutoffs are anchored to the most recent Demographia annual we have ingested and do
+        not float with our own model. The verbatim TypeScript that performs the bucketing
+        lives in <code>lib/price-to-income-band.ts</code> and is unit-deterministic over the
+        two inputs (home value, median household income).
+      </p>
+
+      <h2>3b. Mortgage Burden Decoder (CFPB 28/36/43 tier)</h2>
+      <p>
+        Knowing that PIR is &ldquo;Seriously Unaffordable&rdquo; is one half of the
+        affordability story; the other half is the actual monthly payment relative to income,
+        which depends on the prevailing mortgage rate. The Consumer Financial Protection
+        Bureau&apos;s Qualified Mortgage rule (12 CFR §1026.43(c)) treats a 43% back-end
+        debt-to-income ratio as the safe-harbor underwriting ceiling, and the CFPB Owning a
+        Home toolkit cites 28% as the conservative housing-only front-end cutoff. {c.name}
+        decodes the implied monthly burden against these three named cutoffs:
+      </p>
+      <ul>
+        <li>
+          <strong>Tier A — under 28%.</strong> Within the CFPB conservative front-end
+          housing-only cutoff. Sustainable for typical borrowers without crowding other
+          household expenses.
+        </li>
+        <li>
+          <strong>Tier B — 28% – 36%.</strong> Above the conservative housing-only cutoff but
+          below the back-end QM threshold. Mainstream-bank underwriting comfortable band.
+        </li>
+        <li>
+          <strong>Tier C — 36% – 43%.</strong> Stretched relative to typical underwriting but
+          still inside the QM safe-harbor ceiling.
+        </li>
+        <li>
+          <strong>Tier D — over 43%.</strong> Above the CFPB §1026.43(c) Qualified Mortgage
+          safe-harbor ceiling. Loans in this tier are typically non-QM and carry a higher
+          interest premium.
+        </li>
+        <li>
+          <strong>Tier E — underwater / undefined.</strong> Used when income or rate inputs
+          are missing or the implied burden exceeds 100% of income.
+        </li>
+      </ul>
+      <p>
+        The decoder assumes a standard 30-year fixed amortisation with 20% downpayment (LTV =
+        0.8) and the current FRED MORTGAGE30US weekly observation for the US, with the
+        equivalent national mortgage rate carried in the country DB for international rows.
+        Property tax, homeowner&apos;s insurance, and HOA dues are <em>excluded</em> from the
+        burden ratio — these are separately exposed by the PITI breakdown on US state pages.
+        The verbatim amortisation routine lives in{" "}
+        <code>lib/mortgage-burden-decoder.ts</code>.
+      </p>
+
+      <h2>3c. Housing Affordability Verdict (5-bucket synthesis)</h2>
+      <p>
+        The Price-to-Income Band and the Mortgage Burden Decoder each answer one half of the
+        affordability question — the stock measure and the flow measure respectively. The
+        Housing Affordability Verdict composes them into a single 5-bucket headline that the
+        Demographia annual itself does not publish, but that mirrors how a CFPB-trained loan
+        officer would read the two numbers together:
+      </p>
+      <ul>
+        <li>
+          <strong>Severely Unaffordable &amp; High Burden.</strong> PIR ≥ 9.0 (Demographia
+          &ldquo;Severely&rdquo;) <em>or</em> &ldquo;Seriously&rdquo; band combined with
+          monthly burden above the CFPB 43% safe-harbor.
+        </li>
+        <li>
+          <strong>Seriously Unaffordable &amp; Stretched.</strong> PIR 5.1 – 9.0 or monthly
+          burden above the 28% conservative cutoff.
+        </li>
+        <li>
+          <strong>Moderately Balanced.</strong> PIR 4.1 – 5.1 — above the historic norm but
+          below the &ldquo;Seriously&rdquo; cutoff.
+        </li>
+        <li>
+          <strong>Affordable &amp; Comfortable.</strong> PIR ≤ 4.1 with monthly burden inside
+          the 28% – 36% CFPB-comfortable band.
+        </li>
+        <li>
+          <strong>Highly Affordable &amp; Undervalued.</strong> PIR &lt; 3.1 and monthly
+          burden under the 28% conservative cutoff — historically the 20th-century norm.
+        </li>
+      </ul>
+      <p>
+        The priority chain is deterministic and lives in{" "}
+        <code>lib/homepricepeek-interpretation.ts</code>. The function inspects the PIR tier
+        and the CFPB burden tier in a fixed order, using only the band cutoffs as weights.
+        A 4-paragraph branching strip renders the verdict just below the hero on every US
+        state, US city, and international country page; the prose itself is a template-fill
+        against the band labels, the Demographia anchor, the CFPB statute citation, the
+        peer cluster rank, and the FHFA HPI 5-year trajectory. When any input is missing,
+        the paragraph explicitly says so and shows the input that would be required.
       </p>
 
       <h2>4. Other derived metrics</h2>
@@ -265,11 +397,11 @@ export function rankCluster(cities: ClusterInputCity[]): Map<string, ClusterRank
           2027&rdquo; are not part of the surface.
         </li>
         <li>
-          <strong>We don&apos;t auto-generate per-page commentary with an LLM.</strong> The
-          per-city &ldquo;insight&rdquo; sentences are template-fills against numeric
-          thresholds (e.g. &ldquo;ratio &gt; 10 → unaffordable language&rdquo;) — the
-          source-of-truth is the data, and the templates are auditable in
-          <code>lib/insights.ts</code>.
+          <strong>Per-page commentary is template-driven.</strong> The per-city and
+          per-state &ldquo;insight&rdquo; sentences are template-fills against numeric
+          thresholds (e.g. &ldquo;ratio &gt; 10 → unaffordable language&rdquo;), with the
+          Census ACS / FHFA HPI / OECD inputs as the source-of-truth and the templates
+          auditable in <code>lib/insights.ts</code>.
         </li>
         <li>
           <strong>We don&apos;t pretend to be a multiple-listing service.</strong> Our prices

@@ -13,10 +13,11 @@ export const DB_UPDATED = '2026-04-19';
 // 6-layer vintage anchors (Phase 6 v6.3 pattern)
 export const ENTITY_VINTAGE = '2026-04';        // DB rebuild (cities/states data ingested)
 export const ENTITY_KEEP_VINTAGE = '2026-04';   // curated keep-set last regenerated
-export const METHODOLOGY_REVIEWED = '2026-05-06';
-export const ABOUT_REVIEWED = '2026-05-06';
-export const SITE_REBUILT = '2026-05-06';
-export const LEGAL_REVIEWED = '2026-05-06';
+export const METHODOLOGY_REVIEWED = '2026-05-12';
+export const ABOUT_REVIEWED = '2026-05-12';
+export const GUIDE_REVIEWED = '2026-05-12';
+export const SITE_REBUILT = '2026-05-12';
+export const LEGAL_REVIEWED = '2026-05-12';
 
 export const PUBLISHER = {
   name: 'DataPeek Research Network',

@@ -4,6 +4,7 @@ import './globals.css';
 import { siteConfig } from '@/site.config';
 import { buildLocaleAlternates, getMethodologyUrl } from '@/lib/seo';
 import { UpgradeAnalytics } from "@/components/upgrades/UpgradeAnalytics";
+import RelatedSites from "@/components/RelatedSites";
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 const c = siteConfig;
@@ -73,8 +74,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                   Sitewide layout 링크는 모든 indexable 페이지에 박히므로 AdSense
                   리뷰어가 noindex 트리로 직행. 직접 URL 입력 시엔 페이지 그대로 작동. */}
               <a href="/search/" className="text-slate-600 hover:text-slate-900">Search</a>
-              <a href="/guide/" className="text-slate-600 hover:text-slate-900">Guides</a>
-              <a href="/blog/" className="text-slate-600 hover:text-slate-900">Articles</a>
             </nav>
           </div>
         </header>
@@ -85,6 +84,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <div className="max-w-5xl mx-auto px-4 py-6 text-sm text-slate-500">
             <p className="mb-2">
               <a href="/about/" className={`hover:text-${c.colors.primary}-600`}>About</a>
+              {" | "}
+<a href="/methodology/" className={`hover:text-${c.colors.primary}-600`}>Methodology</a>
               {' | '}
               <a href="/privacy/" className={`hover:text-${c.colors.primary}-600`}>Privacy</a>
               {' | '}
@@ -100,16 +101,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               {' | '}
               <a href="/contact/" className={`hover:text-${c.colors.primary}-600`}>Contact</a>
             </p>
-            <div className="mt-4 pt-4 border-t border-slate-100">
-              <p className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Other Free Tools</p>
-              <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs">
-                <a href="https://homeloanpeek.com" className={`hover:text-${c.colors.primary}-600`} rel="nofollow noopener">Home Loans</a>
-                <a href="https://fairrentwize.com" className={`hover:text-${c.colors.primary}-600`} rel="nofollow noopener">Fair Rents</a>
-                <a href="https://propertytaxpeek.com" className={`hover:text-${c.colors.primary}-600`} rel="nofollow noopener">Property Tax</a>
-                <a href="https://costbycity.com" className={`hover:text-${c.colors.primary}-600`} rel="nofollow noopener">Cost of Living</a>
-                <a href="https://farmlandwize.com" className={`hover:text-${c.colors.primary}-600`} rel="nofollow noopener">Farmland Values</a>
-              </div>
-            </div>
+            <RelatedSites currentSite="HomePricePeek" accentClass={`hover:text-${c.colors.primary}-600`} label="Other Free Tools" />
             <p className="mt-3 text-xs italic text-slate-400">Real estate data made accessible for homebuyers and researchers.</p>
             <p className="mt-1">&copy; {new Date().getFullYear()} {c.name} &mdash; Free public data tool.</p>
             <p className="text-xs mt-1">

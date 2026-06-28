@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { getAllStates, getStateBySlug, getStatesSortedByPrice } from '@/lib/states-data';
 import { buildDbPageRobots, buildTrustUpdatedLabel, getDbPageGate } from '@/lib/db-page';
 import { generateStateInsights } from '@/lib/state-insights';
-import { breadcrumbSchema, faqSchema } from '@/lib/schema';
+import { breadcrumbSchema, faqSchema, homepricepeekHousingVerdictMultiCreatorDatasetSchema } from '@/lib/schema';
 import { formatCurrency, formatPercent } from '@/lib/format';
 import { buildLocaleAlternates, getDataVintageLabel, getMethodologyUrl, getReviewedAt, getReviewedBy } from '@/lib/seo';
 import { Breadcrumb } from '@/components/Breadcrumb';
@@ -22,6 +22,11 @@ import { BuyVsRentCrossover } from '@/components/upgrades/BuyVsRentCrossover';
 import { CostBurdenCompass } from '@/components/upgrades/CostBurdenCompass';
 import { AppreciationSparkline } from '@/components/upgrades/AppreciationSparkline';
 import { PITIBreakdownCard } from '@/components/upgrades/PITIBreakdownCard';
+import { HousingVerdictStrip } from '@/components/upgrades/HousingVerdictStrip';
+import { CrosswalkBridge } from '@/components/upgrades/CrosswalkBridge';
+import { priceToIncomeBand } from '@/lib/price-to-income-band';
+import { mortgageBurdenDecoder } from '@/lib/mortgage-burden-decoder';
+import { pickVerdict, housingVerdictShortLabel } from '@/lib/homepricepeek-interpretation';
 import {
   getAffordabilityIndex,
   getMortgageCostDelta,
@@ -35,6 +40,8 @@ import {
 import { buildNarrative } from '@/lib/housing-narrative';
 import { siteConfig } from '@/site.config';
 import { StateRich } from '@/components/state/StateRich';
+import { StateHeroImage } from '@/components/StateHeroImage';
+import { getStateImageByName } from '@/lib/state-images';
 
 interface Props { params: Promise<{ slug: string }> }
 export const dynamicParams = false;
@@ -52,17 +59,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const state = getStateBySlug(slug);
   if (!state) return {};
-  const title = `Home Prices in ${state.name} — Median Values & Trends`;
+
+  // Phase 7 P1: layout suffix ` | HomePricePeek` = 16c (≥13c threshold) →
+  // title.absolute bypasses the layout template and lets the verdict-bearing
+  // body use the full 60c SERP cap. Body composes priceK + PIR ratio + 5-bucket
+  // verdict short label. Worst-case state name is "Washington D.C." (15c).
+  const priceK = Math.round(state.medianHomePrice / 1000);
+  const pti = priceToIncomeBand(state.medianHomePrice, state.medianHouseholdIncome);
+  const burden = mortgageBurdenDecoder(state.medianHomePrice, state.avgMortgageRate30yr, state.medianHouseholdIncome);
+  const verdict = pti || burden ? pickVerdict({ pti, burden, scope: 'us' }) : null;
+  const verdictShort = verdict ? housingVerdictShortLabel(verdict) : null;
+  const titleBody = pti
+    ? `${state.name} housing: $${priceK}K · PIR ${pti.ratio.toFixed(1)}${verdictShort ? ` · ${verdictShort}` : ''}`
+    : `${state.name} housing: $${priceK}K${verdictShort ? ` · ${verdictShort}` : ''}`;
+
   const description = buildStateTopAnswer(state);
   const gate = getDbPageGate({
     alternativeLinkCount: Math.max(3, state.topCities.length),
     topAnswer: description,
   });
   return {
-    title,
+    title: { absolute: titleBody },
     description,
     alternates: buildLocaleAlternates(`/state/${slug}/`),
-    openGraph: { title, description, url: `/state/${slug}/` },
+    openGraph: { title: titleBody, description, url: `/state/${slug}/` },
     robots: buildDbPageRobots(gate.pass),
   };
 }
@@ -144,6 +164,30 @@ export default async function StatePage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema(crumbs)) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            homepricepeekHousingVerdictMultiCreatorDatasetSchema({
+              name: `${state.name} — US housing affordability dataset`,
+              description: `Median home price, FRED MORTGAGE30US 30-year fixed mortgage rate, Census ACS B19013 median household income, FHFA HPI 5-year appreciation, and Demographia bucket cluster rank for ${state.name}. The HousingVerdict surface composes the price-to-income tier (Demographia) with the CFPB QM 12 CFR §1026.43(c) mortgage-burden tier on these per-state inputs.`,
+              url: `/state/${slug}/`,
+              variableMeasured: [
+                'Median home value (USD)',
+                'Median household income (USD)',
+                'Price-to-income ratio',
+                'Demographia 5-band tier',
+                '30-year fixed mortgage rate',
+                'CFPB DTI tier',
+                'FHFA HPI 5-year cumulative appreciation',
+                'Demographia peer cluster rank',
+              ],
+              leverAnchor: 'housing-verdict',
+              spatialName: state.name,
+            }),
+          ),
+        }}
+      />
       {faqs.length > 0 && (
         <script
           type="application/ld+json"
@@ -154,6 +198,8 @@ export default async function StatePage({ params }: Props) {
       <Breadcrumb items={crumbs.map(c => ({ label: c.name, href: c.url }))} />
 
       <div className="bg-emerald-600 rounded-xl p-6 mb-6 -mx-1">
+      {(() => { const stateImage = getStateImageByName(state.name); return stateImage ? <StateHeroImage img={stateImage} /> : null; })()}
+
         <h1 className="text-3xl font-bold text-white mb-1">Home Prices in {state.name}</h1>
         <p className="max-w-3xl text-sm leading-6 text-emerald-100 mt-3">
           {topAnswer}
@@ -182,6 +228,22 @@ export default async function StatePage({ params }: Props) {
         title={state.name}
         insight={`${state.name} ranks #${priceRank} out of ${total} states by median home price at ${formatCurrency(state.medianHomePrice)}. Prices have changed ${state.yoyChange >= 0 ? '+' : ''}${formatPercent(state.yoyChange)} over the past year. The state is rated "${affordLabel}" with an affordability index of ${state.affordabilityIndex}/100.`}
       />
+
+      <section id="housing-verdict">
+        <HousingVerdictStrip
+          entityName={state.name}
+          homeValueUsd={state.medianHomePrice}
+          mortgage30Pct={state.avgMortgageRate30yr}
+          medianIncomeUsd={state.medianHouseholdIncome}
+          bucketLabel={peers.clusterLabel}
+          bucketRank={peers.peers.findIndex(p => p.slug === state.slug) >= 0 ? peers.peers.findIndex(p => p.slug === state.slug) + 1 : null}
+          bucketSize={peers.peers.length}
+          hpi5yPct={state.fhfaHpi5yr}
+          scope="us"
+        />
+      </section>
+
+      <CrosswalkBridge stateName={state.name} stateSlug={slug} />
 
       <section className="grid gap-4 md:grid-cols-2 my-6">
         <article className="rounded-xl border border-slate-200 p-5">

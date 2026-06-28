@@ -2,13 +2,14 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getCountryBySlug, getCitiesByCountry, getAllCountries } from '@/lib/db';
 import { formatCurrency, formatPercent, formatNumber } from '@/lib/format';
-import { breadcrumbSchema } from '@/lib/schema';
+import { breadcrumbSchema, datasetSchema } from '@/lib/schema';
 import { AdSlot } from '@/components/AdSlot';
 import { AuthorBox } from '@/components/AuthorBox';
 import { FreshnessTag } from '@/components/FreshnessTag';
 import { InsightBox } from '@/components/InsightBox';
 import { CrossSiteLinks } from '@/components/CrossSiteLinks';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { HousingVerdictStrip } from '@/components/upgrades/HousingVerdictStrip';
 import { siteConfig } from '@/site.config';
 
 interface Props { params: Promise<{ slug: string }> }
@@ -50,6 +51,19 @@ export default async function CountryPage({ params }: Props) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema(crumbs)) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            datasetSchema(
+              `${name} — international housing affordability dataset`,
+              `Average home price, price per square metre, mortgage rate, OECD price-to-income tier, and homeownership rate for ${name}, anchored to OECD Housing Prices and named national statistics offices.`,
+              `/country/${slug}/`,
+              'intl',
+            ),
+          ),
+        }}
+      />
 
       <Breadcrumb items={crumbs.map(c => ({ label: c.name, href: c.url }))} />
 
@@ -83,6 +97,14 @@ export default async function CountryPage({ params }: Props) {
 
       <InsightBox title={name}
         insight={`${name} has a homeownership rate of ${formatPercent(country.homeownership_rate_pct as number)} and average rent of ${formatCurrency(country.avg_rent_1br_usd as number)}/month for a 1BR apartment. Mortgage rates are at ${formatPercent(country.mortgage_rate_pct as number)}.`}
+      />
+
+      <HousingVerdictStrip
+        entityName={name}
+        homeValueUsd={country.avg_home_price_usd as number | null}
+        mortgage30Pct={country.mortgage_rate_pct as number | null}
+        medianIncomeUsd={country.median_income_usd as number | null}
+        scope="intl"
       />
 
       <AdSlot id="top" />
