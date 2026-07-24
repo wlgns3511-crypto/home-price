@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { parseCountryComparisonSlug, getAllCountryComparisonSlugs, getCitiesByCountry } from '@/lib/db';
 import { formatCurrency, formatPercent } from '@/lib/format';
 import { breadcrumbSchema, faqSchema } from '@/lib/schema';
-import { AdSlot } from '@/components/AdSlot';
 import { AuthorBox } from '@/components/AuthorBox';
 import { FreshnessTag } from '@/components/FreshnessTag';
 import { InsightBox } from '@/components/InsightBox';
@@ -37,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${comp.a.name} vs ${comp.b.name} — Housing Market Comparison`,
     description: `Compare housing markets: ${comp.a.name} (avg ${formatCurrency(comp.a.avg_home_price_usd as number)}) vs ${comp.b.name} (avg ${formatCurrency(comp.b.avg_home_price_usd as number)}).`,
     alternates: { canonical: `/compare/country/${canonicalSlug}/` },
-    openGraph: { url: `/compare/country/${canonicalSlug}/` },
+    openGraph: { url: `/compare/country/${canonicalSlug}/`, images: [{ url: '/opengraph-image' }] },
   };
 }
 
@@ -84,7 +83,6 @@ export default async function CountryComparePage({ params }: Props) {
       <p className="text-slate-500 mb-2">Housing Market Comparison</p>
       <FreshnessTag source={siteConfig.dataSource.name} />
       <InsightBox title={`${nameA} vs ${nameB}`} insight={`${cheaper} is ${diffPct}% more affordable. Mortgage rates: ${nameA} ${formatPercent(a.mortgage_rate_pct as number)} vs ${nameB} ${formatPercent(b.mortgage_rate_pct as number)}.`} />
-      <AdSlot id="top" />
       <div className="border rounded-lg overflow-hidden mt-6">
         <table className="w-full text-sm">
           <thead><tr className="bg-slate-50"><th className="p-3 text-left">Metric</th><th className="p-3 text-right text-emerald-700">{nameA}</th><th className="p-3 text-right text-blue-700">{nameB}</th></tr></thead>
@@ -99,7 +97,6 @@ export default async function CountryComparePage({ params }: Props) {
         <a href={`/country/${a.slug}/`} className="p-4 border rounded-lg hover:bg-emerald-50 text-center font-bold text-emerald-700">{nameA} details &rarr;</a>
         <a href={`/country/${b.slug}/`} className="p-4 border rounded-lg hover:bg-blue-50 text-center font-bold text-blue-700">{nameB} details &rarr;</a>
       </div>
-      <AdSlot id="bottom" />
       <AuthorBox />
       <FAQ items={faqs} />
       <CrossSiteLinks current={siteConfig.name} />

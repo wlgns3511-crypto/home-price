@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${name} Home Prices & Housing Market (${new Date().getFullYear()})`,
     description: `${name} housing market: average home price ${formatCurrency(country.avg_home_price_usd as number)}, price per sqm ${formatCurrency(country.avg_price_per_sqm_usd as number)}, mortgage rate ${formatPercent(country.mortgage_rate_pct as number)}.`,
     alternates: { canonical: `/country/${slug}/` },
-    openGraph: { url: `/country/${slug}/` },
+    openGraph: { url: `/country/${slug}/`, images: [{ url: '/opengraph-image' }] },
   };
 }
 
