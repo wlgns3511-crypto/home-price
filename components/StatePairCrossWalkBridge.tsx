@@ -50,12 +50,12 @@ const SIBLING_SITES = [
   {
     domain: 'netpaypeek.com',
     label: 'NetPayPeek',
-    role: 'state-level net take-home pay (IRS + state DOR + OECD wedge) — the post-tax income that services the mortgage at the state median home',
+    role: 'state-level net take-home pay after federal and state income tax — the post-tax income that services the mortgage at the state median home',
   },
   {
     domain: 'fairrentwize.com',
     label: 'FairRentWize',
-    role: 'state-level rent affordability + median asking rent (HUD + Census) — the rent-vs-buy counterpart at the same state level',
+    role: 'state-level rent affordability and median asking rent — the rent-vs-buy counterpart at the same state level',
   },
 ] as const;
 

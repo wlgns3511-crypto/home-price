@@ -47,6 +47,33 @@ const COMPARE_COUNTRY_KILL_RE = /^\/compare\/country(\/|$)/;
 // 슬러그·데이터·원본 라우트는 ops/country-410-snapshot.json + ops/country-page.tsx.killed-20260724.
 const COUNTRY_KILL_RE = /^\/country(\/|$)/;
 
+// 도시 축 전량 — 410 Gone (2026-07-26). data/main.db `cities` 194행이 `countries` 50행과
+// 같은 2026-03-31 동결 합성 시드였다: avg_home_price_usd 가 194개 도시에 46개 값뿐이고
+// 194/194 가 천 배수·163/194 가 만 배수, rent_to_income_ratio 는 21개 값, mortgage_rate_pct
+// 는 최대 42.0·최소 0.0. 레포에 도시 인제스천 스크립트 0건이고 data/sources.json 15개
+// 필드에도 cities 항목이 없다 — 측정값이 아니라 편집 추정치다.
+//
+// 같은 테이블이 먹이는 파생 축이라 판정도 같다:
+//   /city/{slug}     194 (라이브 200·사이트맵 등재·index,follow)  ← 유일하게 색인돼 있던 축
+//   /region/{slug}    15 (라이브 200·robots 메타 없음)
+//   /budget/{slug}    13 (라이브 200·robots 메타 없음)
+//   /insights/{slug}   5 + 허브 (라이브 200. lib/insights-data.ts 가 cities 를 5회 쿼리)
+//   /afford/{slug}   194 (라이브 522 = 오리진 타임아웃, 그런데 매 빌드 프리렌더)
+//   /rankings/{type}  24 (라이브 404, 프리렌더 155장)
+//   /compare/{a-vs-b} 4,311 (라이브 404, 프리렌더 2,650장)
+// 유지되는 축은 주(州)뿐 — lib/states-data.ts(Zillow ZHVI·FHFA HPI·Census ACS·Tax
+// Foundation·FRED)와 data/hpi-quarterly.json(FRED STHPI 51시리즈, fetchedAt 2026-06-01).
+//
+// robots.txt 에 이 프리픽스들의 Disallow 를 넣지 말 것 — 크롤을 막으면 크롤러가 410 을
+// 못 읽어 색인이 안 죽는다(/country/ 때와 같은 이유).
+// 슬러그·행·Bing 실측·원본 라우트는 ops/city-410-snapshot.json + ops/app_*.killed-20260726.
+const CITY_AXIS_KILL_RE = /^\/(city|region|budget|afford|rankings|insights)(\/|$)/;
+
+// /compare/ 도시쌍 + 허브. /compare/state/* 5개 파일럿은 위 COMPARE_STATE_DETAIL_RE 에서
+// 먼저 처리되므로 여기 도달하지 않는다. 허브(/compare/)는 죽은 도시쌍 100개를 링크하고
+// 있었다 — 라이브 200 인데 링크 전부 404.
+const COMPARE_CITY_KILL_RE = /^\/compare(\/(?!state(\/|$))[^/]*)?\/?$/;
+
 // Trap #121 — middleware-surveyable enumeration. Must match
 // lib/state-pair-compare-decoder.ts STATE_PAIR_PILOT_SLUGS exactly.
 const COMPARE_STATE_ALLOWLIST: ReadonlySet<string> = new Set([
@@ -67,13 +94,9 @@ const GONE_BODY = `<!doctype html><html><head><meta charset="utf-8"><title>410 G
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Evidence-backed legacy locale recovery. The Spanish shell was retired,
-  // but Accra is a complete canonical city row and should not remain a 410.
-  if (/^\/es\/accra\/?$/.test(pathname)) {
-    const url = request.nextUrl.clone();
-    url.pathname = '/city/accra/';
-    return NextResponse.redirect(url, 301);
-  }
+  // (2026-07-26) `/es/accra/` → `/city/accra/` 301 삭제. "Accra is a complete
+  // canonical city row" 라는 전제가 틀렸다 — cities 194행 전부 미출처 추정치라
+  // 목적지가 410 이 됐다. 301→410 체인 대신 ES_KILL_RE 가 직접 410 한다.
 
   // ── /compare/state/{slug}/ — pilot allowlist gate (Trap #121) ────────────
   const stateMatch = pathname.match(COMPARE_STATE_DETAIL_RE);
@@ -96,7 +119,9 @@ export function middleware(request: NextRequest) {
     ES_KILL_RE.test(pathname) ||
     EMBED_KILL_RE.test(pathname) ||
     COMPARE_COUNTRY_KILL_RE.test(pathname) ||
-    COUNTRY_KILL_RE.test(pathname)
+    COUNTRY_KILL_RE.test(pathname) ||
+    CITY_AXIS_KILL_RE.test(pathname) ||
+    COMPARE_CITY_KILL_RE.test(pathname)
   ) {
     return new NextResponse(GONE_BODY, {
       status: 410,

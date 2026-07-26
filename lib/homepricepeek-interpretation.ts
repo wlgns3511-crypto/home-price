@@ -4,11 +4,16 @@
  * Composes three existing levers into a single human-readable verdict:
  *   1. priceToIncomeBand  (Demographia 5-band, ratio cutoff)
  *   2. mortgageBurdenDecoder (CFPB 28/36/43 + underwater tier)
- *   3. affordability-cluster (Demographia bucket rank within peer cohort)
+ *   3. getPeerStates       (geographic-economic peer cluster, lib/housing-landscape.ts)
  *
- * Each surface bound to an entity (US state, US city, INTL country) calls
- * this once with its measured inputs; the returned object drives a 4-paragraph
- * branching strip rendered just below the hero.
+ * 2026-07-26 — 세 번째 레버가 lib/affordability-cluster.ts (Demographia 버킷 내 순위) 라고
+ * 적혀 있었지만, 그 모듈을 호출하는 페이지는 없다. 유일한 소비자인 주 페이지는
+ * getPeerStates() 의 *지리* 클러스터 라벨을 bucketLabel prop 으로 넘기고 있었고, 아래 문단은
+ * 그걸 "같은 Demographia 버킷" 이라고 설명했다 — 라벨≠계산. bucketRank 는 항상 null 이라
+ * (getPeerStates 가 자기 주를 peer 목록에서 제외) 그 문장이 렌더된 적은 없지만, 대신 fallback
+ * 문장이 같은 날 410 된 /rankings/ 를 가리키고 있었다. 축을 지리 클러스터 하나로 정직화.
+ *
+ * 유일한 소비자는 주 51개 페이지다 (도시/국가 서피스는 2026-07-26 전량 410).
  */
 
 import type { PriceToIncomeResult, PriceToIncomeTier } from './price-to-income-band';
@@ -24,11 +29,9 @@ export type HousingVerdict =
 export interface InterpretationInput {
   pti: PriceToIncomeResult | null;
   burden: MortgageBurdenResult | null;
-  bucketLabel?: string | null;
-  bucketRank?: number | null;
-  bucketSize?: number | null;
+  /** getPeerStates().clusterLabel — 지리·경제 클러스터. Demographia 밴드가 아니다. */
+  peerClusterLabel?: string | null;
   hpi5yPct?: number | null;
-  scope?: 'us' | 'intl';
 }
 
 export interface InterpretationResult {
@@ -94,17 +97,13 @@ export function buildInterpretation(input: InterpretationInput): InterpretationR
   }
 
   // Paragraph 3 — peer cluster comparison
-  if (input.bucketLabel && input.bucketRank && input.bucketSize) {
+  if (input.peerClusterLabel) {
     paragraphs.push(
-      `Within the ${input.bucketLabel} peer cluster, this market ranks ${input.bucketRank} of ${input.bucketSize}. The cluster contains every area in the dataset that lands in the same Demographia bucket, which is the only peer cohort that makes a meaningful "is this expensive?" comparison — comparing a Severely Unaffordable market against a Highly Affordable one would not be informative for buyers actually considering either.`,
-    );
-  } else if (input.scope === 'intl') {
-    paragraphs.push(
-      `For international scope, OECD Housing Prices (and national statistics offices where OECD does not publish) provide the cross-country baseline. Comparisons inside the same Demographia band remain the only honest peer cohort — pre-2008 baseline data from OECD lets readers see how far above or below the long-run national norm each ratio currently sits.`,
+      `For the "is this expensive?" comparison we place this state against its ${input.peerClusterLabel} peers — a hand-assigned geographic and economic grouping documented on /methodology/, not a Demographia band. That is a deliberate choice: grouping by affordability band would compare a state only against others that already share its price level, which tells a buyer nothing about the region they are actually choosing within. We do not publish a "rank N of M inside your Demographia bucket" line, because we do not compute that cohort.`,
     );
   } else {
     paragraphs.push(
-      'Peer cluster rank within the matching Demographia band is not currently computed for this surface; please refer to the rankings table on the relevant cluster guide to see comparable markets.',
+      'A peer-cluster comparison is not available for this page, so the verdict above rests on the price-to-income band and the mortgage-burden tier alone.',
     );
   }
 

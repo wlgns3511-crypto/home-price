@@ -10,13 +10,13 @@ import {
   SITE_REBUILT,
 } from '@/lib/authorship';
 
-type Layer = 'site' | 'city' | 'state' | 'country' | 'methodology' | 'about' | 'blog' | 'legal';
+// 2026-07-26 — 'city' | 'country' 레이어 삭제. 호출부 grep 0건이고(그 페이지들은 같은 날
+// 전량 410), 타입이 계속 지원하면 다음 세션이 도시 서피스를 되살려도 타입체커가 안 막는다.
+type Layer = 'site' | 'state' | 'methodology' | 'about' | 'blog' | 'legal';
 
 const LAYER_VINTAGE: Record<Layer, string> = {
   site: SITE_REBUILT,
-  city: ENTITY_VINTAGE,
   state: ENTITY_VINTAGE,
-  country: ENTITY_VINTAGE,
   methodology: METHODOLOGY_REVIEWED,
   about: ABOUT_REVIEWED,
   blog: SITE_REBUILT,
@@ -72,7 +72,10 @@ export function AuthorBox({ layer = 'site' }: AuthorBoxProps) {
             {i < primarySources.length - 1 ? ', ' : ' '}
           </span>
         ))}
-        and named national statistics offices on each surface. Where a value is derived (price-to-
+        {/* 2026-07-26 — "and named national statistics offices on each surface" 삭제. 어떤
+            컬럼에도 NSO 데이터가 배선돼 있지 않다(sources.json 15필드 0건). AuthorBox 는 전
+            페이지에 렌더되므로 314개 URL 이 같은 거짓을 달고 있었다. 대체는 실배선된 FRED. */}
+        and the FRED MORTGAGE30US rate series. Where a value is derived (price-to-
         income, buy-vs-rent crossover, mortgage-rate sensitivity), the formula is documented on{' '}
         <a href="/methodology/" className="underline underline-offset-2 hover:text-slate-900">
           /methodology/

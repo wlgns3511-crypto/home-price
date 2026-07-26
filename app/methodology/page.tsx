@@ -9,8 +9,12 @@ import {
 } from "@/lib/authorship";
 
 const c = siteConfig;
+// 2026-07-26 — "global housing data" → US 주 단위. 도시 194 · 국가 50 행은 미출처
+// 편집 추정치로 판정돼 같은 날 전량 410, OECD Housing Prices 인제스천은 이 레포에
+// 존재한 적이 없다(data/sources.json 15필드에 없음). 이 페이지가 사이트의 출처
+// 계약서라서 여기 남은 문장이 가장 비싼 거짓말이었다.
 const desc =
-  "How HomePricePeek sources, reconciles, and ranks global housing data. Documents every algorithmic step (Demographia bucket cluster rank, mortgage-rate sensitivity, buy-vs-rent crossover) verbatim, with named public sources and no relabelled freshness.";
+  "How HomePricePeek sources, reconciles, and ranks US state-level housing data. Documents every algorithmic step (peer-cluster rank, mortgage-rate sensitivity, buy-vs-rent crossover) verbatim, with named public sources and no relabelled freshness.";
 
 export const metadata: Metadata = {
   title: "Methodology — How HomePricePeek Builds Its Housing Data",
@@ -34,7 +38,7 @@ export default function MethodologyPage() {
           __html: JSON.stringify(
             datasetSchema(
               `${c.name} — Housing data index`,
-              "City- and state-level housing affordability metrics derived from OECD price-to-income series, Census ACS housing tables, FHFA HPI, FRED MORTGAGE30US, and named national statistics offices.",
+              "US state-level housing affordability metrics derived from Zillow ZHVI, Census ACS housing tables, FHFA HPI, FRED MORTGAGE30US, Tax Foundation property-tax rates, and NAIC homeowners premiums.",
               "/methodology/",
             ),
           ),
@@ -52,11 +56,11 @@ export default function MethodologyPage() {
 
       <div className="not-prose border-l-4 border-amber-400 bg-amber-50 p-4 my-6 rounded-r">
         <p className="text-sm text-amber-900 m-0">
-          <strong>Scope split.</strong> {c.name} runs a hybrid scope. For the United States we
-          carry deep state-level coverage (51 states + DC, 18 anchored fields per state) and a
-          smaller curated set of major metros. Internationally we carry broad city coverage (159
-          cities, 97 countries) at lower per-city depth. Each surface labels its source on page
-          rather than presenting a single global dataset.
+          <strong>Scope.</strong> One surface: the 51 US state-level jurisdictions (50 states
+          + DC), each with the same anchored field set. There is no city surface and no
+          international surface &mdash; we do not ingest a metro-level or cross-country
+          housing series, so we do not publish pages that would need one. Pages that
+          previously claimed those surfaces were withdrawn in July 2026 and return HTTP 410.
         </p>
       </div>
 
@@ -78,140 +82,124 @@ export default function MethodologyPage() {
       </ul>
       <p>
         We do not relabel data with a fresher year than the underlying source publishes. The
-        OECD price-to-income series, for example, is anchored to its own release vintage; the
-        page surface anchors to the most recent ingestion of that vintage. Each section of the
+        Zillow ZHVI values here are the April 2025 release and are labelled 2025-04, not with
+        the ingestion date or the current year. Each section of the
         site carries its own vintage — entity (DB rebuild), methodology (this page), about,
         legal — rather than a single site-wide &ldquo;today&rdquo; cluster.
       </p>
 
       <h2>2. The metrics we publish (and what they mean)</h2>
-      <p>For each city or state we publish a subset of these fields:</p>
+      <p>Every state page publishes these fields:</p>
       <ul>
         <li>
-          <strong>Average home price (USD).</strong> Midpoint of single-family transactions in
-          the metro/state. For US states this is anchored to Zillow ZHVI and FHFA HPI; for
-          international cities to OECD national price indices and named national statistics
-          offices.
+          <strong>Median home price (USD).</strong> Zillow ZHVI typical home value for the
+          state &mdash; smoothed, seasonally adjusted, single-family + condo, mid-tier
+          (35th&ndash;65th percentile), April 2025 release.
         </li>
         <li>
-          <strong>Price per square metre (USD).</strong> Useful when comparing across countries
-          with very different unit conventions and home sizes.
-        </li>
-        <li>
-          <strong>Average rent (1BR and 3BR, USD).</strong> Asking rent for a representative
-          apartment, drawn from OECD rent-to-income series and ACS B25064 where applicable.
-        </li>
-        <li>
-          <strong>Price-to-income ratio (PIR).</strong> Average home price divided by median
+          <strong>Price-to-income ratio (PIR).</strong> Median home price divided by median
           household annual income. The Demographia annual report buckets PIR as Affordable
           (&lt;3), Moderately (3–4), Seriously (4–5), and Severely (≥5) Unaffordable. We use
           the same bucket boundaries.
         </li>
         <li>
-          <strong>Mortgage rate (US).</strong> The current FRED MORTGAGE30US benchmark. This
+          <strong>Mortgage rate.</strong> The current FRED MORTGAGE30US benchmark. This
           is a national average for prime-credit borrowers, not your individual rate.
         </li>
         <li>
-          <strong>1-year price change.</strong> Year-over-year appreciation or depreciation
-          measured in local currency where the underlying source publishes a national index,
-          to reduce FX noise.
+          <strong>1-year price change.</strong> Zillow ZHVI year-over-year change, April 2024
+          → April 2025.
         </li>
         <li>
-          <strong>Cost-burdened share (US states only).</strong> ACS B25091 (owners) and
+          <strong>5- and 10-year appreciation.</strong> FHFA House Price Index
+          (all-transactions, state-level) cumulative growth, 2019Q4 → 2024Q4 and 2014Q4 →
+          2024Q4.
+        </li>
+        <li>
+          <strong>Cost-burdened share.</strong> ACS B25091 (owners) and
           B25070 (renters) — the share of households spending ≥30% of gross income on housing.
+        </li>
+        <li>
+          <strong>Carrying costs.</strong> Tax Foundation effective property-tax rate as a
+          share of owner-occupied home value (2023) and the NAIC average HO-3 homeowners
+          premium (2023).
         </li>
       </ul>
 
-      <h2>3. Demographia bucket cluster rank — our unique lever</h2>
+      {/* 2026-07-26 — 이 섹션은 lib/affordability-cluster.ts 의 rankCluster(cities) 를
+          "모든 도시 페이지가 쓰는 코드 경로"라며 verbatim 으로 싣고 있었다. 그 함수의
+          입력(194개 도시 DB)과 소비 페이지가 같은 날 전부 사라졌으므로, 살아있는 주
+          페이지가 실제로 호출하는 getPeerStates(lib/housing-landscape.ts)로 교체한다.
+          투명성 레버는 유지하되 "돌지 않는 코드"를 싣지 않는다. */}
+      <h2>3. Peer-cluster rank — our unique lever</h2>
       <p>
-        A flat &ldquo;PIR is 8.4&rdquo; number is hard to interpret on its own. The same number
-        means very different things in Hong Kong (typical of the cluster) versus a US Sun-Belt
-        metro (a severe outlier). On every city page we publish a <em>rank within the
-        Demographia bucket</em>: where this city sits among its peer cluster, and how it
-        compares to the bucket median. This is computed deterministically in TypeScript at build
-        time over the entire {c.name} city DB; the verbatim source is reproduced below so you
-        can audit the calculation yourself.
+        A flat &ldquo;PIR is 8.4&rdquo; number is hard to interpret on its own. The same ratio
+        means very different things in a coastal high-cost state (typical of its cluster) than
+        in a Plains state (a severe outlier). So every state page publishes a{" "}
+        <em>peer cluster</em>: the states this one is actually comparable to, and where it
+        sits among them. The clusters are geographic-economic groupings assigned by hand
+        &mdash; coastal high-cost, Sun-Belt boom, Rust-Belt affordable, mountain migration,
+        Plains stable, Mid-Atlantic / New England &mdash; not Demographia bands. Two states in
+        the same Demographia band with different labour markets are not peers in any useful
+        sense.
       </p>
       <p>
-        The function takes the full DB as input, computes an effective PIR for each row (using
-        the explicit ratio when available, otherwise <code>price ÷ income</code>), buckets
-        cities by Demographia thresholds, and ranks each bucket internally by ascending PIR. It
-        also produces a global rank across the full DB. The same code path produces the rank
-        you see on every city page.
+        Given a state and the full 51-row table, the function picks that state&apos;s cluster,
+        keeps the other members, and sorts them by how close their price-to-income ratio is to
+        this state&apos;s &mdash; nearest four win. It separately returns the states directly
+        above and below this one in the national price ranking. Deterministic, computed at
+        build time, no fetch and no weighting beyond what you see:
       </p>
-      <pre className="not-prose overflow-x-auto bg-slate-900 text-slate-100 text-xs leading-relaxed p-4 rounded-lg my-6"><code>{`export type DemographiaBucket =
-  | 'affordable'
-  | 'moderately-unaffordable'
-  | 'seriously-unaffordable'
-  | 'severely-unaffordable';
+      <pre className="not-prose overflow-x-auto bg-slate-900 text-slate-100 text-xs leading-relaxed p-4 rounded-lg my-6"><code>{`export type PeerCluster =
+  | 'coastal-highcost'
+  | 'sun-belt-boom'
+  | 'rust-belt-affordable'
+  | 'mountain-migration'
+  | 'plains-stable'
+  | 'mid-atlantic';
 
-export function bucketFor(pir: number): DemographiaBucket {
-  if (pir < 3.0) return 'affordable';
-  if (pir < 4.0) return 'moderately-unaffordable';
-  if (pir < 5.0) return 'seriously-unaffordable';
-  return 'severely-unaffordable';
-}
+// Hand-assigned. 51 slugs → 6 clusters; the full map is in
+// lib/housing-landscape.ts and is the only editorial input here.
+const PEER_CLUSTERS: Record<string, PeerCluster> = {
+  california: 'coastal-highcost', hawaii: 'coastal-highcost',
+  massachusetts: 'coastal-highcost', washington: 'coastal-highcost',
+  /* … 47 more … */
+};
 
-function effectivePir(c: ClusterInputCity): number | null {
-  if (c.price_to_income_ratio !== null && c.price_to_income_ratio > 0) {
-    return c.price_to_income_ratio;
-  }
-  if (c.avg_home_price_usd && c.median_income_usd && c.median_income_usd > 0) {
-    return c.avg_home_price_usd / c.median_income_usd;
-  }
-  return null;
-}
+export function getPeerStates(state: StateData, all: StateData[]): PeerFacts {
+  const cluster = PEER_CLUSTERS[state.slug] ?? 'plains-stable';
 
-function median(xs: number[]): number {
-  if (xs.length === 0) return 0;
-  const sorted = [...xs].sort((a, b) => a - b);
-  const m = Math.floor(sorted.length / 2);
-  return sorted.length % 2 ? sorted[m] : (sorted[m - 1] + sorted[m]) / 2;
-}
+  // Nearest four cluster-mates by price-to-income distance.
+  const peers = all
+    .filter(s => s.slug !== state.slug && PEER_CLUSTERS[s.slug] === cluster)
+    .sort((a, b) =>
+      Math.abs(a.priceToIncomeRatio - state.priceToIncomeRatio) -
+      Math.abs(b.priceToIncomeRatio - state.priceToIncomeRatio))
+    .slice(0, 4)
+    .map(s => ({
+      slug: s.slug,
+      name: s.name,
+      medianHomePrice: s.medianHomePrice,
+      pir: s.priceToIncomeRatio,
+    }));
 
-export function rankCluster(cities: ClusterInputCity[]): Map<string, ClusterRankResult> {
-  const usable = cities
-    .map((c) => ({ city: c, pir: effectivePir(c) }))
-    .filter((x): x is { city: ClusterInputCity; pir: number } => x.pir !== null);
+  // Neighbours in the national price ranking, cluster-agnostic.
+  const sortedByPrice = [...all].sort((a, b) => b.medianHomePrice - a.medianHomePrice);
+  const idx = sortedByPrice.findIndex(s => s.slug === state.slug);
+  const closest = sortedByPrice
+    .filter((_, i) => i !== idx && Math.abs(i - idx) <= 2)
+    .slice(0, 3)
+    .map(s => ({ slug: s.slug, name: s.name, medianHomePrice: s.medianHomePrice }));
 
-  // Global rank: least painful PIR first.
-  const globalSorted = [...usable].sort((a, b) => a.pir - b.pir);
-  const globalRankBySlug = new Map<string, number>();
-  globalSorted.forEach(({ city }, i) => globalRankBySlug.set(city.slug, i + 1));
-
-  // Bucket grouping.
-  const byBucket = new Map<DemographiaBucket, { city: ClusterInputCity; pir: number }[]>();
-  for (const x of usable) {
-    const b = bucketFor(x.pir);
-    if (!byBucket.has(b)) byBucket.set(b, []);
-    byBucket.get(b)!.push(x);
-  }
-
-  const result = new Map<string, ClusterRankResult>();
-  for (const [bucket, members] of byBucket.entries()) {
-    const sortedAsc = [...members].sort((a, b) => a.pir - b.pir);
-    const med = median(sortedAsc.map((x) => x.pir));
-    sortedAsc.forEach(({ city, pir }, i) => {
-      result.set(city.slug, {
-        slug: city.slug,
-        pir: Number(pir.toFixed(2)),
-        bucket,
-        bucketLabel: BUCKET_LABEL[bucket],
-        rankInBucket: i + 1,
-        bucketSize: sortedAsc.length,
-        pirVsBucketMedian: Number(((pir / med) - 1).toFixed(3)),
-        globalRank: globalRankBySlug.get(city.slug) ?? 0,
-        globalSize: usable.length,
-      });
-    });
-  }
-  return result;
+  return { cluster, clusterLabel: CLUSTER_LABEL[cluster], peers, closestByPrice: closest };
 }`}</code></pre>
       <p>
-        This is the entire algorithm. The only constants are the four published
-        Demographia bucket boundaries. The output is a deterministic function of the DB at
-        build time — every weight in the code is shown above, and every input is the
-        Census ACS / FHFA HPI / OECD Housing Prices field it cites.
+        This is the entire algorithm. The only editorial input is the cluster assignment
+        table; everything else is a sort over the same Zillow ZHVI / Census ACS B19013 fields
+        published on the page. Because the cluster is geographic rather than a Demographia
+        band, we do <em>not</em> publish a &ldquo;rank N of M within your Demographia
+        bucket&rdquo; line on state pages &mdash; that number would imply a peer set we
+        don&apos;t compute.
       </p>
 
       <h2>3a. Price-to-Income Band (Demographia 5-band)</h2>
@@ -248,9 +236,9 @@ export function rankCluster(cities: ClusterInputCity[]): Map<string, ClusterRank
           markets before the early-2000s acceleration.
         </li>
         <li>
-          <strong>0 – 3.1 — Highly Affordable.</strong> Below the 20th-century norm. This
-          band is increasingly rare in the OECD; in the {c.name} dataset it concentrates in
-          economically depressed US metros and a small number of low-income-economy capitals.
+          <strong>0 – 3.1 — Highly Affordable.</strong> Below the 20th-century norm. In the{" "}
+          {c.name} table it appears only in the cheapest Plains and Rust-Belt states, and
+          even there it has been thinning since 2020.
         </li>
       </ul>
       <p>
@@ -296,8 +284,7 @@ export function rankCluster(cities: ClusterInputCity[]): Map<string, ClusterRank
       </ul>
       <p>
         The decoder assumes a standard 30-year fixed amortisation with 20% downpayment (LTV =
-        0.8) and the current FRED MORTGAGE30US weekly observation for the US, with the
-        equivalent national mortgage rate carried in the country DB for international rows.
+        0.8) and the current FRED MORTGAGE30US weekly observation.
         Property tax, homeowner&apos;s insurance, and HOA dues are <em>excluded</em> from the
         burden ratio — these are separately exposed by the PITI breakdown on US state pages.
         The verbatim amortisation routine lives in{" "}
@@ -339,11 +326,11 @@ export function rankCluster(cities: ClusterInputCity[]): Map<string, ClusterRank
         The priority chain is deterministic and lives in{" "}
         <code>lib/homepricepeek-interpretation.ts</code>. The function inspects the PIR tier
         and the CFPB burden tier in a fixed order, using only the band cutoffs as weights.
-        A 4-paragraph branching strip renders the verdict just below the hero on every US
-        state, US city, and international country page; the prose itself is a template-fill
-        against the band labels, the Demographia anchor, the CFPB statute citation, the
-        peer cluster rank, and the FHFA HPI 5-year trajectory. When any input is missing,
-        the paragraph explicitly says so and shows the input that would be required.
+        A 4-paragraph branching strip renders the verdict just below the hero on every state
+        page; the prose itself is a template-fill against the band labels, the Demographia
+        anchor, the CFPB statute citation, and the FHFA HPI 5-year trajectory. When any input
+        is missing, the paragraph explicitly says so and shows the input that would be
+        required.
       </p>
 
       <h2>4. Other derived metrics</h2>
@@ -379,17 +366,11 @@ export function rankCluster(cities: ClusterInputCity[]): Map<string, ClusterRank
         </li>
       </ul>
 
-      <h2>5. Currency and inflation</h2>
-      <p>
-        All international prices are normalised to USD using market exchange rates as of the
-        underlying release date. Cross-country comparison is the dominant use case, so USD
-        normalisation is the natural choice. The trade-off is that countries with rapidly
-        depreciating currencies will show suppressed USD prices that do not reflect domestic
-        affordability; for purchasing decisions in your home country, prefer the local
-        statistics office&apos;s native-currency series.
-      </p>
+      {/* 2026-07-26 — "5. Currency and inflation" 섹션 삭제. USD 정규화·FX 노이즈·해외
+          통화 이야기는 국제 서피스가 있을 때만 성립했다. 뒤 섹션 번호는 그대로 둔다
+          h2 에 id 가 없어 앵커가 없으므로 뒤 섹션은 5~8 로 당겼다. */}
 
-      <h2>6. What we don&apos;t do</h2>
+      <h2>5. What we don&apos;t do</h2>
       <ul>
         <li>
           <strong>We don&apos;t forecast.</strong> No model on this site predicts prices forward
@@ -397,10 +378,10 @@ export function rankCluster(cities: ClusterInputCity[]): Map<string, ClusterRank
           2027&rdquo; are not part of the surface.
         </li>
         <li>
-          <strong>Per-page commentary is template-driven.</strong> The per-city and
-          per-state &ldquo;insight&rdquo; sentences are template-fills against numeric
+          <strong>Per-page commentary is template-driven.</strong> The per-state
+          &ldquo;insight&rdquo; sentences are template-fills against numeric
           thresholds (e.g. &ldquo;ratio &gt; 10 → unaffordable language&rdquo;), with the
-          Census ACS / FHFA HPI / OECD inputs as the source-of-truth and the templates
+          Zillow ZHVI / Census ACS / FHFA HPI inputs as the source-of-truth and the templates
           auditable in <code>lib/insights.ts</code>.
         </li>
         <li>
@@ -414,17 +395,18 @@ export function rankCluster(cities: ClusterInputCity[]): Map<string, ClusterRank
           curates public housing data.
         </li>
         <li>
-          <strong>We don&apos;t relabel a corpus year with a fresher one.</strong> If the
-          underlying source is OECD 2024Q4, we do not re-stamp it as 2026.
+          <strong>We don&apos;t relabel a corpus year with a fresher one.</strong> The FHFA
+          HPI cut here ends 2024Q4 and the ZHVI release is 2025-04; neither is re-stamped as
+          2026.
         </li>
       </ul>
 
-      <h2>7. Update cadence</h2>
+      <h2>6. Update cadence</h2>
       <p>
-        OECD housing price indices update quarterly. US Census ACS publishes 5-year tables
+        Zillow publishes ZHVI monthly. US Census ACS publishes 5-year tables
         annually with a 12-18 month lag. FHFA HPI updates quarterly. FRED MORTGAGE30US updates
-        weekly. We re-ingest each source on its own publication cadence, then rebuild and
-        re-deploy the site.
+        weekly. Tax Foundation and NAIC publish annually. We re-ingest each source on its own
+        publication cadence, then rebuild and re-deploy the site.
       </p>
       <p>
         The current entity vintage on this site is{" "}
@@ -435,12 +417,12 @@ export function rankCluster(cities: ClusterInputCity[]): Map<string, ClusterRank
         without changing the underlying data.
       </p>
 
-      <h2>8. Limitations you should know about</h2>
+      <h2>7. Limitations you should know about</h2>
       <ul>
         <li>
-          <strong>Metro-level resolution.</strong> Prices are at metropolitan or state level,
-          not neighbourhood. Within a large metro, prices can vary by 3–5× between
-          neighbourhoods.
+          <strong>State-level resolution.</strong> Every figure is a statewide aggregate.
+          Within one state, prices vary several-fold between metros and again between
+          neighbourhoods; a state median cannot see any of that.
         </li>
         <li>
           <strong>Average vs. median.</strong> When sources publish only averages, we use them.
@@ -456,7 +438,7 @@ export function rankCluster(cities: ClusterInputCity[]): Map<string, ClusterRank
         <li>
           <strong>Carrying costs not in the headline.</strong> The headline price excludes
           closing costs (2–5%), property tax, insurance, HOA, and maintenance. The PITI
-          breakdown card on US-state pages exposes these separately.
+          breakdown card on each state page exposes these separately.
         </li>
         <li>
           <strong>This is not financial advice.</strong> Nothing on {c.name} constitutes
@@ -465,10 +447,10 @@ export function rankCluster(cities: ClusterInputCity[]): Map<string, ClusterRank
         </li>
       </ul>
 
-      <h2>9. Corrections and feedback</h2>
+      <h2>8. Corrections and feedback</h2>
       <p>
         If a published official figure disagrees with what you see here, please{" "}
-        <a href="/contact/">contact us</a> with the city/state slug and the source URL.
+        <a href="/contact/">contact us</a> with the state slug and the source URL.
         Corrections are processed weekly. The relevant section&apos;s review date moves when a
         correction is applied; the data&apos;s underlying vintage stays anchored to its source
         release.

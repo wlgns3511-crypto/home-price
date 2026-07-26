@@ -3,8 +3,10 @@
  *
  * Pure deterministic function: given home value, mortgage rate (FRED
  * MORTGAGE30US current observation), and median household income (Census
- * ACS B19013 for US, OECD or national statistics office equivalents for
- * INTL), computes the monthly principal+interest payment under standard
+ * ACS B19013 for US; INTL rows are editorial estimates with no ingested
+ * source series — 2026-07-26 정정, 여기 "OECD or national statistics office
+ * equivalents" 라고 적혀 있었지만 그 인제스천은 레포에 없다), computes the
+ * monthly principal+interest payment under standard
  * 30-year amortization with 20% downpayment (80% loan-to-value), then
  * classifies the burden ratio against CFPB Qualified Mortgage cutoffs.
  *

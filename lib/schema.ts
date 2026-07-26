@@ -55,7 +55,11 @@ export function itemListSchema(name: string, url: string, items: { name: string;
   };
 }
 
-export function datasetSchema(name: string, description: string, url: string, scope: 'intl' | 'us' = 'intl') {
+// 2026-07-26 — `scope: 'intl' | 'us' = 'intl'` 파라미터 삭제. 국제 서피스(/country/ 50 ·
+// /city/ 194)는 같은 날 전량 410 이라 'intl' 분기는 도달 불가이고, 남은 두 호출부(홈 ·
+// /methodology/)는 둘 다 인자를 안 넘겨 **미국 전용 사이트가 기본값 'intl' 로** JSON-LD 를
+// 찍고 있었다. creator 는 SOURCE_AUTHORITIES[0](Zillow ZHVI = site.config dataSource 앵커).
+export function datasetSchema(name: string, description: string, url: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Dataset',
@@ -64,9 +68,7 @@ export function datasetSchema(name: string, description: string, url: string, sc
     url: `${SITE_URL}${url}`,
     license: 'https://creativecommons.org/publicdomain/zero/1.0/',
     reviewedBy: { '@type': 'Organization', name: EDITORIAL_TEAM.name, url: EDITORIAL_TEAM.url },
-    creator: scope === 'us'
-      ? { '@type': 'Organization', name: SOURCE_AUTHORITIES[1].name, url: SOURCE_AUTHORITIES[1].url }
-      : { '@type': 'Organization', name: SOURCE_AUTHORITIES[0].name, url: SOURCE_AUTHORITIES[0].url },
+    creator: { '@type': 'Organization', name: SOURCE_AUTHORITIES[0].name, url: SOURCE_AUTHORITIES[0].url },
     publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
     // Actual data providers backing the DB columns referenced by this surface.
     sourceOrganization: SOURCE_AUTHORITIES.map((s) => ({
@@ -92,22 +94,27 @@ export function datasetSchema(name: string, description: string, url: string, sc
  * the underlying data providers gets first-class creator attribution.
  *
  * Dual-emit policy: this function is used ONLY on state surfaces where the
- * HousingVerdict is computed. /city/, /country/, and /compare/ continue to
- * use the positional `datasetSchema(name, description, url, scope)` above
- * — they do not emit a verdict and would over-attribute Zillow ZHVI.
+ * HousingVerdict is computed. The non-entity surfaces (home, /methodology/) use
+ * the positional `datasetSchema(name, description, url)` above — they do not emit
+ * a verdict and would over-attribute Zillow ZHVI.
+ * (2026-07-26 — 이 문장이 /city/ · /country/ · /compare/ 를 소비자로 적고 있었다. 앞의 둘은
+ *  같은 날 전량 410, /compare/state/ 5장은 자체 스키마를 쓴다.)
  *
- * Creator order (6 distinct hosts):
- *   1. Zillow Group               → zillow.com  (ZHVI per-state median home value)
- *   2. US Census Bureau (ACS)     → census.gov  (B19013 median household income)
- *   3. FHFA                       → fhfa.gov    (HPI 5y/10y cumulative appreciation)
+ * Creator order = SOURCE_AUTHORITIES order (5 distinct hosts):
+ *   1. Zillow ZHVI                → zillow.com     (per-state typical home value + 1y change)
+ *   2. US Census Bureau (ACS)     → census.gov     (B19013 income, B25091/B25070 cost burden)
+ *   3. FHFA HPI                   → fhfa.gov       (5y/10y cumulative appreciation)
  *   4. FRED                       → stlouisfed.org (MORTGAGE30US weekly 30y rate)
- *   5. OECD                       → oecd.org    (price-to-income peer benchmark)
- *   6. National statistics offices → unstats.un.org (cross-country housing snapshots)
+ *   5. Tax Foundation             → taxfoundation.org (effective property tax rate)
  *
- * Zillow ZHVI lives in DataSourceBadge / TrustBlock today (not in
- * SOURCE_AUTHORITIES — which only lists orgs whose data populates a DB
- * column elsewhere). On state pages it IS the median-home-value source,
- * so it is elevated to 1st creator here for honest attribution.
+ * 2026-07-26 — 이 목록을 SOURCE_AUTHORITIES 그대로로 바꿨다. 두 가지가 틀려 있었다:
+ * ① 위 doc 이 5=OECD·6=national statistics offices 라고 적고 있었지만 c7a5411 이 그 두
+ *    슬롯을 각각 Zillow ZHVI·Tax Foundation 으로 교체했다(둘 다 실배선 0건이라). 코드는
+ *    고쳐졌고 주석만 남아 다음 사람을 오도했다.
+ * ② 그 교체의 부작용으로 creators[0]='Zillow Group' 과 creators[4]=SOURCE_AUTHORITIES[0]
+ *    ='Zillow Home Value Index (ZHVI)' 가 **같은 URL 로 중복** 등재됐다 → 51개 주 페이지의
+ *    creator/sourceOrganization 에 Zillow 가 두 이름으로, isBasedOn 에 같은 URL 이 두 번.
+ * ZHVI 가 1번 자리인 건 그대로다(SOURCE_AUTHORITIES[0] 이 ZHVI).
  */
 export function homepricepeekHousingVerdictMultiCreatorDatasetSchema(opts: {
   name: string;
@@ -117,14 +124,7 @@ export function homepricepeekHousingVerdictMultiCreatorDatasetSchema(opts: {
   leverAnchor: string;
   spatialName?: string;
 }) {
-  const creators = [
-    { name: 'Zillow Group', url: 'https://www.zillow.com/research/data/' },
-    { name: SOURCE_AUTHORITIES[1].name, url: SOURCE_AUTHORITIES[1].url },
-    { name: SOURCE_AUTHORITIES[2].name, url: SOURCE_AUTHORITIES[2].url },
-    { name: SOURCE_AUTHORITIES[3].name, url: SOURCE_AUTHORITIES[3].url },
-    { name: SOURCE_AUTHORITIES[0].name, url: SOURCE_AUTHORITIES[0].url },
-    { name: SOURCE_AUTHORITIES[4].name, url: SOURCE_AUTHORITIES[4].url },
-  ];
+  const creators = SOURCE_AUTHORITIES.map((s) => ({ name: s.name, url: s.url }));
 
   return {
     '@context': 'https://schema.org',

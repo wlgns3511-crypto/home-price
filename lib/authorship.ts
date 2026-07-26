@@ -8,16 +8,20 @@ import { siteConfig } from '@/site.config';
  * dates evolve independently in the sitemap and in DataSourceBadge.
  */
 
-export const DB_UPDATED = '2026-04-19';
+export const DB_UPDATED = '2026-07-19';
 
 // 6-layer vintage anchors (Phase 6 v6.3 pattern)
-export const ENTITY_VINTAGE = '2026-04';        // DB rebuild (cities/states data ingested)
+export const ENTITY_VINTAGE = '2026-04';        // DB rebuild (state rows ingested)
 export const ENTITY_KEEP_VINTAGE = '2026-04';   // curated keep-set last regenerated
-export const METHODOLOGY_REVIEWED = '2026-05-12';
-export const ABOUT_REVIEWED = '2026-05-12';
+// 2026-07-26 — about · methodology · legal 3층을 오늘 전부 다시 썼다(미출처 OECD/HUD/도시
+// 주장 삭제 + 단일 서피스 공시). corrections-policy 가 "정정이 실리면 해당 섹션의 리뷰
+// 날짜가 움직인다"고 약속하므로 그 세 상수만 올린다. GUIDE_REVIEWED 는 /guide/ 가 410
+// 이라 그대로, SITE_REBUILT 는 데이터 리빌드가 아니라 안 움직인다.
+export const METHODOLOGY_REVIEWED = '2026-07-26';
+export const ABOUT_REVIEWED = '2026-07-26';
 export const GUIDE_REVIEWED = '2026-05-12';
 export const SITE_REBUILT = '2026-05-12';
-export const LEGAL_REVIEWED = '2026-05-12';
+export const LEGAL_REVIEWED = '2026-07-26';
 
 export const PUBLISHER = {
   name: 'DataPeek Research Network',

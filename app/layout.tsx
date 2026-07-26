@@ -5,6 +5,7 @@ import { siteConfig } from '@/site.config';
 import { buildLocaleAlternates, getMethodologyUrl } from '@/lib/seo';
 import { UpgradeAnalytics } from "@/components/upgrades/UpgradeAnalytics";
 import RelatedSites from "@/components/RelatedSites";
+import { DailyLatest } from "@/components/DailyLatest";
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 const c = siteConfig;
@@ -64,10 +65,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <UpgradeAnalytics />
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-blue-600 focus:border focus:rounded">Skip to content</a>
         <header className="border-b border-slate-200">
-          <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="max-w-5xl mx-auto px-4 py-4 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
             <a href="/" className={`text-xl font-bold text-${c.colors.primary}-600`}>{c.name}</a>
-            <nav className="flex gap-4 text-sm">
-              <a href={`/${c.entity.slug}/`} className="text-slate-600 hover:text-slate-900">{c.entity.label}</a>
+            <nav className="flex w-full gap-4 overflow-x-auto pb-1 text-sm sm:w-auto sm:pb-0">
+              {/* 2026-07-26 — `/city/` nav 제거. cities 194행이 미출처 편집 추정치라 전량
+                  410(middleware.ts CITY_AXIS_KILL_RE). sitewide 링크였으므로 모든 페이지가
+                  410 로 링크하고 있었을 것. 남은 엔티티 축은 주(州) 하나뿐이다. */}
               <a href="/state/" className="text-slate-600 hover:text-slate-900">By State</a>
               {/* 2026-04-28 — 'Compare' nav 제거 (AdSense scaled-content remediation).
                   /compare/* 트리는 4/18 doorway-thin 판단으로 noindex 처리됨.
@@ -80,6 +83,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
         <main id="main-content" className="flex-1 max-w-5xl mx-auto px-4 py-8 w-full">{children}</main>
 
+        <DailyLatest />
         <footer className="border-t border-slate-200 mt-16">
           <div className="max-w-5xl mx-auto px-4 py-6 text-sm text-slate-500">
             <p className="mb-2">

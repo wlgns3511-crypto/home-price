@@ -7,7 +7,10 @@ const c = siteConfig;
 
 export const metadata: Metadata = {
   title: "Disclaimer",
-  description: `${c.name} disclaimer: not financial, legal, or real-estate advice; not a brokerage; not a lender; data limits anchored to Census ACS, FHFA HPI, FRED MORTGAGE30US, and OECD Housing Prices.`,
+  // 2026-07-26 — OECD Housing Prices · HUD FMR · "national statistics offices" 제거.
+  // 셋 다 인제스천 0건(data/sources.json 15필드에 없음). HUD 는 데이터셋이 아니라
+  // 30% 코스트버든 기준선이라는 '정의'로만 실재하므로 그 용도로만 남긴다.
+  description: `${c.name} disclaimer: not financial, legal, or real-estate advice; not a brokerage; not a lender; data limits anchored to Zillow ZHVI, Census ACS, FHFA HPI, and FRED MORTGAGE30US.`,
   alternates: { canonical: "/disclaimer/" },
   openGraph: { url: "/disclaimer/" },
 };
@@ -22,24 +25,23 @@ export default function DisclaimerPage() {
 
       <p>
         {c.name} is a free public-data reference that re-publishes housing-affordability
-        metrics drawn from named public series: the US Census Bureau American Community
-        Survey (ACS) 5-year tables, the Federal Housing Finance Agency (FHFA) House Price
-        Index, the Federal Reserve Economic Data (FRED) MORTGAGE30US weekly observation,
-        the Department of Housing and Urban Development (HUD) Fair Market Rent tables, the
-        Organisation for Economic Co-operation and Development (OECD) Housing Prices
-        dataset, and named national statistics offices outside the OECD. This page makes
-        plain what the site is and is not, so there is no ambiguity about what readers can
-        rely on.
+        metrics for 51 US jurisdictions from named public series: the Zillow Home Value
+        Index (ZHVI), the US Census Bureau American Community Survey (ACS) 5-year tables,
+        the Federal Housing Finance Agency (FHFA) House Price Index, the Federal Reserve
+        Economic Data (FRED) MORTGAGE30US weekly observation, and Tax Foundation
+        property-tax rates with NAIC homeowners premiums. That is the complete list. This
+        page makes plain what the site is and is not, so there is no ambiguity about what
+        readers can rely on.
       </p>
 
       <h2>Not financial advice</h2>
       <p>
         Nothing on {c.name} is investment, tax, mortgage, or financial-planning advice.
-        Pages compare housing-affordability metrics drawn from Census ACS B19013 (median
-        household income), Census ACS B25077 (median home value), FHFA HPI (price
-        trajectory), FRED MORTGAGE30US (national 30-year fixed mortgage rate), HUD Fair
-        Market Rent (rent baseline), and OECD Housing Prices (international price-to-income
-        and rent-to-income series). They do not assess your individual financial situation,
+        Pages compare housing-affordability metrics drawn from Zillow ZHVI (typical home
+        value), Census ACS B19013 (median household income), Census ACS B25091/B25070
+        (cost-burdened shares), FHFA HPI (price trajectory), FRED MORTGAGE30US (national
+        30-year fixed mortgage rate), and Tax Foundation / NAIC carrying costs. They do not
+        assess your individual financial situation,
         your risk tolerance, your tax position, or your eligibility for a specific mortgage
         product. The team behind {c.name} does not hold CFP, MLO, NMLS, or appraiser
         certification, and we do not claim to. For a real purchase, refinance, or
@@ -52,8 +54,8 @@ export default function DisclaimerPage() {
         Discussions of property tax, transfer tax, mortgage-interest deduction (with
         reference to the IRS State and Local Tax cap), foreign-buyer rules, or
         rent-control regimes on {c.name} are factual summaries of publicly stated rules,
-        anchored where possible to Census ACS source tables, HUD program documentation,
-        and federal statutes. They are not legal advice for a specific transaction. Tax
+        anchored where possible to Census ACS source tables and federal statutes. They are
+        not legal advice for a specific transaction. Tax
         rules and rental laws differ by jurisdiction and change without notice. Verify
         with a local lawyer or tax professional before relying on a tax-treatment
         statement on this site.
@@ -63,11 +65,10 @@ export default function DisclaimerPage() {
       <p>
         We do not list properties for sale, do not represent buyers or sellers, do not
         originate or broker mortgages, do not produce appraisals, and do not host an MLS
-        feed. Prices on this site are statistical aggregates from public series — Census
-        ACS, FHFA HPI, HUD Fair Market Rent, OECD Housing Prices, and named national
-        statistics offices — and are not quotes for a specific property. The FRED
-        MORTGAGE30US rate displayed on US state pages is a national average for
-        prime-credit borrowers, not your individual rate quote.
+        feed. Prices on this site are statistical aggregates from public series &mdash;
+        Zillow ZHVI, Census ACS, and FHFA HPI &mdash; and are not quotes for a specific
+        property. The FRED MORTGAGE30US rate displayed on state pages is a national average
+        for prime-credit borrowers, not your individual rate quote.
       </p>
 
       <h2>Data accuracy and limits</h2>
@@ -77,23 +78,17 @@ export default function DisclaimerPage() {
       </p>
       <ul>
         <li>
-          <strong>Vintage.</strong> Each section anchors to its honest review date. The
-          OECD Housing Prices release we ingested is anchored to its own observation date,
-          not the ingestion date or the date you happen to read the page. Census ACS
-          5-year tables carry a built-in 12&ndash;18 month lag and are released annually
-          by the Census Bureau. FHFA HPI updates quarterly; FRED MORTGAGE30US updates
-          weekly.
+          <strong>Vintage.</strong> Each section anchors to its honest review date, not the
+          ingestion date or the date you happen to read the page. The ZHVI values published
+          here are the April 2025 release. Census ACS 5-year tables carry a built-in
+          12&ndash;18 month lag and are released annually by the Census Bureau. FHFA HPI
+          updates quarterly; FRED MORTGAGE30US updates weekly.
         </li>
         <li>
-          <strong>Resolution.</strong> International data via OECD Housing Prices is
-          country- or metro-level. US data via Census ACS is state-level (51 jurisdictions)
-          with a smaller set of metros. Within a large metro, prices can vary
-          3&ndash;5&times; between neighborhoods, which our data cannot capture.
-        </li>
-        <li>
-          <strong>Currency.</strong> Cross-country comparisons use exchange rates as of
-          the OECD release window. A 5&ndash;10% FX move after publication is not
-          reflected on the page until the next rebuild.
+          <strong>Resolution.</strong> Everything here is state-level (51 jurisdictions).
+          Within a single state, and within any one metro inside it, prices can vary
+          3&ndash;5&times; between neighborhoods &mdash; a state median cannot capture that,
+          and we do not publish a city or neighborhood surface that would.
         </li>
         <li>
           <strong>Derived metrics.</strong> Price-to-income ratios (Demographia 5-band),
@@ -114,7 +109,7 @@ export default function DisclaimerPage() {
       <h2>Forward-looking statements</h2>
       <p>
         {c.name} does not forecast prices, rents, or rates beyond the most recent observed
-        value published by Census, FHFA, FRED, HUD, or OECD. Where a page discusses recent
+        value published by Zillow, Census, FHFA, or FRED. Where a page discusses recent
         appreciation or current cost burden, those statements describe the past and the
         present, not the future. The FHFA HPI is, by FHFA&apos;s own definition, a
         backward-looking purchase-only repeat-sales index.
@@ -132,20 +127,19 @@ export default function DisclaimerPage() {
 
       <h2>External links</h2>
       <p>
-        Source links on {c.name} go to OECD Housing Prices, the US Census Bureau
-        (data.census.gov), FHFA House Price Index pages, FRED (fred.stlouisfed.org),
-        HUD User (huduser.gov), and named national statistics offices. We do not control
-        those sites. Their data may change between our ingest and your visit, and Census
-        Bureau, FHFA, FRED, HUD, and OECD release schedules occasionally shift.
+        Source links on {c.name} go to Zillow Research, the US Census Bureau
+        (data.census.gov), FHFA House Price Index pages, FRED (fred.stlouisfed.org), and
+        the Tax Foundation. We do not control those sites. Their data may change between
+        our ingest and your visit, and release schedules occasionally shift.
       </p>
 
       <h2>Limitation of liability</h2>
       <p>
         To the maximum extent permitted by applicable law, the editorial team is not
         liable for any loss arising from reliance on a published value, a derived metric,
-        or a comparison across cities. The Census ACS, FHFA HPI, FRED MORTGAGE30US, HUD
-        Fair Market Rent, and OECD Housing Prices series are republished here under their
-        respective open-data licences; the site is provided &ldquo;as is&rdquo;.
+        or a comparison across states. The ZHVI, Census ACS, FHFA HPI, and FRED
+        MORTGAGE30US series are republished here under their respective open-data or
+        research-use terms; the site is provided &ldquo;as is&rdquo;.
       </p>
 
       <h2>Source attributions</h2>
@@ -162,8 +156,7 @@ export default function DisclaimerPage() {
 
       <h2>Contact</h2>
       <p>
-        Concerns about a specific Census, FHFA, FRED, HUD, or OECD anchored value, or
-        any other page on the site:{" "}
+        Concerns about a specific anchored value, or any other page on the site:{" "}
         <a href={`mailto:contact@${c.domain}`}>contact@{c.domain}</a>, or via{" "}
         <a href="/contact/">/contact</a>.
       </p>

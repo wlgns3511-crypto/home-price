@@ -2,14 +2,17 @@
  * price-to-income-band.ts — Demographia 5-band classifier (verbatim 2024 edition).
  *
  * Deterministic function over (median home value, median household income).
- *  - US scope: ZHVI / Census ACS B19013
- *  - INTL scope: OECD or national statistics office equivalents (same ratio,
- *    different data provenance)
+ * 입력은 한 축뿐이다: ZHVI 주별 typical home value / Census ACS B19013.
+ *
+ * 2026-07-26 — "INTL scope: OECD or national statistics office equivalents" 를 지웠다.
+ * ① 레포에 그 인제스천이 0건(data/sources.json 15필드에 없음), ② 그 비율을 쓰던 국제
+ * 서피스(/city/ 194 · /country/ 50)는 같은 날 전량 410. 같은 비율 공식을 쓰는 것과
+ * 같은 데이터 출처를 갖는 것은 다르다.
  *
  * Cutoffs taken verbatim from the Demographia International Housing
- * Affordability annual report (the canonical industry reference). Demographia
- * is cited as an industry index — the actual data backing remains Census ACS
- * (US) or OECD/national statistics offices (INTL).
+ * Affordability annual report (the canonical industry reference) — Demographia is
+ * cited as the industry index for the *cutoffs*; the data behind the ratio is
+ * ZHVI + Census ACS.
  */
 
 export type PriceToIncomeTier =

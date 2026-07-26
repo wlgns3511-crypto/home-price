@@ -33,11 +33,15 @@ export default function AboutPage() {
         Section reviewed: <time dateTime={ABOUT_REVIEWED}>{ABOUT_REVIEWED}</time>
       </p>
 
+      {/* 2026-07-26 — 국제/도시 서피스 주장을 전부 지웠다. 그 서피스를 받치던 194개 도시 ·
+          50개 국가 행은 미출처 합성 시드로 판정돼 같은 날 전량 410 이고, OECD Housing Prices
+          인제스천은 레포에 존재한 적이 없다(data/sources.json 15필드에 없음). 남은 발행 축은
+          주 51개 하나다. */}
       <p className="lead text-lg text-slate-600">
-        {c.name} is a free housing-data reference focused on two specific surfaces: deep
-        per-state coverage of the United States housing market, and broad per-city coverage
-        of major international metros. It is built by a small editorial team operating under
-        the DataPeek Research Network, and runs on public, named, and traceable data sources.
+        {c.name} is a free housing-data reference with one surface: deep per-state coverage
+        of the United States housing market, 51 jurisdictions (50 states + DC). It is built
+        by a small editorial team operating under the DataPeek Research Network, and runs on
+        public, named, and traceable data sources.
       </p>
 
       <h2>Who runs this</h2>
@@ -52,39 +56,28 @@ export default function AboutPage() {
       <p>
         The operation is intentionally small. We are not a venture-backed startup, we do not
         run a sales team, and we do not offer paid placement of any kind. The site exists
-        because the editor wanted a single place to compare housing affordability across
-        countries without subscribing to MLS or paying for an OECD-Stat seat &mdash; and
+        because the editor wanted a single place to compare housing affordability across US
+        states without subscribing to MLS or paying for a market-data seat &mdash; and
         decided to publish it.
       </p>
 
       <h2>Scope &mdash; what this site actually covers</h2>
       <p>
-        Housing data sources differ in depth and quality between the United States and the
-        rest of the world. {c.name} runs a deliberate hybrid scope to reflect that reality
-        rather than pretending there is one global dataset:
+        One surface, one resolution: the 51 US state-level jurisdictions (50 states + DC).
+        Each carries the same anchored field set &mdash; median home price (Zillow ZHVI), 5-
+        and 10-year FHFA HPI appreciation, ACS B19013 median household income, ACS
+        B25091/B25070 cost-burdened shares for owners and renters, Tax Foundation effective
+        property-tax rate, NAIC homeowners premium, FRED MORTGAGE30US current 30-year fixed
+        rate &mdash; plus derived metrics computed from those inputs: price-to-income ratio,
+        Demographia bucket, mortgage cost delta, buy-vs-rent crossover year, and a PITI
+        breakdown.
       </p>
-      <ul>
-        <li>
-          <strong>US deep coverage.</strong> 51 states (50 + DC) carry 18 anchored fields per
-          state, including median home price (Zillow ZHVI), 5- and 10-year FHFA HPI
-          appreciation, ACS B19013 median household income, ACS B25091/B25070 cost-burdened
-          shares for owners and renters, FRED MORTGAGE30US current 30-year fixed rate, plus
-          derived metrics: price-to-income ratio, Demographia bucket, mortgage cost delta,
-          buy-vs-rent crossover year, and a PITI breakdown. We additionally carry 35 US
-          cities at lower depth.
-        </li>
-        <li>
-          <strong>International broad coverage.</strong> 159 cities across 97 countries with
-          a smaller per-city field set: average home price, price per square metre, 1BR and
-          3BR rent, price-to-income ratio, and 1-year change. International figures are
-          anchored to the OECD price-to-income series for OECD member economies and to named
-          national statistics offices elsewhere.
-        </li>
-      </ul>
       <p>
-        Every entity page labels its source on page rather than presenting a unified veneer
-        over different data quality. A US-state page and a Bangkok page are not equivalent
-        depth, and we say so.
+        There is no city surface and no international surface. We do not ingest a
+        metro-level price series or a cross-country housing series, so we do not publish
+        per-city or per-country pages. Every field on every page traces to one of the named
+        US series above; the full field-by-field source table is on{" "}
+        <a href="/methodology/">/methodology/</a>.
       </p>
 
       <h2>What we don&apos;t cover</h2>
@@ -104,17 +97,17 @@ export default function AboutPage() {
           prices will go next year&rdquo; pages.
         </li>
         <li>
-          <strong>Per-page commentary is template-driven.</strong> The per-city and
-          per-state insight paragraphs you see on entity pages are deterministic
-          template-fills against numeric thresholds (e.g. &ldquo;PIR &gt; 10 →
-          unaffordable language&rdquo;), with the Census ACS / FHFA HPI / OECD Housing
-          Prices inputs as the source-of-truth. The templates are auditable in{" "}
-          <code>lib/insights.ts</code>.
+          <strong>Per-page commentary is template-driven.</strong> The per-state insight
+          paragraphs you see on entity pages are deterministic template-fills against
+          numeric thresholds (e.g. &ldquo;PIR &gt; 10 → unaffordable language&rdquo;), with
+          the Zillow ZHVI / Census ACS / FHFA HPI inputs as the source-of-truth. The
+          templates are auditable in <code>lib/insights.ts</code>.
         </li>
         <li>
-          <strong>Neighborhood-level resolution.</strong> All international data is
-          metro-level; US data is state- and metro-level. Within a large metro, prices can
-          vary 3&ndash;5&times; between neighborhoods, which our data cannot capture.
+          <strong>Sub-state resolution.</strong> Every figure is a state-level aggregate.
+          Within a single state, prices vary several-fold between metros and again between
+          neighborhoods; a state median cannot capture that, and we do not publish
+          metro- or neighborhood-level numbers.
         </li>
         <li>
           <strong>Mortgage broker referrals.</strong> We do not partner with lenders, do not
@@ -134,8 +127,8 @@ export default function AboutPage() {
       </p>
       <ol>
         <li>
-          Re-ingest the underlying sources on each source&apos;s native cadence (OECD
-          quarterly, ACS annually, FHFA quarterly, FRED weekly).
+          Re-ingest the underlying sources on each source&apos;s native cadence (Zillow ZHVI
+          monthly, ACS annually, FHFA quarterly, FRED weekly).
         </li>
         <li>
           Reconcile values against the prior ingest; large deltas trigger a manual review
@@ -152,8 +145,9 @@ export default function AboutPage() {
         </li>
       </ol>
       <p>
-        We do not relabel a corpus year. If the OECD release we ingested is anchored to 2024
-        Q4 data, the entity vintage reflects 2024 Q4, not the ingestion date.
+        We do not relabel a corpus year. The Zillow ZHVI values on this site are the April
+        2025 release, so the entity vintage reflects 2025-04 &mdash; not the ingestion date
+        and not the current year.
       </p>
 
       <h2>Section vintages &mdash; honest freshness</h2>
@@ -164,8 +158,8 @@ export default function AboutPage() {
       </p>
       <ul>
         <li>
-          <strong>Entity vintage</strong> ({ENTITY_VINTAGE}) &mdash; when the city/state
-          rows in the database were last refreshed.
+          <strong>Entity vintage</strong> ({ENTITY_VINTAGE}) &mdash; when the state rows
+          were last refreshed.
         </li>
         <li>
           <strong>Methodology</strong> ({METHODOLOGY_REVIEWED}) &mdash; when the math and
@@ -192,8 +186,8 @@ export default function AboutPage() {
         subscription, no premium tier, no affiliate program for mortgage products, and no
         sponsored content. AdSense inventory is auctioned by Google&apos;s network; the ads
         you see on a page are not editorial endorsements. We do not accept paid placement
-        of city entries, paid promotion of mortgage products, or paid removal of
-        unfavourable city rankings.
+        of state entries, paid promotion of mortgage products, or paid removal of
+        unfavourable state rankings.
       </p>
       <p>
         The operator does not hold equity in any real-estate brokerage, mortgage lender,
@@ -223,29 +217,23 @@ export default function AboutPage() {
         <a href="/editorial-policy/">/editorial-policy/</a>.
       </p>
 
-      <h2>Path C hybrid &mdash; how we cover the world</h2>
+      <h2>Why US-only</h2>
       <p>
         Housing data has a sharply uneven publishing landscape. The United States Census
         Bureau publishes the American Community Survey 5-year tables annually with thousands
         of cross-tabulated fields per state and county; the Federal Housing Finance Agency
         publishes a quarterly House Price Index back to 1975; FRED publishes the
-        MORTGAGE30US weekly observation back to 1971; HUD publishes Fair Market Rents
-        annually. No equivalent depth exists outside the US. The OECD <em>Housing Prices</em>
-        dataset publishes a price-to-income index, a price-to-rent index, and a real house
-        price index for each member economy, but at country aggregation and at a longer
-        publication lag than the US series. For non-OECD economies we anchor to named
-        national statistics offices.
+        MORTGAGE30US weekly observation back to 1971; Zillow publishes ZHVI monthly. That
+        depth is what makes a per-state page worth reading.
       </p>
       <p>
-        Rather than pretend OECD country aggregates and US Census ACS state cuts are the
-        same data, {c.name} runs a deliberate hybrid (&ldquo;Path C&rdquo;) scope. The US
-        surface is deep, per-state, anchored to Census ACS, FHFA HPI, and FRED. The
-        international surface is broad, per-country, anchored to OECD Housing Prices and to
-        named national statistics offices where OECD does not publish. The two surfaces
-        share an interpretation layer (the Price-to-Income Band, the Mortgage Burden
-        Decoder, the Housing Affordability Verdict) so a reader comparing Sydney to Phoenix
-        sees the same Demographia bucket and the same CFPB tier framing, but the underlying
-        anchored fields differ and each page labels its source on page.
+        No comparable free series exists for the cities and countries a housing site is
+        tempted to cover, and we do not run an ingestion pipeline for one. So the honest
+        answer is a narrower site: 51 state pages, five state-pair comparisons, and nothing
+        that would require a number we cannot trace. Pages that once claimed a per-city or
+        per-country surface were withdrawn in July 2026 and now return HTTP 410 &mdash; the
+        figures behind them were editorial estimates, not an ingested series, which is not a
+        standard we are willing to publish under.
       </p>
 
       <h2>Interpretation layer &mdash; PSU 1 lever stack</h2>
@@ -261,14 +249,13 @@ export default function AboutPage() {
           (Highly Affordable / Affordable / Moderately / Seriously / Severely Unaffordable),
           with the verbatim cutoffs ≥ 9.0 / ≥ 5.1 / ≥ 4.1 / ≥ 3.1 / 0 that Demographia has
           used continuously since the early 2000s. Inputs: home value and median household
-          income. Anchored externally to OECD Housing Prices, the Demographia annual report,
-          and Census ACS B19013 for the US.
+          income. Anchored externally to the Demographia annual report and to Census ACS
+          B19013.
         </li>
         <li>
           <strong>Mortgage Burden Decoder.</strong> Computes the implied monthly principal
           and interest payment under a standard 30-year fixed amortisation at the current
-          FRED MORTGAGE30US weekly rate (US) or the country&apos;s national mortgage rate
-          (international), assuming a 20% downpayment. Compares the resulting share of
+          FRED MORTGAGE30US weekly rate, assuming a 20% downpayment. Compares the resulting share of
           income against the CFPB Owning a Home 28% / 36% / 43% cutoffs documented in the
           Qualified Mortgage rule at 12 CFR §1026.43(c).
         </li>
@@ -284,16 +271,10 @@ export default function AboutPage() {
       </ul>
       <p>
         The interpretation layer is purely deterministic. Every paragraph is a
-        template-fill against the named Demographia / CFPB cutoffs and the named Census
-        ACS / FHFA HPI / FRED MORTGAGE30US / OECD Housing Prices source citations; the
-        verbatim source for all three levers is reproduced on{" "}
-        <a href="/methodology/">/methodology/</a>, and each lever has its own hub
-        explainer at{" "}
-        ,{" "}
-        ,{" "}
-        ,
-        and{" "}
-        .
+        template-fill against the named Demographia / CFPB cutoffs and the named Zillow
+        ZHVI / Census ACS / FHFA HPI / FRED MORTGAGE30US source citations; the verbatim
+        source for all three levers is reproduced on{" "}
+        <a href="/methodology/">/methodology/</a>.
       </p>
 
       <h2>Tone</h2>

@@ -67,7 +67,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const priceK = Math.round(state.medianHomePrice / 1000);
   const pti = priceToIncomeBand(state.medianHomePrice, state.medianHouseholdIncome);
   const burden = mortgageBurdenDecoder(state.medianHomePrice, state.avgMortgageRate30yr, state.medianHouseholdIncome);
-  const verdict = pti || burden ? pickVerdict({ pti, burden, scope: 'us' }) : null;
+  const verdict = pti || burden ? pickVerdict({ pti, burden }) : null;
   const verdictShort = verdict ? housingVerdictShortLabel(verdict) : null;
   const titleBody = pti
     ? `${state.name} housing: $${priceK}K · PIR ${pti.ratio.toFixed(1)}${verdictShort ? ` · ${verdictShort}` : ''}`
@@ -82,7 +82,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: { absolute: titleBody },
     description,
     alternates: buildLocaleAlternates(`/state/${slug}/`),
-    openGraph: { title: titleBody, description, url: `/state/${slug}/` },
+    openGraph: { title: titleBody, description, url: `/state/${slug}/`, images: [{ url: '/opengraph-image' }] },
     robots: buildDbPageRobots(gate.pass),
   };
 }
@@ -235,11 +235,8 @@ export default async function StatePage({ params }: Props) {
           homeValueUsd={state.medianHomePrice}
           mortgage30Pct={state.avgMortgageRate30yr}
           medianIncomeUsd={state.medianHouseholdIncome}
-          bucketLabel={peers.clusterLabel}
-          bucketRank={peers.peers.findIndex(p => p.slug === state.slug) >= 0 ? peers.peers.findIndex(p => p.slug === state.slug) + 1 : null}
-          bucketSize={peers.peers.length}
+          peerClusterLabel={peers.clusterLabel}
           hpi5yPct={state.fhfaHpi5yr}
-          scope="us"
         />
       </section>
 

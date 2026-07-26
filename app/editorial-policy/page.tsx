@@ -7,7 +7,10 @@ const c = siteConfig;
 
 export const metadata: Metadata = {
   title: "Editorial Policy",
-  description: `${c.name} editorial standards anchored to US Census Bureau ACS, FHFA HPI, FRED MORTGAGE30US, HUD Fair Market Rent, and OECD Housing Prices.`,
+  // 2026-07-26 — HUD FMR · OECD Housing Prices 제거. 둘 다 레포에 인제스천이 없고
+  // data/sources.json 15필드에도 없다(HUD 는 '30% 코스트버든 기준선'이라는 정의로만
+  // 실재 — 데이터셋이 아니다). 실배선된 것만 남긴다.
+  description: `${c.name} editorial standards anchored to Zillow ZHVI, US Census Bureau ACS, FHFA HPI, FRED MORTGAGE30US, and Tax Foundation property-tax data.`,
   alternates: { canonical: "/editorial-policy/" },
   openGraph: { url: "/editorial-policy/" },
 };
@@ -27,9 +30,8 @@ export default function EditorialPolicyPage() {
         <a href="https://datapeekfacts.com/editorial-policy/" rel="noopener">
           datapeekfacts.com/editorial-policy
         </a>
-        ; this page is the {c.name}-specific layer, anchored to the named public sources
-        — the US Census Bureau, HUD, and federal economic data providers domestically;
-        OECD Housing Prices and national statistics offices internationally.
+        ; this page is the {c.name}-specific layer, anchored to named US public sources
+        — Zillow Research, the US Census Bureau, FHFA, FRED, the Tax Foundation, and NAIC.
       </p>
 
       <h2>Source transparency</h2>
@@ -39,17 +41,22 @@ export default function EditorialPolicyPage() {
       </p>
       <ul>
         <li>
+          <strong>Zillow Home Value Index (ZHVI).</strong> Typical home value per state and
+          its 1-year change &mdash; smoothed, seasonally adjusted, single-family + condo,
+          mid-tier (35th&ndash;65th percentile). The April 2025 release is what the site
+          currently publishes, and it is labelled as such.
+        </li>
+        <li>
           <strong>US Census Bureau American Community Survey (ACS) 5-year tables.</strong>{" "}
-          Median household income (Census ACS B19013), median home value (Census ACS
-          B25077), cost-burdened owner share (Census ACS B25091), cost-burdened renter
-          share (Census ACS B25070), gross rent (Census ACS B25064). The US Census Bureau
+          Median household income (B19013), cost-burdened owner share (B25091), and
+          cost-burdened renter share (B25070), 2019&ndash;2023 5-Year. The Census Bureau
           releases ACS 5-year tables annually with a built-in 12&ndash;18 month lag, and
-          the Census Bureau&apos;s data.census.gov is the canonical access point.
+          data.census.gov is the canonical access point.
         </li>
         <li>
           <strong>Federal Housing Finance Agency (FHFA) House Price Index.</strong>{" "}
-          Quarterly purchase-only repeat-sales index used for 1-year, 5-year, and 10-year
-          appreciation derivations. FHFA HPI is a backward-looking index by FHFA&apos;s
+          All-transactions state-level index used for the 5-year and 10-year cumulative
+          appreciation figures. FHFA HPI is a backward-looking index by FHFA&apos;s
           own definition.
         </li>
         <li>
@@ -58,23 +65,17 @@ export default function EditorialPolicyPage() {
           Mortgage Market Survey replumbed onto the St Louis Fed&apos;s FRED endpoint.
         </li>
         <li>
-          <strong>HUD Fair Market Rent (FMR) tables.</strong> Department of Housing and
-          Urban Development&apos;s county-level FMR baseline, used in cross-references
-          where the Census ACS B25064 gross rent is sparse. HUD&apos;s 30%-of-income
-          threshold defines the cost-burden classification we apply to Census ACS
-          B25091/B25070.
+          <strong>Tax Foundation and NAIC.</strong> Effective property tax paid as a share
+          of owner-occupied home value (Tax Foundation, 2023) and the average HO-3
+          homeowners premium (NAIC, 2023) &mdash; the two carrying costs in the PITI
+          breakdown.
         </li>
         <li>
-          <strong>OECD Housing Prices dataset.</strong> The Organisation for Economic
-          Co-operation and Development&apos;s cross-country price-to-income, rent-to-income,
-          and real house price indices. Anchored quarterly per country; serves as the
-          international counterpart to Census ACS + FHFA HPI domestically.
-        </li>
-        <li>
-          <strong>Named national statistics offices outside the OECD.</strong>{" "}
-          Statistics Canada, ONS UK, INE Spain, Eurostat, INSEE France, ABS Australia,
-          Statistics Korea (KOSTAT), and others fill in where OECD Housing Prices does
-          not publish.
+          <strong>Definitions, not datasets.</strong> Two authorities appear on the site as
+          published <em>thresholds</em> rather than as ingested series, and we say which is
+          which: HUD&apos;s 30%-of-income cost-burden line (applied to the ACS B25091/B25070
+          shares) and the CFPB Qualified Mortgage 28/36/43 cutoffs (applied to our own
+          amortisation). We ingest no HUD or CFPB data file.
         </li>
       </ul>
       <p>
@@ -82,59 +83,46 @@ export default function EditorialPolicyPage() {
         mortgage burden tier against the Consumer Financial Protection Bureau 28/36/43
         cutoffs, buy-vs-rent crossover, PITI breakdown), the underlying anchored input is
         named on page and the verbatim algorithm lives on{" "}
-        <a href="/methodology/">/methodology/</a>. We do not relabel a Census ACS, FHFA,
-        FRED, HUD, or OECD release year with a fresher one.
+        <a href="/methodology/">/methodology/</a>. We do not relabel a Zillow, Census ACS,
+        FHFA, or FRED release year with a fresher one.
       </p>
 
-      <h2>Scope split &mdash; honest about what we cover</h2>
+      <h2>Scope &mdash; honest about what we cover</h2>
       <p>
-        {c.name} runs a hybrid (&ldquo;Path C&rdquo;) scope because the underlying source
-        landscape is uneven. The US Census Bureau ACS, FHFA HPI, FRED MORTGAGE30US, and
-        HUD Fair Market Rent publish at higher depth and frequency than any equivalent
-        international series. OECD Housing Prices covers OECD member economies with
-        comparable but shallower depth. Beyond OECD, national statistics offices vary
-        widely in coverage. We do not pretend these are the same product:
+        One surface: 51 US jurisdictions (50 states + DC), every one carrying the same
+        anchored field set from the sources above. There is no city surface and no
+        international surface, because we run no ingestion for a metro-level or
+        cross-country housing series.
       </p>
-      <ul>
-        <li>
-          <strong>US:</strong> 51 jurisdictions (50 states + DC) at 18 anchored fields
-          per state, drawn from Census ACS, FHFA HPI, FRED, and HUD. The state-level
-          surface is the deepest part of the site.
-        </li>
-        <li>
-          <strong>International:</strong> ~159 cities across ~97 countries at a smaller
-          field set anchored to OECD Housing Prices and named national statistics
-          offices.
-        </li>
-      </ul>
       <p>
-        Per-page labels make the depth difference explicit. We do not present a Census
-        ACS-backed US state page and an OECD-backed Bangkok page as equivalent products.
+        This is narrower than the site claimed until July 2026. Per-city and per-country
+        pages published before then were built on editorial estimates rather than an
+        ingested series; when an audit established that, the pages were withdrawn (HTTP 410)
+        and the claims describing them were removed from this policy rather than left
+        standing. A source list that includes an authority we never ingested is the same
+        failure as a wrong number.
       </p>
 
       <h2>Selection criteria</h2>
       <p>
-        {c.name} does not generate a page for every possible city or state slug. Coverage
+        {c.name} does not generate a page for every slug someone might type. Coverage
         is driven by:
       </p>
       <ul>
         <li>
-          <strong>Source availability.</strong> A US row must have a Census ACS 5-year
-          observation within the last two years; an international row must have an OECD
-          Housing Prices observation or a named national statistics office citation
-          within the last two years. Rows below this floor are excluded.
+          <strong>Source availability.</strong> A row must carry a Zillow ZHVI value and a
+          Census ACS 5-year observation from the current release cycle. Rows below this
+          floor are excluded rather than estimated.
         </li>
         <li>
           <strong>User demand.</strong> Pages with measurable demand (Google Search
           Console impressions or click-through over a 25-day window) are prioritised for
-          review and for additional Census ACS / FHFA HPI / FRED / HUD / OECD derived-
-          metric coverage.
+          review and for additional derived-metric coverage.
         </li>
         <li>
-          <strong>Network coherence.</strong> Cities or states already covered by sister
+          <strong>Network coherence.</strong> States already covered by sister
           DataPeek sites (cost-of-living, salary, energy cost) get cross-link priority,
-          provided their Census ACS, BLS, BEA, and HUD anchors are independently
-          verified on this surface as well.
+          provided their anchors are independently verified on this surface as well.
         </li>
       </ul>
 
@@ -145,7 +133,7 @@ export default function EditorialPolicyPage() {
       <ol>
         <li>
           <strong>Source verification.</strong> Each field is cross-checked against the
-          published Census ACS, FHFA HPI, FRED, HUD, or OECD source URL before
+          published Zillow, Census ACS, FHFA, FRED, or Tax Foundation source URL before
           deployment. Fields without a source-of-truth are labelled as derived and the
           derivation is documented.
         </li>
@@ -168,46 +156,45 @@ export default function EditorialPolicyPage() {
       <ul>
         <li>
           <strong>Per-page commentary is template-driven.</strong>{" "}
-          The per-city and per-state &ldquo;insight&rdquo; sentences are deterministic
-          template-fills against numeric thresholds anchored to Census ACS, FHFA HPI,
-          FRED MORTGAGE30US, HUD Fair Market Rent, and OECD Housing Prices inputs; the
+          The per-state &ldquo;insight&rdquo; sentences are deterministic
+          template-fills against numeric thresholds anchored to the Zillow ZHVI, Census ACS,
+          FHFA HPI, and FRED MORTGAGE30US inputs; the
           templates are auditable in <code>lib/insights.ts</code>.
         </li>
         <li>
           <strong>We don&apos;t pretend to be a multiple-listing service.</strong> The
-          prices are Census ACS / FHFA HPI / OECD aggregates, not active listings.
+          prices are Zillow ZHVI / FHFA HPI aggregates, not active listings.
         </li>
         <li>
           <strong>We don&apos;t claim certification backing.</strong> No CFP, MLO, NMLS,
           appraiser, or realtor credential underwrites the team. We are an editorial team
-          that reads US Census Bureau, FHFA, FRED, HUD, and OECD public sources.
+          that reads Zillow Research, US Census Bureau, FHFA, and FRED public sources.
         </li>
         <li>
           <strong>We don&apos;t relabel stale data with a fresher year.</strong> Each
-          Census ACS / FHFA / FRED / HUD / OECD section anchors to its honest vintage; we
+          Zillow / Census ACS / FHFA / FRED section anchors to its honest vintage; we
           do not collapse them into a single &ldquo;today&rdquo; cluster.
         </li>
         <li>
-          <strong>We don&apos;t ship a public bulk dataset.</strong> The published
-          surface (per-city, per-state, rankings, insights) is the published product.
-          There is no downloadable dump of the Census ACS / FHFA HPI / FRED / HUD / OECD
-          joined database.
+          <strong>We don&apos;t ship a public bulk dataset.</strong> The published state
+          pages are the published product. There is no downloadable dump of the joined
+          table.
         </li>
       </ul>
 
       <h2>Tone and language</h2>
       <p>
         {c.name} publishes in English. Editorial tone is neutral, unhedged, and concrete.
-        We avoid promotional language, motivational filler, and adjective spam. When
-        Census ACS and OECD Housing Prices disagree on a derived value (cross-walk
-        differences), we say so. Where an algorithmic estimate diverges from a Census
-        Bureau or OECD published authoritative figure, we keep the algorithmic value with
-        a clear label rather than overwriting it.
+        We avoid promotional language, motivational filler, and adjective spam. Our
+        price-to-income ratio divides a Zillow value by a Census income &mdash; two agencies,
+        two vintages, two methodologies &mdash; and where that cross-source derivation
+        disagrees with a figure published by either agency directly, we keep ours with a
+        clear label rather than overwriting it, and say which inputs produced it.
       </p>
 
       <h2>Conflicts of interest</h2>
       <p>
-        {c.name} does not accept paid placement of city entries, mortgage products,
+        {c.name} does not accept paid placement of state entries, mortgage products,
         lender names, or outbound links. The site is funded by display advertising
         (Google AdSense) only; ad inventory is auctioned by Google&apos;s network, and an
         ad&apos;s appearance on a page does not imply editorial endorsement. The operator
@@ -221,10 +208,9 @@ export default function EditorialPolicyPage() {
       <h2>Updates</h2>
       <p>
         Material changes to this editorial policy are reviewed and dated on this page.
-        Changes that affect what gets published (new Census ACS table joined, new OECD
-        Housing Prices series ingested, new HUD FMR cross-reference, new selection rule,
-        new disclosure) are reflected in the methodology page as well, with the same
-        review date.
+        Changes that affect what gets published (a new Census ACS table joined, a new
+        series ingested, a withdrawn surface, a new selection rule, a new disclosure) are
+        reflected in the methodology page as well, with the same review date.
       </p>
 
       <h2>Source attributions</h2>
@@ -241,8 +227,8 @@ export default function EditorialPolicyPage() {
 
       <h2>Contact</h2>
       <p>
-        Questions about editorial standards, a specific Census, FHFA, FRED, HUD, or OECD
-        anchored value, or a specific page: <a href="/contact/">/contact</a>.
+        Questions about editorial standards, a specific anchored value, or a specific
+        page: <a href="/contact/">/contact</a>.
       </p>
 
       <AuthorBox layer="legal" />

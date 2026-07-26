@@ -27,9 +27,11 @@ export default function TermsPage() {
 
       <h2>What the site is</h2>
       <p>
+        {/* 2026-07-26 — OECD · national statistics offices 삭제(인제스천 0건), per-city ·
+            ranking 삭제(같은 날 전량 410). 발행 중인 축은 주 51개 하나다. */}
         {c.name} is a free editorial reference that compiles housing-affordability data from named
-        public sources (OECD, Zillow ZHVI, FHFA HPI, Census ACS, FRED MORTGAGE30US, and named
-        national statistics offices) and publishes per-state, per-city, and ranking pages with
+        public sources (Zillow ZHVI, FHFA HPI, Census ACS, FRED MORTGAGE30US, and Tax Foundation
+        property-tax rates) and publishes one page set &mdash; 51 US states and DC &mdash; with
         derived metrics computed deterministically at build time. The site is not a brokerage,
         listing service, lender, appraiser, or financial-advice provider.
       </p>
@@ -39,11 +41,11 @@ export default function TermsPage() {
         <li>
           <strong>Not personalized advice.</strong> Nothing on {c.name} is a recommendation that
           you buy, sell, rent, or refinance a specific property, take a specific mortgage, or move
-          to a specific city. Use a licensed local professional for those decisions.
+          to a specific place. Use a licensed local professional for those decisions.
         </li>
         <li>
           <strong>Not real-time.</strong> Data is refreshed on each source&apos;s native cadence
-          (OECD quarterly, ACS annually, FHFA quarterly, FRED weekly). The vintage of every page is
+          (ZHVI monthly, ACS annually, FHFA quarterly, FRED weekly). The vintage of every page is
           labeled on page; we do not relabel a corpus year.
         </li>
         <li>
@@ -110,9 +112,9 @@ export default function TermsPage() {
 
       <h2>External links</h2>
       <p>
-        Pages on {c.name} link to source organizations (OECD, Census, FRED, named national
-        statistics offices) and to sister DataPeek sites. We do not control external sites and are
-        not responsible for their content or privacy practices.
+        Pages on {c.name} link to source organizations (Zillow Research, Census, FHFA, FRED, Tax
+        Foundation) and to sister DataPeek sites. We do not control external sites and are not
+        responsible for their content or privacy practices.
       </p>
 
       <h2>Termination</h2>

@@ -108,7 +108,7 @@ function composeStateTitle(stateSlug: string): ComposedTitle | null {
   const priceK = Math.round(state.medianHomePrice / 1000);
   const pti = priceToIncomeBand(state.medianHomePrice, state.medianHouseholdIncome);
   const burden = mortgageBurdenDecoder(state.medianHomePrice, state.avgMortgageRate30yr, state.medianHouseholdIncome);
-  const signal = pti || burden ? pickVerdict({ pti, burden, scope: 'us' }) : null;
+  const signal = pti || burden ? pickVerdict({ pti, burden }) : null;
   const signalShort = signal ? housingVerdictShortLabel(signal) : null;
   const titleBody = pti
     ? `${state.name} housing: $${priceK}K · PIR ${pti.ratio.toFixed(1)}${signalShort ? ` · ${signalShort}` : ''}`

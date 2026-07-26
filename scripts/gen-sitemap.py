@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate static sitemap.xml from SQLite DB → public/sitemap.xml
+"""Generate static sitemap.xml from lib/states-data.ts → public/sitemap.xml
 
 Next.js 16 turbopack + VPS 환경에서 동적 sitemap.ts가 500 에러를 발생시키므로,
 빌드 전에 이 스크립트로 정적 sitemap.xml을 생성합니다.
@@ -12,10 +12,12 @@ Next.js 16 turbopack + VPS 환경에서 동적 sitemap.ts가 500 에러를 발�
 from pathlib import Path
 import json
 import re
-import sqlite3
 
+# 2026-07-26 — sqlite3 / DB_PATH 제거. data/main.db 의 cities(194) · countries(50) 는
+# 미출처 합성 시드로 판정돼 전량 410 이고, 이 사이트에는 이제 SQLite 를 읽는 코드가 없다.
+# 사이트맵 엔티티 축은 주 51개(lib/states-data.ts) 하나다.
 PROJECT = Path(__file__).parent.parent
-DB_PATH = PROJECT / "data" / "main.db"
+STATES_PATH = PROJECT / "lib" / "states-data.ts"
 OUT_PATH = PROJECT / "public" / "sitemap.xml"
 AUTHORSHIP_PATH = PROJECT / "lib" / "authorship.ts"
 HPI_PATH = PROJECT / "data" / "hpi-quarterly.json"
@@ -37,26 +39,8 @@ if not domain:
 
 BASE = f"https://{domain}"
 
-# entity slug 추출
-entity_slug = "item"
-for line in config_text.split("\n"):
-    if "slug:" in line and "'" in line and "entity" not in line:
-        entity_slug = line.split("'")[1]
-        break
-
-# table name 추출
-table_name = "items"
-for line in config_text.split("\n"):
-    if "tableName:" in line and "'" in line:
-        table_name = line.split("'")[1]
-        break
-
-# slug column 추출
-slug_col = "slug"
-for line in config_text.split("\n"):
-    if "slugColumn:" in line and "'" in line:
-        slug_col = line.split("'")[1]
-        break
+# 2026-07-26 — entity slug / tableName / slugColumn 파싱 제거. 도시 루프가 유일한
+# 소비자였고 site.config.ts 의 dbPath/tableName 은 이제 빈 문자열이다.
 
 
 authorship_text = AUTHORSHIP_PATH.read_text() if AUTHORSHIP_PATH.exists() else ""
@@ -121,16 +105,14 @@ def dated_slug_entries(source: Path, prefix: str, default_lastmod: str, priority
 
 
 def main():
-    conn = sqlite3.connect(str(DB_PATH))
-    conn.row_factory = sqlite3.Row
-    c = conn.cursor()
     urls = []
 
     # Static pages
     static_pages = [
         ('/', 1.0, SITE_REBUILT),
-        ('/compare/', 0.5, SITE_REBUILT),
-        ('/search/', 0.5, SITE_REBUILT),
+        # /compare/ is blocked by the wildcard robots group; only the five
+        # explicitly allowed state-pair leaves are sitemap-eligible.
+        # [PRUNED FOR HCU] ('/search/', 0.5, SITE_REBUILT),
         # /blog/ + /guide/ surfaces 410-killed (2026-05) — not emitted (Trap #134)
         ('/about/', 0.5, ABOUT_REVIEWED),
         ('/methodology/', 0.5, METHODOLOGY_REVIEWED),
@@ -138,6 +120,10 @@ def main():
         ('/terms/', 0.5, LEGAL_REVIEWED),
         ('/contact/', 0.5, LEGAL_REVIEWED),
         ('/disclaimer/', 0.5, LEGAL_REVIEWED),
+        # 2026-07-26 — /editorial-policy/ · /corrections-policy/ 가 빠져 있었다. 둘 다
+        # 라이브 200 이고 오늘 출처 계약을 다시 쓴 층이다(AI 인용이 읽는 페이지).
+        ('/editorial-policy/', 0.5, LEGAL_REVIEWED),
+        ('/corrections-policy/', 0.5, LEGAL_REVIEWED),
         # /rankings/all/ removed 2026-05-24: no /rankings/ hub exists and
         # rankings/[type]/ has dynamicParams=false ('all' isn't a valid slug).
         # Each ranking is emitted individually below via FILTER_RANKINGS +
@@ -146,28 +132,20 @@ def main():
     for page, priority, lastmod in static_pages:
         urls.append((f"{BASE}{page}", priority, lastmod))
 
-    # ─── /city/{slug} DROPPED 2026-04-28 (HCU sitemap-route mismatch) ───────────
-    # site.config.entity.slug='city' but actual route is app/[city]/[slug]/
-    # which only renders pre-defined slugs via getAllSlugs().slice(0,500).
-    # The /city/X/ URL pattern emitted here matches nothing — all 194 returned 404.
-    # Drop entirely: the [city][slug] route is orphaned/needs a separate refactor
-    # before announcing in sitemap.
-    # for row in c.execute(f"SELECT {slug_col} as slug FROM {table_name} ORDER BY {slug_col}"):
-    #     urls.append((f"{BASE}/{entity_slug}/{row['slug']}/", 0.7))
+    # /city/{slug} 194개 DROPPED 2026-07-26 — cities 테이블이 미출처 편집 추정치라
+    # middleware.ts 에서 전량 410. 사이트맵이 410 을 공지하면 모순이므로 같이 뺀다.
+    # (410 은 robots 로 막지 않는다 — 크롤러가 읽어야 색인이 죽는다.)
 
     # Tier S HCU expansion 2026-04-21 — state pages + monthly-payment subpages (51 × 2)
-    state_slugs = [
-        'alabama', 'alaska', 'arizona', 'arkansas', 'california',
-        'colorado', 'connecticut', 'delaware', 'florida', 'georgia',
-        'hawaii', 'idaho', 'illinois', 'indiana', 'iowa',
-        'kansas', 'kentucky', 'louisiana', 'maine', 'maryland',
-        'massachusetts', 'michigan', 'minnesota', 'mississippi', 'missouri',
-        'montana', 'nebraska', 'nevada', 'new-hampshire', 'new-jersey',
-        'new-mexico', 'new-york', 'north-carolina', 'north-dakota', 'ohio',
-        'oklahoma', 'oregon', 'pennsylvania', 'rhode-island', 'south-carolina',
-        'south-dakota', 'tennessee', 'texas', 'utah', 'vermont',
-        'virginia', 'washington', 'washington-dc', 'west-virginia', 'wisconsin', 'wyoming',
-    ]
+    # 2026-07-26 — 51개를 여기 손으로 적어두고 있었다(라우트가 렌더하는 목록과 별개 사본).
+    # 도시 축이 죽어 주가 유일한 엔티티 축이 된 지금, 이 목록이 조용히 어긋나면 페이지는
+    # 살아있는데 사이트맵에서 사라진다. 렌더러와 같은 파일에서 읽고 하한을 검사한다.
+    state_slugs = re.findall(r"\{\s*slug:\s*'([a-z0-9-]+)'", STATES_PATH.read_text())
+    if len(state_slugs) != 51:
+        raise SystemExit(
+            f"ERROR: lib/states-data.ts 에서 주 slug {len(state_slugs)}개 파싱 (기대 51). "
+            "STATES 배열 포맷이 바뀌었으면 정규식을 고칠 것 — 조용히 줄면 사이트맵이 빈다."
+        )
     urls.append((f"{BASE}/state/", 0.8, DB_UPDATED))
     for ss in state_slugs:
         urls.append((f"{BASE}/state/{ss}/", 0.7, entity_lastmod(f"state:{ss}", DB_UPDATED)))
@@ -205,8 +183,6 @@ def main():
             pass
     for pair_slug in state_pair_compare:
         urls.append((f"{BASE}/compare/state/{pair_slug}/", 0.7, hpi_quarter_date))
-
-    conn.close()
 
     # blog.ts + guides.ts slug entries 410-killed (2026-05) — not emitted (Trap #134)
 
