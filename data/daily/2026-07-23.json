@@ -1,0 +1,239 @@
+{
+  "date": "2026-07-23",
+  "kind": "comparison",
+  "title": "Arizona vs Nebraska: a quick HomePricePeek comparison",
+  "description": "4 readings from the HomePricePeek dataset for 2026-07-23: arizona vs nebraska; ranked by median home price; record in focus: new mexico; where to go next. Every figure below is computed from the stored records, and each link opens the record it came from.",
+  "intro": "4 readings from the HomePricePeek dataset for 2026-07-23: arizona vs nebraska; ranked by median home price; record in focus: new mexico; where to go next. Every figure below is computed from the stored records, and each link opens the record it came from.",
+  "items": [
+    {
+      "label": "Arizona",
+      "value": "Median Home Price: 395,000",
+      "href": "/state/arizona/",
+      "metric": 395000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #20 of 51 by median home price · 18% above the median (335,000)."
+    },
+    {
+      "label": "Nebraska",
+      "value": "Median Home Price: 250,000",
+      "href": "/state/nebraska/",
+      "metric": 250000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #37 of 51 by median home price · 25% below the median (335,000)."
+    },
+    {
+      "label": "Florida",
+      "value": "Median Home Price: 398,000",
+      "href": "/state/florida/",
+      "metric": 398000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #19 of 51 by median home price · 19% above the median (335,000)."
+    },
+    {
+      "label": "Arizona",
+      "value": "Median Home Price: 395,000",
+      "href": "/state/arizona/",
+      "metric": 395000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #20 of 51 by median home price · 18% above the median (335,000)."
+    },
+    {
+      "label": "Maine",
+      "value": "Median Home Price: 380,000",
+      "href": "/state/maine/",
+      "metric": 380000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #21 of 51 by median home price · 13% above the median (335,000)."
+    },
+    {
+      "label": "Vermont",
+      "value": "Median Home Price: 380,000",
+      "href": "/state/vermont/",
+      "metric": 380000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #22 of 51 by median home price · 13% above the median (335,000)."
+    },
+    {
+      "label": "Alaska",
+      "value": "Median Home Price: 358,000",
+      "href": "/state/alaska/",
+      "metric": 358000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #23 of 51 by median home price · 7% above the median (335,000)."
+    },
+    {
+      "label": "New Mexico",
+      "value": "Median Home Price: 295,000",
+      "href": "/state/new-mexico/",
+      "metric": 295000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #32 of 51 by median home price · 12% below the median (335,000)."
+    },
+    {
+      "label": "Arizona",
+      "value": "Median Home Price: 395,000",
+      "href": "/state/arizona/",
+      "metric": 395000,
+      "metricLabel": "medianHomePrice"
+    },
+    {
+      "label": "Vermont",
+      "value": "Median Home Price: 380,000",
+      "href": "/state/vermont/",
+      "metric": 380000,
+      "metricLabel": "medianHomePrice"
+    },
+    {
+      "label": "Maine",
+      "value": "Median Home Price: 380,000",
+      "href": "/state/maine/",
+      "metric": 380000,
+      "metricLabel": "medianHomePrice"
+    },
+    {
+      "label": "Alaska",
+      "value": "Median Home Price: 358,000",
+      "href": "/state/alaska/",
+      "metric": 358000,
+      "metricLabel": "medianHomePrice"
+    }
+  ],
+  "links": [
+    {
+      "label": "View Arizona",
+      "href": "/state/arizona/"
+    },
+    {
+      "label": "View Nebraska",
+      "href": "/state/nebraska/"
+    }
+  ],
+  "sections": [
+    {
+      "kind": "comparison",
+      "heading": "Arizona vs Nebraska",
+      "body": "Arizona (Median Home Price: 395,000) against Nebraska (Median Home Price: 250,000). Arizona is 145,000 median home price higher, a 58.0% gap.",
+      "items": [
+        {
+          "label": "Arizona",
+          "value": "Median Home Price: 395,000",
+          "href": "/state/arizona/",
+          "metric": 395000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #20 of 51 by median home price · 18% above the median (335,000)."
+        },
+        {
+          "label": "Nebraska",
+          "value": "Median Home Price: 250,000",
+          "href": "/state/nebraska/",
+          "metric": 250000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #37 of 51 by median home price · 25% below the median (335,000)."
+        }
+      ],
+      "takeaway": "Both sit against a dataset median of 335,000 median home price."
+    },
+    {
+      "kind": "ranking",
+      "heading": "Ranked by median home price",
+      "body": "Positions 19–23 of 51 records carrying a median home price figure. Ordering is computed from the stored values, not editorial preference.",
+      "items": [
+        {
+          "label": "Florida",
+          "value": "Median Home Price: 398,000",
+          "href": "/state/florida/",
+          "metric": 398000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #19 of 51 by median home price · 19% above the median (335,000)."
+        },
+        {
+          "label": "Arizona",
+          "value": "Median Home Price: 395,000",
+          "href": "/state/arizona/",
+          "metric": 395000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #20 of 51 by median home price · 18% above the median (335,000)."
+        },
+        {
+          "label": "Maine",
+          "value": "Median Home Price: 380,000",
+          "href": "/state/maine/",
+          "metric": 380000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #21 of 51 by median home price · 13% above the median (335,000)."
+        },
+        {
+          "label": "Vermont",
+          "value": "Median Home Price: 380,000",
+          "href": "/state/vermont/",
+          "metric": 380000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #22 of 51 by median home price · 13% above the median (335,000)."
+        },
+        {
+          "label": "Alaska",
+          "value": "Median Home Price: 358,000",
+          "href": "/state/alaska/",
+          "metric": 358000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #23 of 51 by median home price · 7% above the median (335,000)."
+        }
+      ],
+      "takeaway": "Dataset median: 335,000. Highest on file: 835,000 (Hawaii)."
+    },
+    {
+      "kind": "spotlight",
+      "heading": "Record in focus: New Mexico",
+      "body": "New Mexico records median home price of 295,000 in the current HomePricePeek data. The linked record holds the full field list and the source note behind the figure.",
+      "items": [
+        {
+          "label": "New Mexico",
+          "value": "Median Home Price: 295,000",
+          "href": "/state/new-mexico/",
+          "metric": 295000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #32 of 51 by median home price · 12% below the median (335,000)."
+        }
+      ],
+      "takeaway": "Ranks #32 of 51 by median home price · 12% below the median (335,000)."
+    },
+    {
+      "kind": "route",
+      "heading": "Where to go next",
+      "body": "A short path through HomePricePeek for anyone starting today. These are entry points into the detailed pages, not a substitute for them.",
+      "items": [
+        {
+          "label": "Arizona",
+          "value": "Median Home Price: 395,000",
+          "href": "/state/arizona/",
+          "metric": 395000,
+          "metricLabel": "medianHomePrice"
+        },
+        {
+          "label": "Vermont",
+          "value": "Median Home Price: 380,000",
+          "href": "/state/vermont/",
+          "metric": 380000,
+          "metricLabel": "medianHomePrice"
+        },
+        {
+          "label": "Maine",
+          "value": "Median Home Price: 380,000",
+          "href": "/state/maine/",
+          "metric": 380000,
+          "metricLabel": "medianHomePrice"
+        },
+        {
+          "label": "Alaska",
+          "value": "Median Home Price: 358,000",
+          "href": "/state/alaska/",
+          "metric": 358000,
+          "metricLabel": "medianHomePrice"
+        }
+      ]
+    }
+  ],
+  "source": "Zillow ZHVI (Apr 2025) · FHFA HPI · Census ACS 2023",
+  "dataDate": "2025-04",
+  "fingerprint": "79e45cf8"
+}

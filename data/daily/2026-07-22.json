@@ -1,0 +1,239 @@
+{
+  "date": "2026-07-22",
+  "kind": "comparison",
+  "title": "Maryland vs Wisconsin: a quick HomePricePeek comparison",
+  "description": "4 readings from the HomePricePeek dataset for 2026-07-22: maryland vs wisconsin; ranked by median home price; record in focus: illinois; where to go next. Every figure below is computed from the stored records, and each link opens the record it came from.",
+  "intro": "4 readings from the HomePricePeek dataset for 2026-07-22: maryland vs wisconsin; ranked by median home price; record in focus: illinois; where to go next. Every figure below is computed from the stored records, and each link opens the record it came from.",
+  "items": [
+    {
+      "label": "Maryland",
+      "value": "Median Home Price: 420,000",
+      "href": "/state/maryland/",
+      "metric": 420000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #16 of 51 by median home price · 25% above the median (335,000)."
+    },
+    {
+      "label": "Wisconsin",
+      "value": "Median Home Price: 290,000",
+      "href": "/state/wisconsin/",
+      "metric": 290000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #33 of 51 by median home price · 13% below the median (335,000)."
+    },
+    {
+      "label": "Connecticut",
+      "value": "Median Home Price: 405,000",
+      "href": "/state/connecticut/",
+      "metric": 405000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #18 of 51 by median home price · 21% above the median (335,000)."
+    },
+    {
+      "label": "Florida",
+      "value": "Median Home Price: 398,000",
+      "href": "/state/florida/",
+      "metric": 398000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #19 of 51 by median home price · 19% above the median (335,000)."
+    },
+    {
+      "label": "Arizona",
+      "value": "Median Home Price: 395,000",
+      "href": "/state/arizona/",
+      "metric": 395000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #20 of 51 by median home price · 18% above the median (335,000)."
+    },
+    {
+      "label": "Maine",
+      "value": "Median Home Price: 380,000",
+      "href": "/state/maine/",
+      "metric": 380000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #21 of 51 by median home price · 13% above the median (335,000)."
+    },
+    {
+      "label": "Vermont",
+      "value": "Median Home Price: 380,000",
+      "href": "/state/vermont/",
+      "metric": 380000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #22 of 51 by median home price · 13% above the median (335,000)."
+    },
+    {
+      "label": "Illinois",
+      "value": "Median Home Price: 275,000",
+      "href": "/state/illinois/",
+      "metric": 275000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #36 of 51 by median home price · 18% below the median (335,000)."
+    },
+    {
+      "label": "Maryland",
+      "value": "Median Home Price: 420,000",
+      "href": "/state/maryland/",
+      "metric": 420000,
+      "metricLabel": "medianHomePrice"
+    },
+    {
+      "label": "Virginia",
+      "value": "Median Home Price: 410,000",
+      "href": "/state/virginia/",
+      "metric": 410000,
+      "metricLabel": "medianHomePrice"
+    },
+    {
+      "label": "Connecticut",
+      "value": "Median Home Price: 405,000",
+      "href": "/state/connecticut/",
+      "metric": 405000,
+      "metricLabel": "medianHomePrice"
+    },
+    {
+      "label": "Florida",
+      "value": "Median Home Price: 398,000",
+      "href": "/state/florida/",
+      "metric": 398000,
+      "metricLabel": "medianHomePrice"
+    }
+  ],
+  "links": [
+    {
+      "label": "View Maryland",
+      "href": "/state/maryland/"
+    },
+    {
+      "label": "View Wisconsin",
+      "href": "/state/wisconsin/"
+    }
+  ],
+  "sections": [
+    {
+      "kind": "comparison",
+      "heading": "Maryland vs Wisconsin",
+      "body": "Maryland (Median Home Price: 420,000) against Wisconsin (Median Home Price: 290,000). Maryland is 130,000 median home price higher, a 44.8% gap.",
+      "items": [
+        {
+          "label": "Maryland",
+          "value": "Median Home Price: 420,000",
+          "href": "/state/maryland/",
+          "metric": 420000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #16 of 51 by median home price · 25% above the median (335,000)."
+        },
+        {
+          "label": "Wisconsin",
+          "value": "Median Home Price: 290,000",
+          "href": "/state/wisconsin/",
+          "metric": 290000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #33 of 51 by median home price · 13% below the median (335,000)."
+        }
+      ],
+      "takeaway": "Both sit against a dataset median of 335,000 median home price."
+    },
+    {
+      "kind": "ranking",
+      "heading": "Ranked by median home price",
+      "body": "Positions 18–22 of 51 records carrying a median home price figure. Ordering is computed from the stored values, not editorial preference.",
+      "items": [
+        {
+          "label": "Connecticut",
+          "value": "Median Home Price: 405,000",
+          "href": "/state/connecticut/",
+          "metric": 405000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #18 of 51 by median home price · 21% above the median (335,000)."
+        },
+        {
+          "label": "Florida",
+          "value": "Median Home Price: 398,000",
+          "href": "/state/florida/",
+          "metric": 398000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #19 of 51 by median home price · 19% above the median (335,000)."
+        },
+        {
+          "label": "Arizona",
+          "value": "Median Home Price: 395,000",
+          "href": "/state/arizona/",
+          "metric": 395000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #20 of 51 by median home price · 18% above the median (335,000)."
+        },
+        {
+          "label": "Maine",
+          "value": "Median Home Price: 380,000",
+          "href": "/state/maine/",
+          "metric": 380000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #21 of 51 by median home price · 13% above the median (335,000)."
+        },
+        {
+          "label": "Vermont",
+          "value": "Median Home Price: 380,000",
+          "href": "/state/vermont/",
+          "metric": 380000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #22 of 51 by median home price · 13% above the median (335,000)."
+        }
+      ],
+      "takeaway": "Dataset median: 335,000. Highest on file: 835,000 (Hawaii)."
+    },
+    {
+      "kind": "spotlight",
+      "heading": "Record in focus: Illinois",
+      "body": "Illinois records median home price of 275,000 in the current HomePricePeek data. The linked record holds the full field list and the source note behind the figure.",
+      "items": [
+        {
+          "label": "Illinois",
+          "value": "Median Home Price: 275,000",
+          "href": "/state/illinois/",
+          "metric": 275000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #36 of 51 by median home price · 18% below the median (335,000)."
+        }
+      ],
+      "takeaway": "Ranks #36 of 51 by median home price · 18% below the median (335,000)."
+    },
+    {
+      "kind": "route",
+      "heading": "Where to go next",
+      "body": "A short path through HomePricePeek for anyone starting today. These are entry points into the detailed pages, not a substitute for them.",
+      "items": [
+        {
+          "label": "Maryland",
+          "value": "Median Home Price: 420,000",
+          "href": "/state/maryland/",
+          "metric": 420000,
+          "metricLabel": "medianHomePrice"
+        },
+        {
+          "label": "Virginia",
+          "value": "Median Home Price: 410,000",
+          "href": "/state/virginia/",
+          "metric": 410000,
+          "metricLabel": "medianHomePrice"
+        },
+        {
+          "label": "Connecticut",
+          "value": "Median Home Price: 405,000",
+          "href": "/state/connecticut/",
+          "metric": 405000,
+          "metricLabel": "medianHomePrice"
+        },
+        {
+          "label": "Florida",
+          "value": "Median Home Price: 398,000",
+          "href": "/state/florida/",
+          "metric": 398000,
+          "metricLabel": "medianHomePrice"
+        }
+      ]
+    }
+  ],
+  "source": "Zillow ZHVI (Apr 2025) · FHFA HPI · Census ACS 2023",
+  "dataDate": "2025-04",
+  "fingerprint": "b3f5c567"
+}

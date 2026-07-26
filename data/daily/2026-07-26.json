@@ -1,0 +1,239 @@
+{
+  "date": "2026-07-26",
+  "kind": "comparison",
+  "title": "West Virginia vs Virginia: a quick HomePricePeek comparison",
+  "description": "4 readings from the HomePricePeek dataset for 2026-07-26: west virginia vs virginia; ranked by median home price; record in focus: hawaii; where to go next. Every figure below is computed from the stored records, and each link opens the record it came from.",
+  "intro": "4 readings from the HomePricePeek dataset for 2026-07-26: west virginia vs virginia; ranked by median home price; record in focus: hawaii; where to go next. Every figure below is computed from the stored records, and each link opens the record it came from.",
+  "items": [
+    {
+      "label": "West Virginia",
+      "value": "Median Home Price: 145,000",
+      "href": "/state/west-virginia/",
+      "metric": 145000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #51 of 51 by median home price · bottom 1% · 57% below the median (335,000)."
+    },
+    {
+      "label": "Virginia",
+      "value": "Median Home Price: 410,000",
+      "href": "/state/virginia/",
+      "metric": 410000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #17 of 51 by median home price · 22% above the median (335,000)."
+    },
+    {
+      "label": "Rhode Island",
+      "value": "Median Home Price: 440,000",
+      "href": "/state/rhode-island/",
+      "metric": 440000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #14 of 51 by median home price · 31% above the median (335,000)."
+    },
+    {
+      "label": "Nevada",
+      "value": "Median Home Price: 425,000",
+      "href": "/state/nevada/",
+      "metric": 425000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #15 of 51 by median home price · 27% above the median (335,000)."
+    },
+    {
+      "label": "Maryland",
+      "value": "Median Home Price: 420,000",
+      "href": "/state/maryland/",
+      "metric": 420000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #16 of 51 by median home price · 25% above the median (335,000)."
+    },
+    {
+      "label": "Virginia",
+      "value": "Median Home Price: 410,000",
+      "href": "/state/virginia/",
+      "metric": 410000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #17 of 51 by median home price · 22% above the median (335,000)."
+    },
+    {
+      "label": "Connecticut",
+      "value": "Median Home Price: 405,000",
+      "href": "/state/connecticut/",
+      "metric": 405000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #18 of 51 by median home price · 21% above the median (335,000)."
+    },
+    {
+      "label": "Hawaii",
+      "value": "Median Home Price: 835,000",
+      "href": "/state/hawaii/",
+      "metric": 835000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #1 of 51 by median home price · top 2% · 149% above the median (335,000)."
+    },
+    {
+      "label": "West Virginia",
+      "value": "Median Home Price: 145,000",
+      "href": "/state/west-virginia/",
+      "metric": 145000,
+      "metricLabel": "medianHomePrice"
+    },
+    {
+      "label": "Hawaii",
+      "value": "Median Home Price: 835,000",
+      "href": "/state/hawaii/",
+      "metric": 835000,
+      "metricLabel": "medianHomePrice"
+    },
+    {
+      "label": "California",
+      "value": "Median Home Price: 785,000",
+      "href": "/state/california/",
+      "metric": 785000,
+      "metricLabel": "medianHomePrice"
+    },
+    {
+      "label": "Washington D.C.",
+      "value": "Median Home Price: 650,000",
+      "href": "/state/washington-dc/",
+      "metric": 650000,
+      "metricLabel": "medianHomePrice"
+    }
+  ],
+  "links": [
+    {
+      "label": "View West Virginia",
+      "href": "/state/west-virginia/"
+    },
+    {
+      "label": "View Virginia",
+      "href": "/state/virginia/"
+    }
+  ],
+  "sections": [
+    {
+      "kind": "comparison",
+      "heading": "West Virginia vs Virginia",
+      "body": "West Virginia (Median Home Price: 145,000) against Virginia (Median Home Price: 410,000). West Virginia is 265,000 median home price lower, a 64.6% gap.",
+      "items": [
+        {
+          "label": "West Virginia",
+          "value": "Median Home Price: 145,000",
+          "href": "/state/west-virginia/",
+          "metric": 145000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #51 of 51 by median home price · bottom 1% · 57% below the median (335,000)."
+        },
+        {
+          "label": "Virginia",
+          "value": "Median Home Price: 410,000",
+          "href": "/state/virginia/",
+          "metric": 410000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #17 of 51 by median home price · 22% above the median (335,000)."
+        }
+      ],
+      "takeaway": "Both sit against a dataset median of 335,000 median home price."
+    },
+    {
+      "kind": "ranking",
+      "heading": "Ranked by median home price",
+      "body": "Positions 14–18 of 51 records carrying a median home price figure. Ordering is computed from the stored values, not editorial preference.",
+      "items": [
+        {
+          "label": "Rhode Island",
+          "value": "Median Home Price: 440,000",
+          "href": "/state/rhode-island/",
+          "metric": 440000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #14 of 51 by median home price · 31% above the median (335,000)."
+        },
+        {
+          "label": "Nevada",
+          "value": "Median Home Price: 425,000",
+          "href": "/state/nevada/",
+          "metric": 425000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #15 of 51 by median home price · 27% above the median (335,000)."
+        },
+        {
+          "label": "Maryland",
+          "value": "Median Home Price: 420,000",
+          "href": "/state/maryland/",
+          "metric": 420000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #16 of 51 by median home price · 25% above the median (335,000)."
+        },
+        {
+          "label": "Virginia",
+          "value": "Median Home Price: 410,000",
+          "href": "/state/virginia/",
+          "metric": 410000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #17 of 51 by median home price · 22% above the median (335,000)."
+        },
+        {
+          "label": "Connecticut",
+          "value": "Median Home Price: 405,000",
+          "href": "/state/connecticut/",
+          "metric": 405000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #18 of 51 by median home price · 21% above the median (335,000)."
+        }
+      ],
+      "takeaway": "Dataset median: 335,000. Highest on file: 835,000 (Hawaii)."
+    },
+    {
+      "kind": "spotlight",
+      "heading": "Record in focus: Hawaii",
+      "body": "Hawaii records median home price of 835,000 in the current HomePricePeek data. The linked record holds the full field list and the source note behind the figure.",
+      "items": [
+        {
+          "label": "Hawaii",
+          "value": "Median Home Price: 835,000",
+          "href": "/state/hawaii/",
+          "metric": 835000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #1 of 51 by median home price · top 2% · 149% above the median (335,000)."
+        }
+      ],
+      "takeaway": "Ranks #1 of 51 by median home price · top 2% · 149% above the median (335,000)."
+    },
+    {
+      "kind": "route",
+      "heading": "Where to go next",
+      "body": "A short path through HomePricePeek for anyone starting today. These are entry points into the detailed pages, not a substitute for them.",
+      "items": [
+        {
+          "label": "West Virginia",
+          "value": "Median Home Price: 145,000",
+          "href": "/state/west-virginia/",
+          "metric": 145000,
+          "metricLabel": "medianHomePrice"
+        },
+        {
+          "label": "Hawaii",
+          "value": "Median Home Price: 835,000",
+          "href": "/state/hawaii/",
+          "metric": 835000,
+          "metricLabel": "medianHomePrice"
+        },
+        {
+          "label": "California",
+          "value": "Median Home Price: 785,000",
+          "href": "/state/california/",
+          "metric": 785000,
+          "metricLabel": "medianHomePrice"
+        },
+        {
+          "label": "Washington D.C.",
+          "value": "Median Home Price: 650,000",
+          "href": "/state/washington-dc/",
+          "metric": 650000,
+          "metricLabel": "medianHomePrice"
+        }
+      ]
+    }
+  ],
+  "source": "Zillow ZHVI (Apr 2025) · FHFA HPI · Census ACS 2023",
+  "dataDate": "2025-04",
+  "fingerprint": "cce23ed4"
+}

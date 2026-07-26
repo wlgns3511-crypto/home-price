@@ -1,0 +1,239 @@
+{
+  "date": "2026-07-24",
+  "kind": "comparison",
+  "title": "Utah vs North Carolina: a quick HomePricePeek comparison",
+  "description": "4 readings from the HomePricePeek dataset for 2026-07-24: utah vs north carolina; ranked by median home price; record in focus: alabama; where to go next. Every figure below is computed from the stored records, and each link opens the record it came from.",
+  "intro": "4 readings from the HomePricePeek dataset for 2026-07-24: utah vs north carolina; ranked by median home price; record in focus: alabama; where to go next. Every figure below is computed from the stored records, and each link opens the record it came from.",
+  "items": [
+    {
+      "label": "Utah",
+      "value": "Median Home Price: 505,000",
+      "href": "/state/utah/",
+      "metric": 505000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #8 of 51 by median home price · 51% above the median (335,000)."
+    },
+    {
+      "label": "North Carolina",
+      "value": "Median Home Price: 340,000",
+      "href": "/state/north-carolina/",
+      "metric": 340000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #25 of 51 by median home price · 1% above the median (335,000)."
+    },
+    {
+      "label": "Maryland",
+      "value": "Median Home Price: 420,000",
+      "href": "/state/maryland/",
+      "metric": 420000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #16 of 51 by median home price · 25% above the median (335,000)."
+    },
+    {
+      "label": "Virginia",
+      "value": "Median Home Price: 410,000",
+      "href": "/state/virginia/",
+      "metric": 410000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #17 of 51 by median home price · 22% above the median (335,000)."
+    },
+    {
+      "label": "Connecticut",
+      "value": "Median Home Price: 405,000",
+      "href": "/state/connecticut/",
+      "metric": 405000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #18 of 51 by median home price · 21% above the median (335,000)."
+    },
+    {
+      "label": "Florida",
+      "value": "Median Home Price: 398,000",
+      "href": "/state/florida/",
+      "metric": 398000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #19 of 51 by median home price · 19% above the median (335,000)."
+    },
+    {
+      "label": "Arizona",
+      "value": "Median Home Price: 395,000",
+      "href": "/state/arizona/",
+      "metric": 395000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #20 of 51 by median home price · 18% above the median (335,000)."
+    },
+    {
+      "label": "Alabama",
+      "value": "Median Home Price: 216,000",
+      "href": "/state/alabama/",
+      "metric": 216000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #44 of 51 by median home price · 36% below the median (335,000)."
+    },
+    {
+      "label": "Utah",
+      "value": "Median Home Price: 505,000",
+      "href": "/state/utah/",
+      "metric": 505000,
+      "metricLabel": "medianHomePrice"
+    },
+    {
+      "label": "Oregon",
+      "value": "Median Home Price: 485,000",
+      "href": "/state/oregon/",
+      "metric": 485000,
+      "metricLabel": "medianHomePrice"
+    },
+    {
+      "label": "Montana",
+      "value": "Median Home Price: 465,000",
+      "href": "/state/montana/",
+      "metric": 465000,
+      "metricLabel": "medianHomePrice"
+    },
+    {
+      "label": "New Hampshire",
+      "value": "Median Home Price: 460,000",
+      "href": "/state/new-hampshire/",
+      "metric": 460000,
+      "metricLabel": "medianHomePrice"
+    }
+  ],
+  "links": [
+    {
+      "label": "View Utah",
+      "href": "/state/utah/"
+    },
+    {
+      "label": "View North Carolina",
+      "href": "/state/north-carolina/"
+    }
+  ],
+  "sections": [
+    {
+      "kind": "comparison",
+      "heading": "Utah vs North Carolina",
+      "body": "Utah (Median Home Price: 505,000) against North Carolina (Median Home Price: 340,000). Utah is 165,000 median home price higher, a 48.5% gap.",
+      "items": [
+        {
+          "label": "Utah",
+          "value": "Median Home Price: 505,000",
+          "href": "/state/utah/",
+          "metric": 505000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #8 of 51 by median home price · 51% above the median (335,000)."
+        },
+        {
+          "label": "North Carolina",
+          "value": "Median Home Price: 340,000",
+          "href": "/state/north-carolina/",
+          "metric": 340000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #25 of 51 by median home price · 1% above the median (335,000)."
+        }
+      ],
+      "takeaway": "Both sit against a dataset median of 335,000 median home price."
+    },
+    {
+      "kind": "ranking",
+      "heading": "Ranked by median home price",
+      "body": "Positions 16–20 of 51 records carrying a median home price figure. Ordering is computed from the stored values, not editorial preference.",
+      "items": [
+        {
+          "label": "Maryland",
+          "value": "Median Home Price: 420,000",
+          "href": "/state/maryland/",
+          "metric": 420000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #16 of 51 by median home price · 25% above the median (335,000)."
+        },
+        {
+          "label": "Virginia",
+          "value": "Median Home Price: 410,000",
+          "href": "/state/virginia/",
+          "metric": 410000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #17 of 51 by median home price · 22% above the median (335,000)."
+        },
+        {
+          "label": "Connecticut",
+          "value": "Median Home Price: 405,000",
+          "href": "/state/connecticut/",
+          "metric": 405000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #18 of 51 by median home price · 21% above the median (335,000)."
+        },
+        {
+          "label": "Florida",
+          "value": "Median Home Price: 398,000",
+          "href": "/state/florida/",
+          "metric": 398000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #19 of 51 by median home price · 19% above the median (335,000)."
+        },
+        {
+          "label": "Arizona",
+          "value": "Median Home Price: 395,000",
+          "href": "/state/arizona/",
+          "metric": 395000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #20 of 51 by median home price · 18% above the median (335,000)."
+        }
+      ],
+      "takeaway": "Dataset median: 335,000. Highest on file: 835,000 (Hawaii)."
+    },
+    {
+      "kind": "spotlight",
+      "heading": "Record in focus: Alabama",
+      "body": "Alabama records median home price of 216,000 in the current HomePricePeek data. The linked record holds the full field list and the source note behind the figure.",
+      "items": [
+        {
+          "label": "Alabama",
+          "value": "Median Home Price: 216,000",
+          "href": "/state/alabama/",
+          "metric": 216000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #44 of 51 by median home price · 36% below the median (335,000)."
+        }
+      ],
+      "takeaway": "Ranks #44 of 51 by median home price · 36% below the median (335,000)."
+    },
+    {
+      "kind": "route",
+      "heading": "Where to go next",
+      "body": "A short path through HomePricePeek for anyone starting today. These are entry points into the detailed pages, not a substitute for them.",
+      "items": [
+        {
+          "label": "Utah",
+          "value": "Median Home Price: 505,000",
+          "href": "/state/utah/",
+          "metric": 505000,
+          "metricLabel": "medianHomePrice"
+        },
+        {
+          "label": "Oregon",
+          "value": "Median Home Price: 485,000",
+          "href": "/state/oregon/",
+          "metric": 485000,
+          "metricLabel": "medianHomePrice"
+        },
+        {
+          "label": "Montana",
+          "value": "Median Home Price: 465,000",
+          "href": "/state/montana/",
+          "metric": 465000,
+          "metricLabel": "medianHomePrice"
+        },
+        {
+          "label": "New Hampshire",
+          "value": "Median Home Price: 460,000",
+          "href": "/state/new-hampshire/",
+          "metric": 460000,
+          "metricLabel": "medianHomePrice"
+        }
+      ]
+    }
+  ],
+  "source": "Zillow ZHVI (Apr 2025) · FHFA HPI · Census ACS 2023",
+  "dataDate": "2025-04",
+  "fingerprint": "a279d58c"
+}

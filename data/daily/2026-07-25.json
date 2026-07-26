@@ -1,0 +1,239 @@
+{
+  "date": "2026-07-25",
+  "kind": "comparison",
+  "title": "New York vs Wyoming: a quick HomePricePeek comparison",
+  "description": "4 readings from the HomePricePeek dataset for 2026-07-25: new york vs wyoming; ranked by median home price; record in focus: missouri; where to go next. Every figure below is computed from the stored records, and each link opens the record it came from.",
+  "intro": "4 readings from the HomePricePeek dataset for 2026-07-25: new york vs wyoming; ranked by median home price; record in focus: missouri; where to go next. Every figure below is computed from the stored records, and each link opens the record it came from.",
+  "items": [
+    {
+      "label": "New York",
+      "value": "Median Home Price: 455,000",
+      "href": "/state/new-york/",
+      "metric": 455000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #12 of 51 by median home price · 36% above the median (335,000)."
+    },
+    {
+      "label": "Wyoming",
+      "value": "Median Home Price: 330,000",
+      "href": "/state/wyoming/",
+      "metric": 330000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #29 of 51 by median home price · 1% below the median (335,000)."
+    },
+    {
+      "label": "Virginia",
+      "value": "Median Home Price: 410,000",
+      "href": "/state/virginia/",
+      "metric": 410000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #17 of 51 by median home price · 22% above the median (335,000)."
+    },
+    {
+      "label": "Connecticut",
+      "value": "Median Home Price: 405,000",
+      "href": "/state/connecticut/",
+      "metric": 405000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #18 of 51 by median home price · 21% above the median (335,000)."
+    },
+    {
+      "label": "Florida",
+      "value": "Median Home Price: 398,000",
+      "href": "/state/florida/",
+      "metric": 398000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #19 of 51 by median home price · 19% above the median (335,000)."
+    },
+    {
+      "label": "Arizona",
+      "value": "Median Home Price: 395,000",
+      "href": "/state/arizona/",
+      "metric": 395000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #20 of 51 by median home price · 18% above the median (335,000)."
+    },
+    {
+      "label": "Maine",
+      "value": "Median Home Price: 380,000",
+      "href": "/state/maine/",
+      "metric": 380000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #21 of 51 by median home price · 13% above the median (335,000)."
+    },
+    {
+      "label": "Missouri",
+      "value": "Median Home Price: 238,000",
+      "href": "/state/missouri/",
+      "metric": 238000,
+      "metricLabel": "medianHomePrice",
+      "verdict": "Ranks #40 of 51 by median home price · 29% below the median (335,000)."
+    },
+    {
+      "label": "New York",
+      "value": "Median Home Price: 455,000",
+      "href": "/state/new-york/",
+      "metric": 455000,
+      "metricLabel": "medianHomePrice"
+    },
+    {
+      "label": "Rhode Island",
+      "value": "Median Home Price: 440,000",
+      "href": "/state/rhode-island/",
+      "metric": 440000,
+      "metricLabel": "medianHomePrice"
+    },
+    {
+      "label": "Idaho",
+      "value": "Median Home Price: 440,000",
+      "href": "/state/idaho/",
+      "metric": 440000,
+      "metricLabel": "medianHomePrice"
+    },
+    {
+      "label": "Nevada",
+      "value": "Median Home Price: 425,000",
+      "href": "/state/nevada/",
+      "metric": 425000,
+      "metricLabel": "medianHomePrice"
+    }
+  ],
+  "links": [
+    {
+      "label": "View New York",
+      "href": "/state/new-york/"
+    },
+    {
+      "label": "View Wyoming",
+      "href": "/state/wyoming/"
+    }
+  ],
+  "sections": [
+    {
+      "kind": "comparison",
+      "heading": "New York vs Wyoming",
+      "body": "New York (Median Home Price: 455,000) against Wyoming (Median Home Price: 330,000). New York is 125,000 median home price higher, a 37.9% gap.",
+      "items": [
+        {
+          "label": "New York",
+          "value": "Median Home Price: 455,000",
+          "href": "/state/new-york/",
+          "metric": 455000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #12 of 51 by median home price · 36% above the median (335,000)."
+        },
+        {
+          "label": "Wyoming",
+          "value": "Median Home Price: 330,000",
+          "href": "/state/wyoming/",
+          "metric": 330000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #29 of 51 by median home price · 1% below the median (335,000)."
+        }
+      ],
+      "takeaway": "Both sit against a dataset median of 335,000 median home price."
+    },
+    {
+      "kind": "ranking",
+      "heading": "Ranked by median home price",
+      "body": "Positions 17–21 of 51 records carrying a median home price figure. Ordering is computed from the stored values, not editorial preference.",
+      "items": [
+        {
+          "label": "Virginia",
+          "value": "Median Home Price: 410,000",
+          "href": "/state/virginia/",
+          "metric": 410000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #17 of 51 by median home price · 22% above the median (335,000)."
+        },
+        {
+          "label": "Connecticut",
+          "value": "Median Home Price: 405,000",
+          "href": "/state/connecticut/",
+          "metric": 405000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #18 of 51 by median home price · 21% above the median (335,000)."
+        },
+        {
+          "label": "Florida",
+          "value": "Median Home Price: 398,000",
+          "href": "/state/florida/",
+          "metric": 398000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #19 of 51 by median home price · 19% above the median (335,000)."
+        },
+        {
+          "label": "Arizona",
+          "value": "Median Home Price: 395,000",
+          "href": "/state/arizona/",
+          "metric": 395000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #20 of 51 by median home price · 18% above the median (335,000)."
+        },
+        {
+          "label": "Maine",
+          "value": "Median Home Price: 380,000",
+          "href": "/state/maine/",
+          "metric": 380000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #21 of 51 by median home price · 13% above the median (335,000)."
+        }
+      ],
+      "takeaway": "Dataset median: 335,000. Highest on file: 835,000 (Hawaii)."
+    },
+    {
+      "kind": "spotlight",
+      "heading": "Record in focus: Missouri",
+      "body": "Missouri records median home price of 238,000 in the current HomePricePeek data. The linked record holds the full field list and the source note behind the figure.",
+      "items": [
+        {
+          "label": "Missouri",
+          "value": "Median Home Price: 238,000",
+          "href": "/state/missouri/",
+          "metric": 238000,
+          "metricLabel": "medianHomePrice",
+          "verdict": "Ranks #40 of 51 by median home price · 29% below the median (335,000)."
+        }
+      ],
+      "takeaway": "Ranks #40 of 51 by median home price · 29% below the median (335,000)."
+    },
+    {
+      "kind": "route",
+      "heading": "Where to go next",
+      "body": "A short path through HomePricePeek for anyone starting today. These are entry points into the detailed pages, not a substitute for them.",
+      "items": [
+        {
+          "label": "New York",
+          "value": "Median Home Price: 455,000",
+          "href": "/state/new-york/",
+          "metric": 455000,
+          "metricLabel": "medianHomePrice"
+        },
+        {
+          "label": "Rhode Island",
+          "value": "Median Home Price: 440,000",
+          "href": "/state/rhode-island/",
+          "metric": 440000,
+          "metricLabel": "medianHomePrice"
+        },
+        {
+          "label": "Idaho",
+          "value": "Median Home Price: 440,000",
+          "href": "/state/idaho/",
+          "metric": 440000,
+          "metricLabel": "medianHomePrice"
+        },
+        {
+          "label": "Nevada",
+          "value": "Median Home Price: 425,000",
+          "href": "/state/nevada/",
+          "metric": 425000,
+          "metricLabel": "medianHomePrice"
+        }
+      ]
+    }
+  ],
+  "source": "Zillow ZHVI (Apr 2025) · FHFA HPI · Census ACS 2023",
+  "dataDate": "2025-04",
+  "fingerprint": "8f16f450"
+}
